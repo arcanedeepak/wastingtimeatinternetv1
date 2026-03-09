@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,11 +6,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>wastingtimeatinternet</title>
 <meta name="description" content="Movies, movie facts, weather, AQI and live channels">
+
 <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/7/7a/Clapperboard.svg">
 
 <style>
 
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#0b1120;color:#fff}
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:#0b1120;
+color:#fff
+}
 
 nav{
 display:flex;
@@ -20,8 +27,6 @@ background:#020617;
 position:sticky;
 top:0
 }
-
-nav h1{margin:0;font-size:20px}
 
 nav ul{
 list-style:none;
@@ -43,7 +48,7 @@ nav a:hover{color:#ef4444}
 background:#ef4444;
 padding:6px 10px;
 border-radius:6px;
-color:#fff !important
+color:#fff!important
 }
 
 .hero{
@@ -54,8 +59,6 @@ background:linear-gradient(120deg,#020617,#111827)
 
 .hero h2{font-size:40px;margin:0 0 10px}
 .hero p{color:#cbd5f5}
-
-.search{margin-top:20px}
 
 .search input{
 padding:10px;
@@ -87,7 +90,8 @@ background:#111827;
 border-radius:10px;
 padding:10px;
 text-align:center;
-transition:0.3s
+transition:.3s;
+box-shadow:0 8px 20px rgba(0,0,0,.5)
 }
 
 .netflix-card:hover{
@@ -101,19 +105,20 @@ border-radius:8px
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
 gap:20px
 }
 
 .card{
-background:#1e293b;
+background:#111827;
 border-radius:12px;
-padding:16px
+padding:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.5)
 }
 
 .reels{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
 gap:20px
 }
 
@@ -157,28 +162,15 @@ border:none;
 border-radius:10px
 }
 
-.admin{
-background:#111827;
-border-radius:12px;
-padding:20px
-}
-
-.admin input,.admin textarea{
-width:100%;
-margin-top:10px;
-padding:10px;
-border-radius:6px;
-border:none
-}
-
-.admin button{
-margin-top:10px;
-padding:10px 16px;
+button,.button{
+display:inline-block;
+padding:10px 14px;
 background:#ef4444;
 color:#fff;
 border:none;
 border-radius:6px;
-cursor:pointer
+cursor:pointer;
+text-decoration:none
 }
 
 footer{
@@ -187,16 +179,6 @@ padding:30px;
 background:#020617;
 margin-top:40px;
 color:#94a3b8
-}
-
-.button{
-display:inline-block;
-padding:10px 14px;
-background:#ef4444;
-color:#fff;
-border-radius:6px;
-text-decoration:none;
-margin-top:15px
 }
 
 </style>
@@ -209,6 +191,7 @@ margin-top:15px
 <h1>wastingtimeatinternet</h1>
 
 <ul>
+
 <li><a href="#movies">Movies</a></li>
 <li><a href="#facts">Facts</a></li>
 <li><a href="#reels">Reels</a></li>
@@ -217,8 +200,6 @@ margin-top:15px
 <li><a href="#weather">Weather</a></li>
 <li><a href="#aqi">AQI</a></li>
 <li><a href="#tv">Live TV</a></li>
-<li><a href="#instagram">Instagram</a></li>
-<li><a href="#admin">Admin</a></li>
 
 <li><a class="highlight" href="https://wastingyourtimeatinternet.b12sites.com/index#home" target="_blank">Portfolio</a></li>
 
@@ -241,7 +222,28 @@ margin-top:15px
 <input type="text" id="searchInput" placeholder="Search movies...">
 </div>
 
-<a class="button" href="https://wastingyourtimeatinternet.b12sites.com/index#home" target="_blank">View Portfolio</a>
+</section>
+
+
+<section class="container">
+
+<h2 class="section-title">Professional Profiles</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>LinkedIn</h3>
+<p>Connect for data engineering, cloud and analytics consulting.</p>
+<a class="button" href="https://www.linkedin.com/in/wastingtimeatlink/" target="_blank">Visit LinkedIn</a>
+</div>
+
+<div class="card">
+<h3>Portfolio</h3>
+<p>View projects, technical expertise and professional work.</p>
+<a class="button" href="https://wastingyourtimeatinternet.b12sites.com/index#home" target="_blank">Open Portfolio</a>
+</div>
+
+</div>
 
 </section>
 
@@ -273,30 +275,26 @@ margin-top:15px
 </div>
 
 </div>
-</section>
-
-
-<section class="container" id="facts">
-
-<h2 class="section-title">Movie Facts</h2>
-
-<div class="grid" id="factsGrid"></div>
 
 </section>
 
 
 <section class="container" id="reels">
 
-<h2 class="section-title">Video Reels</h2>
+<h2 class="section-title">Movie Trailers</h2>
 
 <div class="reels">
 
 <div class="reel">
-<iframe src="https://www.youtube.com/embed/ysz5S6PUM-U"></iframe>
+<iframe src="https://www.youtube.com/embed/YoHD9XEInc0"></iframe>
 </div>
 
 <div class="reel">
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
+<iframe src="https://www.youtube.com/embed/TcMBFSGVi1c"></iframe>
+</div>
+
+<div class="reel">
+<iframe src="https://www.youtube.com/embed/zSWdZVtXT7E"></iframe>
 </div>
 
 </div>
@@ -310,7 +308,7 @@ margin-top:15px
 
 <iframe style="border-radius:12px"
 src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M"
-width="100%" height="380" frameBorder="0"></iframe>
+width="100%" height="380"></iframe>
 
 </section>
 
@@ -319,8 +317,20 @@ width="100%" height="380" frameBorder="0"></iframe>
 
 <h2 class="section-title">Live Radio</h2>
 
-<audio controls autoplay>
-<source src="https://stream-153.zeno.fm/0r0xa792kwzuv" type="audio/mpeg">
+<select id="radioSelect">
+
+<option value="https://stream-153.zeno.fm/0r0xa792kwzuv">Hits Radio</option>
+
+<option value="https://stream.live.vc.bbcmedia.co.uk/bbc_radio_one">BBC Radio 1</option>
+
+<option value="https://npr-ice.streamguys1.com/live.mp3">NPR Radio</option>
+
+</select>
+
+<br><br>
+
+<audio id="radioPlayer" controls>
+<source src="https://stream-153.zeno.fm/0r0xa792kwzuv">
 </audio>
 
 </section>
@@ -328,7 +338,7 @@ width="100%" height="380" frameBorder="0"></iframe>
 
 <section class="container" id="weather">
 
-<h2 class="section-title">Weather – Major Cities</h2>
+<h2 class="section-title">Weather</h2>
 
 <div class="weather-grid" id="weatherGrid"></div>
 
@@ -346,20 +356,20 @@ width="100%" height="380" frameBorder="0"></iframe>
 
 <section class="container" id="tv">
 
-<h2 class="section-title">Free Live Channels</h2>
+<h2 class="section-title">Live Channels</h2>
 
 <div class="tv-grid">
+
+<div class="tv">
+<iframe src="https://www.youtube.com/embed/live_stream?channel=UC16niRr50-MSBwiO3YDb3RA"></iframe>
+</div>
 
 <div class="tv">
 <iframe src="https://www.youtube.com/embed/live_stream?channel=UCupvZG-5ko_eiXAupbDfxWw"></iframe>
 </div>
 
 <div class="tv">
-<iframe src="https://www.youtube.com/embed/9Auq9mYxFEE"></iframe>
-</div>
-
-<div class="tv">
-<iframe src="https://www.youtube.com/embed/kJQP7kiw5Fk"></iframe>
+<iframe src="https://www.youtube.com/embed/live_stream?channel=UCNye-wNBqNL5ZzHSJj3l8Bg"></iframe>
 </div>
 
 </div>
@@ -367,38 +377,20 @@ width="100%" height="380" frameBorder="0"></iframe>
 </section>
 
 
-<section class="container" id="instagram">
+<section class="container">
 
-<h2 class="section-title">Instagram Movie Page</h2>
+<h2 class="section-title">Professional Consultation</h2>
 
 <div class="card">
 
-<h3>@wastingtimeatmovies</h3>
+<p>
+Available for consultation in data engineering, cloud architecture,
+business intelligence and analytics.
+</p>
 
-<p>Follow for movie reels and cinema facts</p>
-
-<a class="button" href="https://www.instagram.com/wastingtimeatmovies/" target="_blank">
-
-Open Instagram
-
+<a class="button" href="https://www.linkedin.com/in/wastingtimeatlink/" target="_blank">
+Contact on LinkedIn
 </a>
-
-</div>
-
-</section>
-
-
-<section class="container" id="admin">
-
-<h2 class="section-title">Admin Dashboard</h2>
-
-<div class="admin">
-
-<input id="movieTitle" placeholder="Movie Title">
-
-<textarea id="movieFact" rows="3" placeholder="Movie Fact"></textarea>
-
-<button id="addFactBtn">Add Fact</button>
 
 </div>
 
@@ -415,49 +407,6 @@ Open Instagram
 
 <script>
 
-const facts=JSON.parse(localStorage.getItem('facts')||'[]')
-
-function renderFacts(){
-
-const grid=document.getElementById('factsGrid')
-
-grid.innerHTML=''
-
-facts.forEach(f=>{
-
-const card=document.createElement('div')
-
-card.className='card'
-
-card.innerHTML='<h3>'+f.title+'</h3><p>'+f.fact+'</p>'
-
-grid.appendChild(card)
-
-})
-
-}
-
-function addFact(){
-
-const title=document.getElementById('movieTitle').value
-
-const fact=document.getElementById('movieFact').value
-
-if(!title||!fact)return
-
-facts.push({title,fact})
-
-localStorage.setItem('facts',JSON.stringify(facts))
-
-renderFacts()
-
-}
-
-document.getElementById('addFactBtn').addEventListener('click',addFact)
-
-renderFacts()
-
-
 const searchInput=document.getElementById('searchInput')
 
 searchInput.addEventListener('keyup',()=>{
@@ -471,6 +420,19 @@ const name=card.innerText.toLowerCase()
 card.style.display=name.includes(text)?'':'none'
 
 })
+
+})
+
+
+const radioSelect=document.getElementById("radioSelect")
+
+const radioPlayer=document.getElementById("radioPlayer")
+
+radioSelect.addEventListener("change",()=>{
+
+radioPlayer.src=radioSelect.value
+
+radioPlayer.play()
 
 })
 
@@ -522,3 +484,4 @@ loadAQI()
 
 </body>
 </html>
+```
