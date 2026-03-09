@@ -1,7 +1,6 @@
-```html id="c7w5c9"
+```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
@@ -69,6 +68,26 @@ font-size:26px;
 margin-bottom:20px
 }
 
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:20px
+}
+
+.card{
+background:#0f172a;
+border-radius:12px;
+padding:20px;
+box-shadow:0 15px 30px rgba(0,0,0,.5)
+}
+
+iframe{
+width:100%;
+height:240px;
+border:none;
+border-radius:10px
+}
+
 .news-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -95,11 +114,6 @@ object-fit:cover
 
 .news-content{
 padding:14px
-}
-
-.news-content h4{
-margin:0;
-font-size:16px
 }
 
 .weather-grid{
@@ -172,23 +186,25 @@ color:#94a3b8
 
 <ul>
 
+<li><a href="#tv">TV</a></li>
 <li><a href="#news">News</a></li>
-<li><a href="#radio">AIR Radio</a></li>
+<li><a href="#radio">Radio</a></li>
+<li><a href="#markets">Markets</a></li>
 <li><a href="#weather">Weather</a></li>
+<li><a href="#isro">ISRO</a></li>
 
 <li><a class="highlight" href="https://wastingyourtimeatinternet.b12sites.com/index#home" target="_blank">Portfolio</a></li>
+
 <li><a class="highlight" href="https://www.linkedin.com/in/wastingtimeatlink/" target="_blank">LinkedIn</a></li>
+
 <li><a class="highlight" href="https://www.instagram.com/wastingtimeatmovies/" target="_blank">Instagram</a></li>
 
 </ul>
 
 </nav>
 
-
 <div class="ticker">
-
 <span id="tickerText">Loading breaking news...</span>
-
 </div>
 
 
@@ -196,7 +212,34 @@ color:#94a3b8
 
 <h1>India Digital Command Dashboard</h1>
 
-<p>Breaking News • Weather • All India Radio</p>
+<p>News • Markets • Radio • Weather • Public Information</p>
+
+</section>
+
+
+<section class="container" id="tv">
+
+<h2 class="section-title">Indian Live TV</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>Doordarshan News</h3>
+
+<iframe src="https://www.youtube.com/embed/21X5lGlDOfg"></iframe>
+
+</div>
+
+<div class="card">
+
+<h3>Sansad TV</h3>
+
+<iframe src="https://www.youtube.com/embed/videoseries?list=PL0ZKxH5H4fE6uH5vZ1tcHTTX3e8DqRL3O"></iframe>
+
+</div>
+
+</div>
 
 </section>
 
@@ -225,17 +268,11 @@ color:#94a3b8
 
 <select id="radioSelect">
 
-<option value="https://air.pc.cdn.bitgravity.com/air/live/pbaudio001/playlist.m3u8">
-AIR National
-</option>
+<option value="https://air.pc.cdn.bitgravity.com/air/live/pbaudio001/playlist.m3u8">AIR National</option>
 
-<option value="https://air.pc.cdn.bitgravity.com/air/live/pbaudio003/playlist.m3u8">
-Vividh Bharati
-</option>
+<option value="https://air.pc.cdn.bitgravity.com/air/live/pbaudio003/playlist.m3u8">Vividh Bharati</option>
 
-<option value="https://air.pc.cdn.bitgravity.com/air/live/pbaudio004/playlist.m3u8">
-AIR FM Gold
-</option>
+<option value="https://air.pc.cdn.bitgravity.com/air/live/pbaudio004/playlist.m3u8">AIR FM Gold</option>
 
 </select>
 
@@ -246,11 +283,75 @@ AIR FM Gold
 </section>
 
 
+<section class="container" id="markets">
+
+<h2 class="section-title">Indian Markets</h2>
+
+<div class="card">
+
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js">
+
+{
+"symbols":[
+{"proName":"NSE:NIFTY","title":"Nifty 50"},
+{"proName":"BSE:SENSEX","title":"Sensex"},
+{"proName":"NSE:RELIANCE"},
+{"proName":"NSE:TCS"}
+],
+"displayMode":"adaptive"
+}
+
+</script>
+
+</div>
+
+</section>
+
+
 <section class="container" id="weather">
 
 <h2 class="section-title">Weather</h2>
 
 <div class="weather-grid" id="weatherGrid"></div>
+
+</section>
+
+
+<section class="container" id="isro">
+
+<h2 class="section-title">ISRO Videos</h2>
+
+<div class="card">
+
+<iframe src="https://www.youtube.com/embed/videoseries?list=UUw5hEVOTfz_AfzsNFWyNlNg"></iframe>
+
+</div>
+
+</section>
+
+
+<section class="container">
+
+<h2 class="section-title">Railway Tools</h2>
+
+<div class="card">
+
+<button onclick="window.open('https://enquiry.indianrail.gov.in/mntes/')">
+
+Open NTES Train Status
+
+</button>
+
+</div>
+
+</section>
+
+
+<section class="container">
+
+<h2 class="section-title">India Map</h2>
+
+<iframe src="https://maps.google.com/maps?q=India&z=5&output=embed"></iframe>
 
 </section>
 
@@ -267,7 +368,6 @@ AIR FM Gold
 <script>
 
 let newsData=[]
-
 
 function playRadio(url){
 
@@ -297,17 +397,13 @@ audio.play()
 
 }
 
+document.getElementById("radioSelect").addEventListener("change",(e)=>{
 
-const radioSelect=document.getElementById("radioSelect")
-
-radioSelect.addEventListener("change",()=>{
-
-playRadio(radioSelect.value)
+playRadio(e.target.value)
 
 })
 
-playRadio(radioSelect.value)
-
+playRadio(document.getElementById("radioSelect").value)
 
 
 async function loadWeather(){
@@ -343,9 +439,7 @@ grid.innerHTML+=`
 }
 
 loadWeather()
-
 setInterval(loadWeather,600000)
-
 
 
 function renderNews(list){
@@ -388,25 +482,19 @@ document.getElementById("newsFeed").innerHTML=html
 
 }
 
-
 function filterNews(type){
 
 if(type==="all") renderNews(newsData)
 
 else{
 
-let filtered=newsData.filter(n=>
-
-n.title.toLowerCase().includes(type)
-
-)
+let filtered=newsData.filter(n=>n.title.toLowerCase().includes(type))
 
 renderNews(filtered)
 
 }
 
 }
-
 
 async function loadNews(){
 
@@ -420,7 +508,6 @@ newsData=data.items.slice(0,12)
 
 renderNews(newsData)
 
-
 let ticker=data.items.slice(0,6).map(n=>n.title).join(" • ")
 
 document.getElementById("tickerText").innerText=ticker
@@ -430,7 +517,6 @@ document.getElementById("tickerText").innerText=ticker
 }
 
 loadNews()
-
 setInterval(loadNews,600000)
 
 </script>
