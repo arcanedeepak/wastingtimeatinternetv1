@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -118,26 +119,46 @@ object-fit:cover
 padding:14px
 }
 
-.ticker{
-background:#ef4444;
-color:white;
-padding:10px;
+/* NEWS RIBBON */
+
+.news-ribbon{
+display:flex;
+align-items:center;
+background:#111827;
+border-top:2px solid #ef4444;
+border-bottom:2px solid #ef4444;
 overflow:hidden;
-white-space:nowrap
 }
 
-.weather-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:16px
+.breaking{
+background:#ef4444;
+padding:10px 14px;
+font-weight:bold;
 }
 
-.weather-box{
-background:#0f172a;
-padding:16px;
-border-radius:10px;
-text-align:center
+.ticker-container{
+flex:1;
+overflow:hidden;
+white-space:nowrap;
 }
+
+.ticker-container span{
+display:inline-block;
+padding-left:100%;
+animation:tickerScroll 35s linear infinite;
+}
+
+.ticker-time{
+padding:10px 14px;
+background:#1f2937;
+}
+
+@keyframes tickerScroll{
+0%{transform:translateX(0)}
+100%{transform:translateX(-100%)}
+}
+
+/* RADIO */
 
 .radio-grid{
 display:grid;
@@ -157,6 +178,21 @@ text-align:center
 background:#ef4444
 }
 
+/* WEATHER */
+
+.weather-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:16px
+}
+
+.weather-box{
+background:#0f172a;
+padding:16px;
+border-radius:10px;
+text-align:center
+}
+
 #quakeMap{
 height:350px;
 border-radius:10px;
@@ -169,6 +205,12 @@ padding:12px;
 border-radius:8px;
 margin-bottom:15px;
 display:none
+}
+
+.chatbox{
+background:#111827;
+padding:20px;
+border-radius:10px
 }
 
 footer{
@@ -205,7 +247,37 @@ color:#94a3b8
 
 </nav>
 
-<div class="ticker" id="tickerText">Loading breaking news...</div>
+<!-- STOCK TICKER -->
+
+<div class="card">
+
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js">
+{
+"symbols":[
+{"proName":"NSE:NIFTY","title":"Nifty"},
+{"proName":"BSE:SENSEX","title":"Sensex"},
+{"proName":"FX_IDC:XAUUSD","title":"Gold"},
+{"proName":"TVC:USOIL","title":"Oil"},
+{"proName":"BINANCE:BTCUSDT","title":"Bitcoin"}
+]
+}
+</script>
+
+</div>
+
+<!-- NEWS RIBBON -->
+
+<div class="news-ribbon">
+
+<div class="breaking">BREAKING</div>
+
+<div class="ticker-container">
+<span id="tickerText">Loading news...</span>
+</div>
+
+<div class="ticker-time" id="tickerTime"></div>
+
+</div>
 
 <section class="hero">
 <h1>India Digital Command Dashboard</h1>
@@ -222,30 +294,10 @@ color:#94a3b8
 
 <section class="container" id="markets">
 
-<h2 class="section-title">Stock Market (NIFTY)</h2>
+<h2 class="section-title">Stock Market Chart</h2>
 
 <div class="card">
-
 <div id="tradingview_chart"></div>
-
-</div>
-
-</section>
-
-<section class="container" id="tv">
-
-<h2 class="section-title">Live News TV</h2>
-
-<div class="grid">
-
-<div class="card">
-<iframe src="https://www.youtube.com/embed/21X5lGlDOfg"></iframe>
-</div>
-
-<div class="card">
-<iframe src="https://www.youtube.com/embed/videoseries?list=PL0ZKxH5H4fE6uH5vZ1tcHTTX3e8DqRL3O"></iframe>
-</div>
-
 </div>
 
 </section>
@@ -257,9 +309,7 @@ color:#94a3b8
 <div class="radio-grid">
 
 <div class="radio-btn" onclick="playRadio('https://air.pc.cdn.bitgravity.com/air/live/pbaudio001/playlist.m3u8')">AIR National</div>
-
 <div class="radio-btn" onclick="playRadio('https://air.pc.cdn.bitgravity.com/air/live/pbaudio003/playlist.m3u8')">Vividh Bharati</div>
-
 <div class="radio-btn" onclick="playRadio('https://air.pc.cdn.bitgravity.com/air/live/pbaudio004/playlist.m3u8')">AIR FM Gold</div>
 
 </div>
@@ -292,9 +342,47 @@ color:#94a3b8
 
 <section class="container">
 
-<h2 class="section-title">ISS Satellite Tracker</h2>
+<h2 class="section-title">Global Air Traffic</h2>
 
-<iframe src="https://isstracker.spaceflight.esa.int/"></iframe>
+<iframe src="https://www.flightradar24.com/simple"></iframe>
+
+</section>
+
+<section class="container">
+
+<h2 class="section-title">Live Satellite Map</h2>
+
+<iframe src="https://satellitemap.space/"></iframe>
+
+</section>
+
+<section class="container">
+
+<h2 class="section-title">Cyber Security Threat Map</h2>
+
+<iframe src="https://threatmap.checkpoint.com/"></iframe>
+
+</section>
+
+<section class="container">
+
+<h2 class="section-title">Election Dashboard</h2>
+
+<iframe src="https://results.eci.gov.in/"></iframe>
+
+</section>
+
+<section class="container">
+
+<h2 class="section-title">AI Assistant</h2>
+
+<div class="chatbox">
+
+<input id="chatInput" placeholder="Ask about news, weather or markets...">
+
+<p id="chatReply"></p>
+
+</div>
 
 </section>
 
@@ -310,15 +398,19 @@ color:#94a3b8
 
 <script>
 
-new TradingView.widget({
-"container_id": "tradingview_chart",
-"symbol": "NSE:NIFTY",
-"interval": "D",
-"theme": "dark",
-"width": "100%",
-"height": 400
-})
+function updateClock(){
+document.getElementById("tickerTime").innerText=new Date().toLocaleTimeString()
+}
 
+setInterval(updateClock,1000)
+
+new TradingView.widget({
+"container_id":"tradingview_chart",
+"symbol":"NSE:NIFTY",
+"theme":"dark",
+"width":"100%",
+"height":400
+})
 
 async function loadNews(){
 
@@ -349,36 +441,6 @@ data.items.slice(0,6).map(n=>n.title).join(" • ")
 
 loadNews()
 
-
-
-const cities=['Delhi','Mumbai','Bangalore','Kolkata','Chennai']
-
-async function loadWeather(){
-
-const grid=document.getElementById('weatherGrid')
-
-grid.innerHTML=""
-
-for(const city of cities){
-
-const res=await fetch(`https://wttr.in/${city}?format=j1`)
-const data=await res.json()
-
-grid.innerHTML+=`
-<div class="weather-box">
-<h3>${city}</h3>
-<p>${data.current_condition[0].temp_C}°C</p>
-<p>${data.current_condition[0].weatherDesc[0].value}</p>
-</div>
-`
-}
-
-}
-
-loadWeather()
-
-
-
 const audio=document.getElementById("radioPlayer")
 
 function playRadio(url){
@@ -396,8 +458,6 @@ audio.src=url
 }
 
 }
-
-
 
 let quakeMap=L.map('quakeMap').setView([20,80],4)
 
@@ -421,22 +481,9 @@ const place=q.properties.place
 const lat=q.geometry.coordinates[1]
 const lon=q.geometry.coordinates[0]
 
-let color="green"
-
-if(mag>5){
-
-color="red"
-
-document.getElementById("quakeAlert").style.display="block"
-
-document.getElementById("quakeAlert").innerText=
-`⚠ Strong Earthquake Detected: M${mag} ${place}`
-
-}
-
 L.circleMarker([lat,lon],{
 radius:6+mag,
-color:color
+color:mag>5?"red":"green"
 }).addTo(quakeLayer)
 
 html+=`
@@ -452,6 +499,23 @@ document.getElementById("quakeGrid").innerHTML=html
 }
 
 loadEarthquakes()
+
+document.getElementById("chatInput").addEventListener("keypress",function(e){
+
+if(e.key==="Enter"){
+
+let q=this.value.toLowerCase()
+
+let reply="I can help with news, markets, weather and trains."
+
+if(q.includes("weather")) reply="Weather updates are shown above."
+if(q.includes("news")) reply="Latest headlines are in the news cards."
+
+document.getElementById("chatReply").innerText=reply
+
+}
+
+})
 
 </script>
 
