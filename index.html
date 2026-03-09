@@ -1,6 +1,6 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
@@ -88,6 +88,34 @@ border:none;
 border-radius:10px
 }
 
+.news-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:18px
+}
+
+.news-card{
+background:#111827;
+border-radius:10px;
+overflow:hidden;
+cursor:pointer;
+transition:.3s
+}
+
+.news-card:hover{
+transform:translateY(-5px)
+}
+
+.news-card img{
+width:100%;
+height:160px;
+object-fit:cover
+}
+
+.news-content{
+padding:14px
+}
+
 .weather-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
@@ -101,17 +129,26 @@ border-radius:10px;
 text-align:center
 }
 
-.news-item{
+.ai-box{
+background:#111827;
+padding:15px;
+border-radius:10px
+}
+
+.ai-box input{
+width:100%;
+padding:10px;
+border:none;
+border-radius:6px;
 margin-bottom:10px
 }
 
-.news-item a{
-color:#f87171;
-text-decoration:none
-}
-
-.news-item a:hover{
-text-decoration:underline
+footer{
+text-align:center;
+padding:30px;
+background:#020617;
+margin-top:40px;
+color:#94a3b8
 }
 
 button{
@@ -121,14 +158,6 @@ padding:10px 14px;
 border-radius:6px;
 color:white;
 cursor:pointer
-}
-
-footer{
-text-align:center;
-padding:30px;
-background:#020617;
-margin-top:40px;
-color:#94a3b8
 }
 
 </style>
@@ -143,18 +172,16 @@ color:#94a3b8
 
 <ul>
 
-<li><a href="#gov">Gov TV</a></li>
+<li><a href="#tv">TV</a></li>
 <li><a href="#news">News</a></li>
 <li><a href="#radio">Radio</a></li>
-<li><a href="#rail">Railways</a></li>
-<li><a href="#isro">ISRO</a></li>
+<li><a href="#rail">Rail</a></li>
 <li><a href="#markets">Markets</a></li>
 <li><a href="#weather">Weather</a></li>
+<li><a href="#ai">Assistant</a></li>
 
 <li><a class="highlight" href="https://wastingyourtimeatinternet.b12sites.com/index#home" target="_blank">Portfolio</a></li>
-
 <li><a class="highlight" href="https://www.linkedin.com/in/wastingtimeatlink/" target="_blank">LinkedIn</a></li>
-
 <li><a class="highlight" href="https://www.instagram.com/wastingtimeatmovies/" target="_blank">Instagram</a></li>
 
 </ul>
@@ -166,14 +193,14 @@ color:#94a3b8
 
 <h1>India Digital Command Dashboard</h1>
 
-<p>Government • Markets • Railways • Weather • Space • Public Information</p>
+<p>News • Markets • Railways • Weather • Radio • AI Assistant</p>
 
 </section>
 
 
-<section class="container" id="gov">
+<section class="container" id="tv">
 
-<h2 class="section-title">Government Broadcast Channels</h2>
+<h2 class="section-title">Indian TV</h2>
 
 <div class="grid">
 
@@ -181,7 +208,7 @@ color:#94a3b8
 
 <h3>Doordarshan News</h3>
 
-<iframe src="https://www.youtube.com/embed/videoseries?list=PLS3XGZxi7cBVb0k6F7Y0dN0n0e7YQDdyC"></iframe>
+<iframe src="https://www.youtube.com/embed/21X5lGlDOfg"></iframe>
 
 </div>
 
@@ -193,14 +220,6 @@ color:#94a3b8
 
 </div>
 
-<div class="card">
-
-<h3>ISRO</h3>
-
-<iframe src="https://www.youtube.com/embed/21X5lGlDOfg"></iframe>
-
-</div>
-
 </div>
 
 </section>
@@ -208,11 +227,11 @@ color:#94a3b8
 
 <section class="container" id="news">
 
-<h2 class="section-title">Latest Indian News</h2>
+<h2 class="section-title">Latest News</h2>
 
-<div class="card">
+<div class="news-grid" id="newsFeed">
 
-<div id="newsFeed">Loading news...</div>
+Loading...
 
 </div>
 
@@ -221,17 +240,15 @@ color:#94a3b8
 
 <section class="container" id="radio">
 
-<h2 class="section-title">Indian Public Radio</h2>
+<h2 class="section-title">Radio</h2>
 
 <select id="radioSelect">
 
-<option value="https://air.pc.cdn.bitgravity.com/air/live/pbaudio001/playlist.m3u8">AIR National</option>
-
-<option value="https://air.pc.cdn.bitgravity.com/air/live/pbaudio003/playlist.m3u8">Vividh Bharati</option>
-
-<option value="https://air.pc.cdn.bitgravity.com/air/live/pbaudio004/playlist.m3u8">AIR FM Gold</option>
-
 <option value="https://stream.live.vc.bbcmedia.co.uk/bbc_world_service">BBC World Service</option>
+
+<option value="https://ice1.somafm.com/groovesalad-128-mp3">Groove Salad</option>
+
+<option value="https://ice1.somafm.com/dronezone-128-mp3">Drone Zone</option>
 
 </select>
 
@@ -244,7 +261,7 @@ color:#94a3b8
 
 <section class="container" id="rail">
 
-<h2 class="section-title">Indian Railway Tools</h2>
+<h2 class="section-title">Railway Tools</h2>
 
 <div class="card">
 
@@ -255,38 +272,17 @@ color:#94a3b8
 </section>
 
 
-<section class="container" id="isro">
-
-<h2 class="section-title">ISRO Mission Updates</h2>
-
-<div class="card">
-
-<iframe src="https://www.youtube.com/embed/videoseries?list=PLWv9VM947MKjuqlJVp5m_Edf66SrFSHx2"></iframe>
-
-</div>
-
-</section>
-
-
 <section class="container" id="markets">
 
-<h2 class="section-title">Indian Markets</h2>
+<h2 class="section-title">Stock Market (NIFTY)</h2>
 
 <div class="card">
 
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js">
+<div class="tradingview-widget-container">
 
-{
-"symbols":[
-{"proName":"NSE:NIFTY","title":"Nifty 50"},
-{"proName":"BSE:SENSEX","title":"Sensex"},
-{"proName":"NSE:RELIANCE"},
-{"proName":"NSE:TCS"}
-],
-"displayMode":"adaptive"
-}
+<div id="tradingview_chart"></div>
 
-</script>
+</div>
 
 </div>
 
@@ -295,65 +291,91 @@ color:#94a3b8
 
 <section class="container" id="weather">
 
-<h2 class="section-title">Weather Dashboard</h2>
+<h2 class="section-title">Weather</h2>
 
 <div class="weather-grid" id="weatherGrid"></div>
 
 </section>
 
 
+<section class="container" id="ai">
+
+<h2 class="section-title">Dashboard Assistant</h2>
+
+<div class="ai-box">
+
+<input id="aiInput" placeholder="Ask something...">
+
+<button onclick="askAI()">Ask</button>
+
+<p id="aiResponse"></p>
+
+</div>
+
+</section>
+
+
 <footer>
 
-<p>India Digital Command Dashboard • Public Data Portal</p>
+<p>India Digital Command Dashboard</p>
 
 </footer>
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script src="https://s3.tradingview.com/tv.js"></script>
 
 <script>
 
-function openRail(){
-window.open("https://enquiry.indianrail.gov.in/mntes/")
-}
+new TradingView.widget({
+
+"container_id": "tradingview_chart",
+
+"symbol": "NSE:NIFTY",
+
+"interval": "D",
+
+"theme": "dark",
+
+"style": "1",
+
+"locale": "en",
+
+"width": "100%",
+
+"height": "300"
+
+})
+
+
 
 const radioSelect=document.getElementById("radioSelect")
 const audio=document.getElementById("radioPlayer")
 
-function playRadio(url){
-
-if(Hls.isSupported()){
-
-const hls=new Hls()
-
-hls.loadSource(url)
-hls.attachMedia(audio)
-
-hls.on(Hls.Events.MANIFEST_PARSED,function(){
-audio.play()
-})
-
-}else{
-
-audio.src=url
-audio.play()
-
-}
-
-}
-
 radioSelect.addEventListener("change",()=>{
-playRadio(radioSelect.value)
+
+audio.src=radioSelect.value
+audio.play()
+
 })
 
-playRadio(radioSelect.value)
+audio.src=radioSelect.value
+
+
+
+function openRail(){
+
+window.open("https://enquiry.indianrail.gov.in/mntes/")
+
+}
+
 
 
 async function loadWeather(){
 
 const cities=['Delhi','Mumbai','Bangalore','Kolkata','Chennai']
 const grid=document.getElementById('weatherGrid')
+
 grid.innerHTML=""
 
 for(const city of cities){
@@ -361,15 +383,18 @@ for(const city of cities){
 const res=await fetch(`https://wttr.in/${city}?format=j1`)
 const data=await res.json()
 
-const temp=data.current_condition[0].temp_C
-const desc=data.current_condition[0].weatherDesc[0].value
-
 grid.innerHTML+=`
+
 <div class="weather-box">
+
 <h3>${city}</h3>
-<p>${temp}°C</p>
-<p>${desc}</p>
+
+<p>${data.current_condition[0].temp_C}°C</p>
+
+<p>${data.current_condition[0].weatherDesc[0].value}</p>
+
 </div>
+
 `
 
 }
@@ -377,7 +402,9 @@ grid.innerHTML+=`
 }
 
 loadWeather()
+
 setInterval(loadWeather,600000)
+
 
 
 async function loadNews(){
@@ -393,9 +420,19 @@ let html=""
 data.items.slice(0,8).forEach(n=>{
 
 html+=`
-<div class="news-item">
-<a href="${n.link}" target="_blank">${n.title}</a>
+
+<div class="news-card" onclick="window.open('${n.link}')">
+
+<img src="${n.thumbnail || 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'}">
+
+<div class="news-content">
+
+<h4>${n.title}</h4>
+
 </div>
+
+</div>
+
 `
 
 })
@@ -407,7 +444,28 @@ document.getElementById("newsFeed").innerHTML=html
 }
 
 loadNews()
+
 setInterval(loadNews,600000)
+
+
+
+function askAI(){
+
+const q=document.getElementById("aiInput").value.toLowerCase()
+
+let response=""
+
+if(q.includes("weather")) response="Check the weather section above."
+
+else if(q.includes("rail")) response="Use the railway tool to open NTES."
+
+else if(q.includes("news")) response="Latest news is shown in the news cards."
+
+else response="This dashboard shows news, weather, markets, radio and railway info."
+
+document.getElementById("aiResponse").innerText=response
+
+}
 
 </script>
 
