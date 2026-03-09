@@ -2,11 +2,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>wastingtimeatinternet | Information Portal</title>
 
-<meta name="description" content="Live information portal with Indian government channels, weather, AQI, education and public broadcasts">
+<title>wastingtimeatinternet | India Information Portal</title>
+
+<meta name="description" content="Indian public information portal with government channels, radio, weather and AQI">
 
 <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/7/7a/Clapperboard.svg">
 
@@ -33,13 +35,14 @@ nav ul{
 list-style:none;
 display:flex;
 gap:16px;
-padding:0;
-margin:0
+margin:0;
+padding:0
 }
 
 nav a{
 text-decoration:none;
-color:#cbd5f5
+color:#cbd5f5;
+font-size:14px
 }
 
 nav a:hover{color:#ef4444}
@@ -65,12 +68,12 @@ padding:40px 20px
 
 .section-title{
 font-size:26px;
-margin-bottom:20px
+margin-bottom:18px
 }
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
 gap:20px
 }
 
@@ -78,7 +81,7 @@ gap:20px
 background:#111827;
 border-radius:12px;
 padding:20px;
-box-shadow:0 10px 25px rgba(0,0,0,.4)
+box-shadow:0 10px 25px rgba(0,0,0,.5)
 }
 
 .tv-grid{
@@ -127,10 +130,12 @@ footer{
 text-align:center;
 padding:30px;
 background:#020617;
-margin-top:40px
+margin-top:40px;
+color:#94a3b8
 }
 
 </style>
+
 </head>
 
 <body>
@@ -142,13 +147,16 @@ margin-top:40px
 <ul>
 
 <li><a href="#gov">Gov Channels</a></li>
-<li><a href="#kids">Kids Learning</a></li>
+<li><a href="#kids">Education</a></li>
 <li><a href="#radio">Radio</a></li>
 <li><a href="#weather">Weather</a></li>
 <li><a href="#aqi">AQI</a></li>
 
 <li><a class="highlight" href="https://wastingyourtimeatinternet.b12sites.com/index#home" target="_blank">Portfolio</a></li>
+
 <li><a class="highlight" href="https://www.linkedin.com/in/wastingtimeatlink/" target="_blank">LinkedIn</a></li>
+
+<li><a class="highlight" href="https://www.instagram.com/wastingtimeatmovies/" target="_blank">Instagram</a></li>
 
 </ul>
 
@@ -157,10 +165,12 @@ margin-top:40px
 
 <section class="hero">
 
-<h1>Indian Information Portal</h1>
+<h1>Indian Public Information Portal</h1>
 
 <p>
-Live public information including government broadcasts, weather, AQI and educational content.
+
+Live government broadcasts, educational content, public radio, weather and air quality information.
+
 </p>
 
 </section>
@@ -172,17 +182,17 @@ Live public information including government broadcasts, weather, AQI and educat
 
 <div class="tv-grid">
 
-<iframe src="https://www.youtube.com/embed/live_stream?channel=UCfNodxK31sC2k8s5U8HfCkg"></iframe>
-
 <iframe src="https://www.youtube.com/embed/live_stream?channel=UCZFMm1mMw0F81Z37aaEzTUA"></iframe>
 
 <iframe src="https://www.youtube.com/embed/live_stream?channel=UCV3AkAsIDK3RNiHcS9hE9gQ"></iframe>
 
+<iframe src="https://www.youtube.com/embed/live_stream?channel=UCc9Y4bYf4sN5eN2F6cTh0dA"></iframe>
+
 </div>
 
-<p style="margin-top:10px;color:#94a3b8">
+<p style="color:#94a3b8;margin-top:10px">
 
-Channels include Doordarshan News, Sansad TV and official public broadcast streams.
+Doordarshan News • Sansad TV • Public Broadcast
 
 </p>
 
@@ -203,33 +213,43 @@ Channels include Doordarshan News, Sansad TV and official public broadcast strea
 
 </div>
 
-<p style="margin-top:10px;color:#94a3b8">
-
-Educational playlists suitable for children and general learning.
-
-</p>
-
 </section>
 
 
 <section class="container" id="radio">
 
-<h2 class="section-title">Public Radio</h2>
+<h2 class="section-title">Indian Public Radio</h2>
 
 <select id="radioSelect">
 
-<option value="https://air.pc.cdn.bitgravity.com/air/live/pbaudio001/playlist.m3u8">All India Radio</option>
+<option value="https://air.pc.cdn.bitgravity.com/air/live/pbaudio001/playlist.m3u8">
+All India Radio – National
+</option>
 
-<option value="https://stream.live.vc.bbcmedia.co.uk/bbc_world_service">BBC World Service</option>
+<option value="https://air.pc.cdn.bitgravity.com/air/live/pbaudio002/playlist.m3u8">
+All India Radio – News
+</option>
 
-<option value="https://npr-ice.streamguys1.com/live.mp3">NPR Radio</option>
+<option value="https://air.pc.cdn.bitgravity.com/air/live/pbaudio003/playlist.m3u8">
+Vividh Bharati
+</option>
+
+<option value="https://air.pc.cdn.bitgravity.com/air/live/pbaudio004/playlist.m3u8">
+AIR FM Gold
+</option>
+
+<option value="https://stream.live.vc.bbcmedia.co.uk/bbc_world_service">
+BBC World Service
+</option>
 
 </select>
 
 <br><br>
 
 <audio id="radioPlayer" controls>
+
 <source src="https://air.pc.cdn.bitgravity.com/air/live/pbaudio001/playlist.m3u8">
+
 </audio>
 
 </section>
@@ -237,7 +257,7 @@ Educational playlists suitable for children and general learning.
 
 <section class="container" id="weather">
 
-<h2 class="section-title">Weather</h2>
+<h2 class="section-title">Weather – Major Cities</h2>
 
 <div class="weather-grid" id="weatherGrid"></div>
 
@@ -261,16 +281,19 @@ Educational playlists suitable for children and general learning.
 
 <p>
 
-For collaboration, consulting or technical discussion in
+Available for consultation in:
 
-• Data Engineering  
-• Cloud Platforms  
-• Business Intelligence  
+Data Engineering  
+Cloud Platforms  
+Business Intelligence  
+Analytics Solutions
 
 </p>
 
 <a class="button" href="https://www.linkedin.com/in/wastingtimeatlink/" target="_blank">
+
 Contact via LinkedIn
+
 </a>
 
 </div>
@@ -288,14 +311,20 @@ Contact via LinkedIn
 <script>
 
 const radioSelect=document.getElementById("radioSelect")
+
 const radioPlayer=document.getElementById("radioPlayer")
 
 radioSelect.addEventListener("change",()=>{
+
 radioPlayer.src=radioSelect.value
+
 radioPlayer.play()
+
 })
 
+
 const cities=['Delhi','Mumbai','Bangalore','Kolkata','Chennai']
+
 const weatherGrid=document.getElementById('weatherGrid')
 
 async function loadWeather(){
@@ -303,9 +332,11 @@ async function loadWeather(){
 for(const city of cities){
 
 const res=await fetch(`https://wttr.in/${city}?format=j1`)
+
 const data=await res.json()
 
 const temp=data.current_condition[0].temp_C
+
 const desc=data.current_condition[0].weatherDesc[0].value
 
 const box=document.createElement('div')
@@ -322,9 +353,11 @@ weatherGrid.appendChild(box)
 
 loadWeather()
 
+
 async function loadAQI(){
 
 const res=await fetch("https://api.waqi.info/feed/bangalore/?token=demo")
+
 const data=await res.json()
 
 document.getElementById("aqiBox").innerHTML=`<h3>Bangalore AQI</h3><p>${data.data.aqi}</p>`
