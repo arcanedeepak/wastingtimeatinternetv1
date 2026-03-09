@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +7,7 @@
 
 <title>India Digital Command Dashboard</title>
 
-<meta name="description" content="India public information dashboard with government broadcasts, railways, markets, weather and chatbot contact">
+<meta name="description" content="India public data dashboard with government broadcasts, markets, ISRO, railways and weather">
 
 <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/7/7a/Clapperboard.svg">
 
@@ -28,7 +27,8 @@ align-items:center;
 padding:16px 28px;
 background:#020617;
 position:sticky;
-top:0
+top:0;
+z-index:1000
 }
 
 nav ul{
@@ -40,8 +40,8 @@ padding:0
 }
 
 nav a{
-color:#cbd5f5;
-text-decoration:none
+text-decoration:none;
+color:#cbd5f5
 }
 
 nav a:hover{color:#ef4444}
@@ -57,6 +57,11 @@ color:white!important
 padding:80px 20px;
 text-align:center;
 background:linear-gradient(120deg,#020617,#0f172a)
+}
+
+.hero h1{
+font-size:44px;
+margin-bottom:10px
 }
 
 .container{
@@ -80,7 +85,12 @@ gap:22px
 background:#0f172a;
 border-radius:14px;
 padding:20px;
-box-shadow:0 20px 40px rgba(0,0,0,.5)
+box-shadow:0 20px 40px rgba(0,0,0,.5);
+transition:.3s
+}
+
+.card:hover{
+transform:translateY(-6px)
 }
 
 iframe{
@@ -120,35 +130,8 @@ margin-top:40px;
 color:#94a3b8
 }
 
-#chatButton{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#ef4444;
-padding:14px;
-border-radius:50%;
-cursor:pointer;
-font-size:20px
-}
-
-#chatWindow{
-position:fixed;
-bottom:80px;
-right:20px;
-width:260px;
-background:#111827;
-padding:16px;
-border-radius:10px;
-display:none
-}
-
-#chatWindow input,
-#chatWindow textarea{
-width:100%;
-margin-bottom:8px;
-padding:8px;
-border-radius:6px;
-border:none
+.news-item{
+margin-bottom:10px
 }
 
 </style>
@@ -170,6 +153,7 @@ border:none
 <li><a href="#isro">ISRO</a></li>
 <li><a href="#markets">Markets</a></li>
 <li><a href="#weather">Weather</a></li>
+<li><a href="#traffic">Traffic</a></li>
 
 <li><a class="highlight" href="https://wastingyourtimeatinternet.b12sites.com/index#home" target="_blank">Portfolio</a></li>
 
@@ -214,6 +198,19 @@ border:none
 </section>
 
 
+<section class="container" id="news">
+
+<h2 class="section-title">Latest Indian News</h2>
+
+<div class="card">
+
+<div id="newsFeed">Loading news...</div>
+
+</div>
+
+</section>
+
+
 <section class="container" id="radio">
 
 <h2 class="section-title">Indian Public Radio</h2>
@@ -241,7 +238,7 @@ border:none
 
 <section class="container" id="rail">
 
-<h2 class="section-title">Indian Railway Status</h2>
+<h2 class="section-title">Indian Railway Tools</h2>
 
 <div class="card">
 
@@ -292,42 +289,30 @@ border:none
 
 <section class="container" id="weather">
 
-<h2 class="section-title">Weather</h2>
+<h2 class="section-title">Weather Dashboard</h2>
 
 <div class="weather-grid" id="weatherGrid"></div>
 
 </section>
 
 
+<section class="container" id="traffic">
+
+<h2 class="section-title">Traffic Map</h2>
+
+<iframe src="https://maps.google.com/maps?q=india%20traffic&output=embed"></iframe>
+
+</section>
+
+
 <footer>
 
-<p>India Digital Command Dashboard</p>
+<p>India Digital Command Dashboard • Public Data Portal</p>
 
 </footer>
 
 
-<div id="chatButton">💬</div>
-
-<div id="chatWindow">
-
-<h3>Contact</h3>
-
-<input id="name" placeholder="Name">
-
-<input id="email" placeholder="Email">
-
-<textarea id="message" placeholder="Message"></textarea>
-
-<button onclick="sendMail()">Send</button>
-
-</div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-
 <script>
-
-emailjs.init("YOUR_PUBLIC_KEY")
 
 const radioSelect=document.getElementById("radioSelect")
 const radioPlayer=document.getElementById("radioPlayer")
@@ -338,13 +323,15 @@ radioPlayer.play()
 })
 
 function openRail(){
-window.open("https://enquiry.indianrail.gov.in/mntes/")
+window.open("https://enquiry.indianrail.gov.in/mntes/","_blank")
 }
+
 
 async function loadWeather(){
 
 const cities=['Delhi','Mumbai','Bangalore','Kolkata','Chennai']
 const grid=document.getElementById('weatherGrid')
+grid.innerHTML=""
 
 for(const city of cities){
 
@@ -352,11 +339,13 @@ const res=await fetch(`https://wttr.in/${city}?format=j1`)
 const data=await res.json()
 
 const temp=data.current_condition[0].temp_C
+const desc=data.current_condition[0].weatherDesc[0].value
 
 grid.innerHTML+=`
 <div class="weather-box">
 <h3>${city}</h3>
 <p>${temp}°C</p>
+<p>${desc}</p>
 </div>
 `
 
@@ -366,30 +355,26 @@ grid.innerHTML+=`
 
 loadWeather()
 
+setInterval(loadWeather,600000)
 
-const btn=document.getElementById("chatButton")
-const win=document.getElementById("chatWindow")
 
-btn.onclick=()=>{
-win.style.display= win.style.display==="block" ? "none":"block"
-}
+fetch("https://api.rss2json.com/v1/api.json?rss_url=https://feeds.feedburner.com/ndtvnews-india-news")
 
-function sendMail(){
+.then(res=>res.json())
 
-emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",{
+.then(data=>{
 
-from_name:document.getElementById("name").value,
-from_email:document.getElementById("email").value,
-message:document.getElementById("message").value
+let html=""
 
+data.items.slice(0,6).forEach(n=>{
+html+=`<div class="news-item">• ${n.title}</div>`
 })
 
-alert("Message sent")
+document.getElementById("newsFeed").innerHTML=html
 
-}
+})
 
 </script>
 
 </body>
 </html>
-```
