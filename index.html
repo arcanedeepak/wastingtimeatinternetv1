@@ -1,14 +1,12 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>India Digital Command Dashboard</title>
-
-<meta name="description" content="India public data dashboard with government broadcasts, markets, ISRO, railways and weather">
 
 <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/7/7a/Clapperboard.svg">
 
@@ -40,8 +38,8 @@ padding:0
 }
 
 nav a{
-text-decoration:none;
-color:#cbd5f5
+color:#cbd5f5;
+text-decoration:none
 }
 
 nav a:hover{color:#ef4444}
@@ -54,7 +52,7 @@ color:white!important
 }
 
 .hero{
-padding:80px 20px;
+padding:70px 20px;
 text-align:center;
 background:linear-gradient(120deg,#020617,#0f172a)
 }
@@ -66,21 +64,21 @@ padding:40px 20px
 }
 
 .section-title{
-font-size:28px;
+font-size:26px;
 margin-bottom:20px
 }
 
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:22px
+gap:20px
 }
 
 .card{
 background:#0f172a;
-border-radius:14px;
+border-radius:12px;
 padding:20px;
-box-shadow:0 20px 40px rgba(0,0,0,.5)
+box-shadow:0 15px 30px rgba(0,0,0,.5)
 }
 
 iframe{
@@ -104,7 +102,7 @@ text-align:center
 }
 
 .news-item{
-margin-bottom:12px
+margin-bottom:10px
 }
 
 .news-item a{
@@ -197,7 +195,7 @@ color:#94a3b8
 
 <div class="card">
 
-<h3>ISRO Live</h3>
+<h3>ISRO</h3>
 
 <iframe src="https://www.youtube.com/embed/21X5lGlDOfg"></iframe>
 
@@ -239,11 +237,7 @@ color:#94a3b8
 
 <br><br>
 
-<audio id="radioPlayer" controls>
-
-<source src="https://air.pc.cdn.bitgravity.com/air/live/pbaudio001/playlist.m3u8">
-
-</audio>
+<audio id="radioPlayer" controls></audio>
 
 </section>
 
@@ -315,19 +309,45 @@ color:#94a3b8
 </footer>
 
 
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
 <script>
 
-const radioSelect=document.getElementById("radioSelect")
-const radioPlayer=document.getElementById("radioPlayer")
+function openRail(){
+window.open("https://enquiry.indianrail.gov.in/mntes/")
+}
 
-radioSelect.addEventListener("change",()=>{
-radioPlayer.src=radioSelect.value
-radioPlayer.play()
+const radioSelect=document.getElementById("radioSelect")
+const audio=document.getElementById("radioPlayer")
+
+function playRadio(url){
+
+if(Hls.isSupported()){
+
+const hls=new Hls()
+
+hls.loadSource(url)
+hls.attachMedia(audio)
+
+hls.on(Hls.Events.MANIFEST_PARSED,function(){
+audio.play()
 })
 
-function openRail(){
-window.open("https://enquiry.indianrail.gov.in/mntes/","_blank")
+}else{
+
+audio.src=url
+audio.play()
+
 }
+
+}
+
+radioSelect.addEventListener("change",()=>{
+playRadio(radioSelect.value)
+})
+
+playRadio(radioSelect.value)
 
 
 async function loadWeather(){
@@ -357,7 +377,6 @@ grid.innerHTML+=`
 }
 
 loadWeather()
-
 setInterval(loadWeather,600000)
 
 
@@ -388,7 +407,6 @@ document.getElementById("newsFeed").innerHTML=html
 }
 
 loadNews()
-
 setInterval(loadNews,600000)
 
 </script>
