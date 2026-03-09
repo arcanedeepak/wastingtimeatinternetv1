@@ -6,9 +6,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>wastingtimeatinternet | India Information Portal</title>
+<title>India Digital Command Dashboard</title>
 
-<meta name="description" content="Indian public information portal with government channels, radio, weather and AQI">
+<meta name="description" content="India public information dashboard with government broadcasts, railways, markets, weather and chatbot contact">
 
 <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/7/7a/Clapperboard.svg">
 
@@ -16,9 +16,9 @@
 
 body{
 margin:0;
-font-family:Arial,Helvetica,sans-serif;
-background:#0b1120;
-color:#fff
+font-family:Segoe UI,Arial;
+background:#030712;
+color:white
 }
 
 nav{
@@ -32,17 +32,16 @@ top:0
 }
 
 nav ul{
-list-style:none;
 display:flex;
 gap:16px;
+list-style:none;
 margin:0;
 padding:0
 }
 
 nav a{
-text-decoration:none;
 color:#cbd5f5;
-font-size:14px
+text-decoration:none
 }
 
 nav a:hover{color:#ef4444}
@@ -51,48 +50,42 @@ nav a:hover{color:#ef4444}
 background:#ef4444;
 padding:6px 10px;
 border-radius:6px;
-color:#fff!important
+color:white!important
 }
 
 .hero{
-padding:60px 20px;
+padding:80px 20px;
 text-align:center;
-background:linear-gradient(120deg,#020617,#111827)
+background:linear-gradient(120deg,#020617,#0f172a)
 }
 
 .container{
-max-width:1200px;
+max-width:1300px;
 margin:auto;
 padding:40px 20px
 }
 
 .section-title{
-font-size:26px;
-margin-bottom:18px
+font-size:28px;
+margin-bottom:20px
 }
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:20px
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:22px
 }
 
 .card{
-background:#111827;
-border-radius:12px;
+background:#0f172a;
+border-radius:14px;
 padding:20px;
-box-shadow:0 10px 25px rgba(0,0,0,.5)
-}
-
-.tv-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:20px
+box-shadow:0 20px 40px rgba(0,0,0,.5)
 }
 
 iframe{
 width:100%;
-height:220px;
+height:240px;
 border:none;
 border-radius:10px
 }
@@ -104,26 +97,19 @@ gap:16px
 }
 
 .weather-box{
-background:#111827;
+background:#0f172a;
 padding:16px;
 border-radius:10px;
 text-align:center
 }
 
-.aqi-box{
-background:#111827;
-padding:16px;
-border-radius:10px;
-text-align:center
-}
-
-.button{
-display:inline-block;
-padding:10px 14px;
+button{
 background:#ef4444;
-color:#fff;
+border:none;
+padding:10px 14px;
 border-radius:6px;
-text-decoration:none
+color:white;
+cursor:pointer
 }
 
 footer{
@@ -134,6 +120,37 @@ margin-top:40px;
 color:#94a3b8
 }
 
+#chatButton{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#ef4444;
+padding:14px;
+border-radius:50%;
+cursor:pointer;
+font-size:20px
+}
+
+#chatWindow{
+position:fixed;
+bottom:80px;
+right:20px;
+width:260px;
+background:#111827;
+padding:16px;
+border-radius:10px;
+display:none
+}
+
+#chatWindow input,
+#chatWindow textarea{
+width:100%;
+margin-bottom:8px;
+padding:8px;
+border-radius:6px;
+border:none
+}
+
 </style>
 
 </head>
@@ -142,15 +159,17 @@ color:#94a3b8
 
 <nav>
 
-<h2>wastingtimeatinternet</h2>
+<h2>India Dashboard</h2>
 
 <ul>
 
-<li><a href="#gov">Gov Channels</a></li>
-<li><a href="#kids">Education</a></li>
+<li><a href="#gov">Gov TV</a></li>
+<li><a href="#news">News</a></li>
 <li><a href="#radio">Radio</a></li>
+<li><a href="#rail">Railways</a></li>
+<li><a href="#isro">ISRO</a></li>
+<li><a href="#markets">Markets</a></li>
 <li><a href="#weather">Weather</a></li>
-<li><a href="#aqi">AQI</a></li>
 
 <li><a class="highlight" href="https://wastingyourtimeatinternet.b12sites.com/index#home" target="_blank">Portfolio</a></li>
 
@@ -165,51 +184,30 @@ color:#94a3b8
 
 <section class="hero">
 
-<h1>Indian Public Information Portal</h1>
+<h1>India Digital Command Dashboard</h1>
 
-<p>
-
-Live government broadcasts, educational content, public radio, weather and air quality information.
-
-</p>
+<p>Government • Markets • Railways • Weather • Space • Public Information</p>
 
 </section>
 
 
 <section class="container" id="gov">
 
-<h2 class="section-title">Indian Government Live Channels</h2>
+<h2 class="section-title">Government Broadcast Channels</h2>
 
-<div class="tv-grid">
+<div class="grid">
 
+<div class="card">
 <iframe src="https://www.youtube.com/embed/live_stream?channel=UCZFMm1mMw0F81Z37aaEzTUA"></iframe>
-
-<iframe src="https://www.youtube.com/embed/live_stream?channel=UCV3AkAsIDK3RNiHcS9hE9gQ"></iframe>
-
-<iframe src="https://www.youtube.com/embed/live_stream?channel=UCc9Y4bYf4sN5eN2F6cTh0dA"></iframe>
-
 </div>
 
-<p style="color:#94a3b8;margin-top:10px">
+<div class="card">
+<iframe src="https://www.youtube.com/embed/live_stream?channel=UCV3AkAsIDK3RNiHcS9hE9gQ"></iframe>
+</div>
 
-Doordarshan News • Sansad TV • Public Broadcast
-
-</p>
-
-</section>
-
-
-<section class="container" id="kids">
-
-<h2 class="section-title">Educational & Kids Content</h2>
-
-<div class="tv-grid">
-
-<iframe src="https://www.youtube.com/embed/videoseries?list=PLJjOveEaWjYBq4BqH5xq2qj5x3J8X9a8W"></iframe>
-
-<iframe src="https://www.youtube.com/embed/videoseries?list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo"></iframe>
-
-<iframe src="https://www.youtube.com/embed/videoseries?list=PLWz5rJ2EKKc9CBxr3BVjPTPoDPLdPIFCE"></iframe>
+<div class="card">
+<iframe src="https://www.youtube.com/embed/21X5lGlDOfg"></iframe>
+</div>
 
 </div>
 
@@ -222,130 +220,145 @@ Doordarshan News • Sansad TV • Public Broadcast
 
 <select id="radioSelect">
 
-<option value="https://air.pc.cdn.bitgravity.com/air/live/pbaudio001/playlist.m3u8">
-All India Radio – National
-</option>
+<option value="https://air.pc.cdn.bitgravity.com/air/live/pbaudio001/playlist.m3u8">AIR National</option>
 
-<option value="https://air.pc.cdn.bitgravity.com/air/live/pbaudio002/playlist.m3u8">
-All India Radio – News
-</option>
+<option value="https://air.pc.cdn.bitgravity.com/air/live/pbaudio003/playlist.m3u8">Vividh Bharati</option>
 
-<option value="https://air.pc.cdn.bitgravity.com/air/live/pbaudio003/playlist.m3u8">
-Vividh Bharati
-</option>
+<option value="https://air.pc.cdn.bitgravity.com/air/live/pbaudio004/playlist.m3u8">AIR FM Gold</option>
 
-<option value="https://air.pc.cdn.bitgravity.com/air/live/pbaudio004/playlist.m3u8">
-AIR FM Gold
-</option>
-
-<option value="https://stream.live.vc.bbcmedia.co.uk/bbc_world_service">
-BBC World Service
-</option>
+<option value="https://stream.live.vc.bbcmedia.co.uk/bbc_world_service">BBC World Service</option>
 
 </select>
 
 <br><br>
 
 <audio id="radioPlayer" controls>
-
 <source src="https://air.pc.cdn.bitgravity.com/air/live/pbaudio001/playlist.m3u8">
-
 </audio>
 
 </section>
 
 
-<section class="container" id="weather">
+<section class="container" id="rail">
 
-<h2 class="section-title">Weather – Major Cities</h2>
-
-<div class="weather-grid" id="weatherGrid"></div>
-
-</section>
-
-
-<section class="container" id="aqi">
-
-<h2 class="section-title">Air Quality Index</h2>
-
-<div class="aqi-box" id="aqiBox">Loading AQI...</div>
-
-</section>
-
-
-<section class="container">
-
-<h2 class="section-title">Professional Consultation</h2>
+<h2 class="section-title">Indian Railway Status</h2>
 
 <div class="card">
 
-<p>
-
-Available for consultation in:
-
-Data Engineering  
-Cloud Platforms  
-Business Intelligence  
-Analytics Solutions
-
-</p>
-
-<a class="button" href="https://www.linkedin.com/in/wastingtimeatlink/" target="_blank">
-
-Contact via LinkedIn
-
-</a>
+<button onclick="openRail()">Open NTES Train Status</button>
 
 </div>
 
 </section>
 
 
+<section class="container" id="isro">
+
+<h2 class="section-title">ISRO Mission Updates</h2>
+
+<div class="card">
+
+<iframe src="https://www.youtube.com/embed/videoseries?list=PLWv9VM947MKjuqlJVp5m_Edf66SrFSHx2"></iframe>
+
+</div>
+
+</section>
+
+
+<section class="container" id="markets">
+
+<h2 class="section-title">Indian Markets</h2>
+
+<div class="card">
+
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js">
+
+{
+"symbols":[
+{"proName":"NSE:NIFTY","title":"Nifty 50"},
+{"proName":"BSE:SENSEX","title":"Sensex"},
+{"proName":"NSE:RELIANCE"},
+{"proName":"NSE:TCS"}
+],
+"displayMode":"adaptive"
+}
+
+</script>
+
+</div>
+
+</section>
+
+
+<section class="container" id="weather">
+
+<h2 class="section-title">Weather</h2>
+
+<div class="weather-grid" id="weatherGrid"></div>
+
+</section>
+
+
 <footer>
 
-<p>© 2026 wastingtimeatinternet | Public Information Portal</p>
+<p>India Digital Command Dashboard</p>
 
 </footer>
 
 
+<div id="chatButton">💬</div>
+
+<div id="chatWindow">
+
+<h3>Contact</h3>
+
+<input id="name" placeholder="Name">
+
+<input id="email" placeholder="Email">
+
+<textarea id="message" placeholder="Message"></textarea>
+
+<button onclick="sendMail()">Send</button>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
 <script>
 
-const radioSelect=document.getElementById("radioSelect")
+emailjs.init("YOUR_PUBLIC_KEY")
 
+const radioSelect=document.getElementById("radioSelect")
 const radioPlayer=document.getElementById("radioPlayer")
 
 radioSelect.addEventListener("change",()=>{
-
 radioPlayer.src=radioSelect.value
-
 radioPlayer.play()
-
 })
 
-
-const cities=['Delhi','Mumbai','Bangalore','Kolkata','Chennai']
-
-const weatherGrid=document.getElementById('weatherGrid')
+function openRail(){
+window.open("https://enquiry.indianrail.gov.in/mntes/")
+}
 
 async function loadWeather(){
+
+const cities=['Delhi','Mumbai','Bangalore','Kolkata','Chennai']
+const grid=document.getElementById('weatherGrid')
 
 for(const city of cities){
 
 const res=await fetch(`https://wttr.in/${city}?format=j1`)
-
 const data=await res.json()
 
 const temp=data.current_condition[0].temp_C
 
-const desc=data.current_condition[0].weatherDesc[0].value
-
-const box=document.createElement('div')
-
-box.className='weather-box'
-
-box.innerHTML=`<h3>${city}</h3><p>${temp}°C</p><p>${desc}</p>`
-
-weatherGrid.appendChild(box)
+grid.innerHTML+=`
+<div class="weather-box">
+<h3>${city}</h3>
+<p>${temp}°C</p>
+</div>
+`
 
 }
 
@@ -354,17 +367,26 @@ weatherGrid.appendChild(box)
 loadWeather()
 
 
-async function loadAQI(){
+const btn=document.getElementById("chatButton")
+const win=document.getElementById("chatWindow")
 
-const res=await fetch("https://api.waqi.info/feed/bangalore/?token=demo")
-
-const data=await res.json()
-
-document.getElementById("aqiBox").innerHTML=`<h3>Bangalore AQI</h3><p>${data.data.aqi}</p>`
-
+btn.onclick=()=>{
+win.style.display= win.style.display==="block" ? "none":"block"
 }
 
-loadAQI()
+function sendMail(){
+
+emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",{
+
+from_name:document.getElementById("name").value,
+from_email:document.getElementById("email").value,
+message:document.getElementById("message").value
+
+})
+
+alert("Message sent")
+
+}
 
 </script>
 
