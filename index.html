@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -118,7 +119,7 @@ object-fit:cover
 padding:14px
 }
 
-/* NEWS RIBBON */
+/* ticker */
 
 .news-ribbon{
 display:flex;
@@ -157,7 +158,7 @@ background:#1f2937;
 100%{transform:translateX(-100%)}
 }
 
-/* RADIO */
+/* radio */
 
 .radio-grid{
 display:grid;
@@ -177,7 +178,7 @@ text-align:center
 background:#ef4444
 }
 
-/* WEATHER */
+/* weather */
 
 .weather-grid{
 display:grid;
@@ -245,26 +246,6 @@ color:#94a3b8
 </ul>
 
 </nav>
-
-<!-- STOCK TICKER -->
-
-<div class="card">
-
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js">
-{
-"symbols":[
-{"proName":"NSE:NIFTY","title":"Nifty"},
-{"proName":"BSE:SENSEX","title":"Sensex"},
-{"proName":"FX_IDC:XAUUSD","title":"Gold"},
-{"proName":"TVC:USOIL","title":"Oil"},
-{"proName":"BINANCE:BTCUSDT","title":"Bitcoin"}
-]
-}
-</script>
-
-</div>
-
-<!-- NEWS RIBBON -->
 
 <div class="news-ribbon">
 
@@ -341,38 +322,6 @@ color:#94a3b8
 
 <section class="container">
 
-<h2 class="section-title">Global Air Traffic</h2>
-
-<iframe src="https://www.flightradar24.com/simple"></iframe>
-
-</section>
-
-<section class="container">
-
-<h2 class="section-title">Live Satellite Map</h2>
-
-<iframe src="https://satellitemap.space/"></iframe>
-
-</section>
-
-<section class="container">
-
-<h2 class="section-title">Cyber Security Threat Map</h2>
-
-<iframe src="https://threatmap.checkpoint.com/"></iframe>
-
-</section>
-
-<section class="container">
-
-<h2 class="section-title">Election Dashboard</h2>
-
-<iframe src="https://results.eci.gov.in/"></iframe>
-
-</section>
-
-<section class="container">
-
 <h2 class="section-title">AI Assistant</h2>
 
 <div class="chatbox">
@@ -391,11 +340,12 @@ color:#94a3b8
 
 </footer>
 
-
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 <script src="https://s3.tradingview.com/tv.js"></script>
 
 <script>
+
+/* clock */
 
 function updateClock(){
 document.getElementById("tickerTime").innerText=new Date().toLocaleTimeString()
@@ -403,15 +353,21 @@ document.getElementById("tickerTime").innerText=new Date().toLocaleTimeString()
 
 setInterval(updateClock,1000)
 
+/* market chart */
+
 new TradingView.widget({
-"container_id":"tradingview_chart",
-"symbol":"NSE:NIFTY",
-"theme":"dark",
-"width":"100%",
-"height":400
+container_id:"tradingview_chart",
+symbol:"NSE:NIFTY",
+theme:"dark",
+width:"100%",
+height:400
 })
 
+/* news */
+
 async function loadNews(){
+
+try{
 
 const res=await fetch("https://api.rss2json.com/v1/api.json?rss_url=https://feeds.feedburner.com/ndtvnews-india-news")
 
@@ -429,6 +385,7 @@ html+=`
 </div>
 </div>
 `
+
 })
 
 document.getElementById("newsFeed").innerHTML=html
@@ -436,9 +393,18 @@ document.getElementById("newsFeed").innerHTML=html
 document.getElementById("tickerText").innerText=
 data.items.slice(0,6).map(n=>n.title).join(" • ")
 
+}catch{
+
+document.getElementById("newsFeed").innerHTML="<p>News unavailable</p>"
+
+}
+
 }
 
 loadNews()
+setInterval(loadNews,300000)
+
+/* radio */
 
 const audio=document.getElementById("radioPlayer")
 
@@ -456,70 +422,17 @@ audio.src=url
 
 }
 
-}
-
-let quakeMap=L.map('quakeMap').setView([20,80],4)
-
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(quakeMap)
-
-let quakeLayer=L.layerGroup().addTo(quakeMap)
-
-async function loadEarthquakes(){
-
-const res=await fetch("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson")
-
-const data=await res.json()
-
-let html=""
-
-data.features.slice(0,8).forEach(q=>{
-
-const mag=q.properties.mag
-const place=q.properties.place
-
-const lat=q.geometry.coordinates[1]
-const lon=q.geometry.coordinates[0]
-
-L.circleMarker([lat,lon],{
-radius:6+mag,
-color:mag>5?"red":"green"
-}).addTo(quakeLayer)
-
-html+=`
-<div class="card">
-<h3>Magnitude ${mag}</h3>
-<p>${place}</p>
-</div>
-`
-})
-
-document.getElementById("quakeGrid").innerHTML=html
+audio.play()
 
 }
 
-loadEarthquakes()
+/* weather */
 
-document.getElementById("chatInput").addEventListener("keypress",function(e){
-
-if(e.key==="Enter"){
-
-let q=this.value.toLowerCase()
-
-let reply="I can help with news, markets, weather and trains."
-
-if(q.includes("weather")) reply="Weather updates are shown above."
-if(q.includes("news")) reply="Latest headlines are in the news cards."
-
-document.getElementById("chatReply").innerText=reply
-
-}
-
-})
-const cities = ["Delhi","Mumbai","Bangalore","Kolkata","Chennai"]
+const cities=["Delhi","Mumbai","Bangalore","Kolkata","Chennai"]
 
 async function loadWeather(){
 
-const grid = document.getElementById("weatherGrid")
+const grid=document.getElementById("weatherGrid")
 
 grid.innerHTML=""
 
@@ -527,23 +440,23 @@ for(const city of cities){
 
 try{
 
-const res = await fetch(`https://wttr.in/${city}?format=j1`)
-const data = await res.json()
+const res=await fetch(`https://wttr.in/${city}?format=j1`)
+const data=await res.json()
 
-grid.innerHTML += `
+grid.innerHTML+=`
 <div class="weather-box">
 <h3>${city}</h3>
-<p>${data.current_condition[0].temp_C}°C</p>
+<p style="font-size:24px">${data.current_condition[0].temp_C}°C</p>
 <p>${data.current_condition[0].weatherDesc[0].value}</p>
 </div>
 `
 
 }catch{
 
-grid.innerHTML += `
+grid.innerHTML+=`
 <div class="weather-box">
 <h3>${city}</h3>
-<p>Weather unavailable</p>
+<p>Unavailable</p>
 </div>
 `
 
@@ -555,7 +468,106 @@ grid.innerHTML += `
 
 loadWeather()
 setInterval(loadWeather,600000)
+
+/* earthquake */
+
+let quakeMap=L.map('quakeMap').setView([20,80],4)
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(quakeMap)
+
+let quakeLayer=L.layerGroup().addTo(quakeMap)
+
+async function loadEarthquakes(){
+
+try{
+
+const res=await fetch("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson")
+const data=await res.json()
+
+quakeLayer.clearLayers()
+
+let html=""
+
+data.features.slice(0,8).forEach(q=>{
+
+const mag=q.properties.mag
+const place=q.properties.place
+
+const lat=q.geometry.coordinates[1]
+const lon=q.geometry.coordinates[0]
+
+let color="green"
+
+if(mag>5){
+
+color="red"
+
+document.getElementById("quakeAlert").style.display="block"
+
+document.getElementById("quakeAlert").innerText=
+`⚠ Strong Earthquake: M${mag} ${place}`
+
+}
+
+L.circleMarker([lat,lon],{
+radius:6+mag,
+color:color
+}).addTo(quakeLayer)
+
+html+=`
+<div class="card">
+<h3>Magnitude ${mag}</h3>
+<p>${place}</p>
+</div>
+`
+
+})
+
+document.getElementById("quakeGrid").innerHTML=html
+
+}catch{
+
+document.getElementById("quakeGrid").innerHTML="<p>Earthquake data unavailable</p>"
+
+}
+
+}
+
+loadEarthquakes()
+setInterval(loadEarthquakes,600000)
+
+/* AI assistant */
+
+document.getElementById("chatInput").addEventListener("keypress",function(e){
+
+if(e.key==="Enter"){
+
+let q=this.value.toLowerCase()
+
+let reply="I can help with news, markets, weather and earthquakes."
+
+if(q.includes("weather"))
+reply="Weather updates are shown above."
+
+if(q.includes("news"))
+reply="Latest headlines are in the news cards."
+
+if(q.includes("market"))
+reply="The market chart displays NIFTY data."
+
+if(q.includes("earthquake"))
+reply="Earthquake monitor shows recent seismic activity."
+
+document.getElementById("chatReply").innerText=reply
+
+this.value=""
+
+}
+
+})
+
 </script>
 
 </body>
 </html>
+```
