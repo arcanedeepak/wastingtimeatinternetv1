@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,8 +28,7 @@ align-items:center;
 padding:16px 28px;
 background:#020617;
 position:sticky;
-top:0;
-z-index:1000
+top:0
 }
 
 nav ul{
@@ -59,11 +59,6 @@ text-align:center;
 background:linear-gradient(120deg,#020617,#0f172a)
 }
 
-.hero h1{
-font-size:44px;
-margin-bottom:10px
-}
-
 .container{
 max-width:1300px;
 margin:auto;
@@ -85,12 +80,7 @@ gap:22px
 background:#0f172a;
 border-radius:14px;
 padding:20px;
-box-shadow:0 20px 40px rgba(0,0,0,.5);
-transition:.3s
-}
-
-.card:hover{
-transform:translateY(-6px)
+box-shadow:0 20px 40px rgba(0,0,0,.5)
 }
 
 iframe{
@@ -113,6 +103,19 @@ border-radius:10px;
 text-align:center
 }
 
+.news-item{
+margin-bottom:12px
+}
+
+.news-item a{
+color:#f87171;
+text-decoration:none
+}
+
+.news-item a:hover{
+text-decoration:underline
+}
+
 button{
 background:#ef4444;
 border:none;
@@ -128,10 +131,6 @@ padding:30px;
 background:#020617;
 margin-top:40px;
 color:#94a3b8
-}
-
-.news-item{
-margin-bottom:10px
 }
 
 </style>
@@ -153,7 +152,6 @@ margin-bottom:10px
 <li><a href="#isro">ISRO</a></li>
 <li><a href="#markets">Markets</a></li>
 <li><a href="#weather">Weather</a></li>
-<li><a href="#traffic">Traffic</a></li>
 
 <li><a class="highlight" href="https://wastingyourtimeatinternet.b12sites.com/index#home" target="_blank">Portfolio</a></li>
 
@@ -182,15 +180,27 @@ margin-bottom:10px
 <div class="grid">
 
 <div class="card">
-<iframe src="https://www.youtube.com/embed/live_stream?channel=UCZFMm1mMw0F81Z37aaEzTUA"></iframe>
+
+<h3>Doordarshan News</h3>
+
+<iframe src="https://www.youtube.com/embed/videoseries?list=PLS3XGZxi7cBVb0k6F7Y0dN0n0e7YQDdyC"></iframe>
+
 </div>
 
 <div class="card">
-<iframe src="https://www.youtube.com/embed/live_stream?channel=UCV3AkAsIDK3RNiHcS9hE9gQ"></iframe>
+
+<h3>Sansad TV</h3>
+
+<iframe src="https://www.youtube.com/embed/videoseries?list=PL0ZKxH5H4fE6uH5vZ1tcHTTX3e8DqRL3O"></iframe>
+
 </div>
 
 <div class="card">
+
+<h3>ISRO Live</h3>
+
 <iframe src="https://www.youtube.com/embed/21X5lGlDOfg"></iframe>
+
 </div>
 
 </div>
@@ -230,7 +240,9 @@ margin-bottom:10px
 <br><br>
 
 <audio id="radioPlayer" controls>
+
 <source src="https://air.pc.cdn.bitgravity.com/air/live/pbaudio001/playlist.m3u8">
+
 </audio>
 
 </section>
@@ -296,15 +308,6 @@ margin-bottom:10px
 </section>
 
 
-<section class="container" id="traffic">
-
-<h2 class="section-title">Traffic Map</h2>
-
-<iframe src="https://maps.google.com/maps?q=india%20traffic&output=embed"></iframe>
-
-</section>
-
-
 <footer>
 
 <p>India Digital Command Dashboard • Public Data Portal</p>
@@ -358,6 +361,8 @@ loadWeather()
 setInterval(loadWeather,600000)
 
 
+async function loadNews(){
+
 fetch("https://api.rss2json.com/v1/api.json?rss_url=https://feeds.feedburner.com/ndtvnews-india-news")
 
 .then(res=>res.json())
@@ -366,15 +371,28 @@ fetch("https://api.rss2json.com/v1/api.json?rss_url=https://feeds.feedburner.com
 
 let html=""
 
-data.items.slice(0,6).forEach(n=>{
-html+=`<div class="news-item">• ${n.title}</div>`
+data.items.slice(0,8).forEach(n=>{
+
+html+=`
+<div class="news-item">
+<a href="${n.link}" target="_blank">${n.title}</a>
+</div>
+`
+
 })
 
 document.getElementById("newsFeed").innerHTML=html
 
 })
 
+}
+
+loadNews()
+
+setInterval(loadNews,600000)
+
 </script>
 
 </body>
 </html>
+```
