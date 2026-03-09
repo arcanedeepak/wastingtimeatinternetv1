@@ -1,1 +1,1 @@
-# wastingtimeatinternetv1
+# wastingtimeatinternet
