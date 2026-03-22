@@ -4007,25 +4007,10 @@ const profileEl=document.querySelector(".profile-section")
 if(profileEl)skillObserver.observe(profileEl)
 </script>
 <!-- ══ STUDY DISCLAIMER POPUP ══ -->
-<div id="disclaimerOverlay" style="
-  position:fixed;inset:0;z-index:99999;
-  background:rgba(6,6,15,.88);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  display:flex;align-items:center;justify-content:center;
-  padding:16px;
-">
-  <div style="
-    background:var(--c2);
-    border:1px solid var(--border2);
-    border-radius:var(--r);
-    max-width:460px;width:100%;
-    padding:24px;
-    position:relative;
-    box-shadow:0 32px 64px rgba(0,0,0,.7);
-  ">
+<div id="disclaimerOverlay" style="position:fixed;inset:0;z-index:99999;background:rgba(6,6,15,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:center;padding:16px;">
+  <div style="background:var(--c2);border:1px solid var(--border2);border-radius:var(--r);max-width:460px;width:100%;padding:24px;position:relative;box-shadow:0 32px 64px rgba(0,0,0,.7);">
     <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--red),var(--gold),transparent);border-radius:var(--r) var(--r) 0 0"></div>
 
-    <!-- Header row -->
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
       <span style="font-size:28px;flex-shrink:0">🇮🇳</span>
       <div>
@@ -4034,47 +4019,49 @@ if(profileEl)skillObserver.observe(profileEl)
       </div>
     </div>
 
-    <!-- Disclaimer text -->
     <div style="background:var(--c3);border:1px solid var(--border);border-radius:var(--rs);padding:12px 14px;margin-bottom:14px;font-size:12.5px;color:var(--text3);line-height:1.65">
       Built by <strong style="color:var(--text)">Deepak</strong> — PG Masters student in Data Science, Cloud &amp; Cyber Security.
       This is a <strong style="color:var(--gold)">non-commercial educational project</strong> using public APIs.
       Not affiliated with any government or media body. Data shown is <strong style="color:var(--gold)">not financial or legal advice</strong>.
     </div>
 
-    <!-- Quick bullets -->
     <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:16px;font-size:12px;color:var(--text3)">
-      <div style="display:flex;gap:8px"><span style="color:var(--green);flex-shrink:0">✓</span>All data from free public APIs · No personal data collected</div>
-      <div style="display:flex;gap:8px"><span style="color:var(--green);flex-shrink:0">✓</span>Open source · Portfolio &amp; educational use only</div>
-      <div style="display:flex;gap:8px"><span style="color:#f97316;flex-shrink:0">✗</span>Not for commercial use · Market data not for investment decisions</div>
+      <div style="display:flex;gap:8px"><span style="color:var(--green);flex-shrink:0">&#10003;</span>All data from free public APIs &middot; No personal data collected</div>
+      <div style="display:flex;gap:8px"><span style="color:var(--green);flex-shrink:0">&#10003;</span>Open source &middot; Portfolio &amp; educational use only</div>
+      <div style="display:flex;gap:8px"><span style="color:#f97316;flex-shrink:0">&#10007;</span>Not for commercial use &middot; Market data not for investment decisions</div>
     </div>
 
-    <!-- Contact / takedown -->
     <div style="background:rgba(225,29,72,.05);border:1px solid rgba(225,29,72,.15);border-radius:var(--rs);padding:10px 12px;margin-bottom:16px;font-size:11.5px;color:var(--text3);line-height:1.6">
-      📬 If any content causes concern or requires removal, please contact me immediately —
-      I will remove it promptly and sincerely apologise.<br>
+      If any content causes concern or requires removal, please reach out — I will remove it promptly.<br>
       <span style="display:flex;gap:12px;margin-top:6px;flex-wrap:wrap">
-        <a href="/cdn-cgi/l/email-protection#0f6e7d6c6e616a6b6a6a7f6e644f67607b626e6663216c6062" style="color:var(--red);text-decoration:none;font-weight:600;font-family:var(--font-mono);font-size:11px">✉ <span class="__cf_email__" data-cfemail="adccdfceccc3c8c9c8c8ddccc6edc5c2d9c0ccc4c183cec2c0">[email&#160;protected]</span></a>
-        <a href="https://www.linkedin.com/in/wastingtimeatlink/" target="_blank" style="color:var(--red);text-decoration:none;font-weight:600;font-family:var(--font-mono);font-size:11px">LinkedIn ↗</a>
-        <a href="https://www.instagram.com/wastingtimeatmovies/" target="_blank" style="color:var(--red);text-decoration:none;font-weight:600;font-family:var(--font-mono);font-size:11px">Instagram ↗</a>
+        <a href="https://www.linkedin.com/in/wastingtimeatlink/" target="_blank" rel="noopener" style="color:var(--red);text-decoration:none;font-weight:600;font-family:var(--font-mono);font-size:11px">LinkedIn &#8599;</a>
+        <a href="https://www.instagram.com/wastingtimeatmovies/" target="_blank" rel="noopener" style="color:var(--red);text-decoration:none;font-weight:600;font-family:var(--font-mono);font-size:11px">Instagram &#8599;</a>
       </span>
     </div>
 
-    <!-- Accept button -->
-    <button onclick="acceptDisclaimer()" style="
-      width:100%;
-      background:linear-gradient(135deg,var(--red),#be123c);
-      border:none;color:#fff;
-      padding:11px 24px;border-radius:var(--rs);
-      cursor:pointer;
-      font-family:var(--font-display);font-size:15px;font-weight:700;letter-spacing:.5px;
-      transition:opacity .2s;
-    " onmouseover="this.style.opacity='.88'" onmouseout="this.style.opacity='1'">
-      I Understand — Enter Dashboard
+    <button id="enterBtn" style="width:100%;background:linear-gradient(135deg,#e11d48,#be123c);border:none;color:#fff;padding:13px 24px;border-radius:var(--rs);cursor:pointer;font-family:var(--font-display);font-size:15px;font-weight:700;letter-spacing:.5px;transition:opacity .2s;">
+      I Understand &#8212; Enter Dashboard
     </button>
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-function acceptDisclaimer(){
-  const o=document.getElementById('disclaimerOverlay')
-  o.style.transition='opa
+<script>
+(function(){
+  var btn = document.getElementById('enterBtn');
+  var overlay = document.getElementById('disclaimerOverlay');
+  if(sessionStorage.getItem('bv_ok')==='1'){
+    overlay.style.display='none';
+    return;
+  }
+  btn.addEventListener('click', function(){
+    overlay.style.opacity='0';
+    overlay.style.transition='opacity .35s';
+    setTimeout(function(){ overlay.style.display='none'; }, 380);
+    sessionStorage.setItem('bv_ok','1');
+  });
+  btn.addEventListener('mouseover', function(){ this.style.opacity='.88'; });
+  btn.addEventListener('mouseout',  function(){ this.style.opacity='1'; });
+})();
+</script>
+</body>
+</html>
