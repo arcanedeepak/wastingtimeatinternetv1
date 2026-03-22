@@ -710,7 +710,7 @@ nav{padding-left:max(clamp(12px,4vw,28px),env(safe-area-inset-left));padding-rig
       <button class="chat-send-btn" id="sendBtn" onclick="sendChat()">Send</button>
     </div>
     <div style="font-size:11px;color:var(--muted);text-align:center;margin-top:8px;padding-top:8px;border-top:1px solid var(--bg5)">
-      💡 Powered by Claude AI · Your questions help improve this dashboard
+      💡 Powered by AI · Your questions help improve this dashboard
     </div>
   </div>
 </section>
@@ -1165,7 +1165,7 @@ setInterval(loadCrypto, 120000)
 
 /* ═══════════════════════════════════════════════════
    CRICKET — RSS via allorigins proxy
-   FIX: No longer uses Claude API without key
+   FIX: No longer uses API without key
 ═══════════════════════════════════════════════════ */
 async function loadCricket(){
   const grid=$("cricketGrid")
@@ -1250,7 +1250,7 @@ setInterval(loadCricket, 120000)
 
 /* ═══════════════════════════════════════════════════
    TRENDING — Google Trends India RSS + Events
-   FIX: No longer uses Claude API without key
+   FIX: No longer uses API without key
 ═══════════════════════════════════════════════════ */
 const INDIA_EVENTS=[
   {text:"IPL 2025 — Match Schedule",sub:"Apr–May 2025 · Various Venues",type:"sports"},
@@ -1544,7 +1544,7 @@ const profileEl=document.querySelector(".profile-section")
 if(profileEl)skillObserver.observe(profileEl)
 
 /* ═══════════════════════════════════════════════════
-   AI CHAT — Claude API
+   AI CHAT —  API
 ═══════════════════════════════════════════════════ */
 const convHistory=[]
 function addMessage(text,role){
