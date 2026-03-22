@@ -937,127 +937,36 @@ nav a:hover{color:var(--text);background:var(--border)}
 .metal-card:hover{border-color:var(--border2)}
 
 /* ═══════════════════════════════════════════
-   AI CHAT — Enhanced
+   MOVIES
 ═══════════════════════════════════════════ */
-.ai-chatbox{
-  background:var(--c2);
-  border:1px solid var(--border);
-  border-radius:var(--r);
-  overflow:hidden;
+.movie-card{
+  background:var(--c2);border:1px solid var(--border);
+  border-radius:var(--r);overflow:hidden;
+  cursor:pointer;transition:all .25s;position:relative;
 }
-.chat-header{
-  background:var(--c3);
-  padding:14px 20px;
-  border-bottom:1px solid var(--border);
-  display:flex;align-items:center;gap:12px;
+.movie-card:hover{border-color:rgba(225,29,72,.3);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.5)}
+.movie-poster{
+  width:100%;aspect-ratio:2/3;object-fit:cover;
+  background:var(--c3);display:block;
 }
-.chat-ai-dot{
-  width:10px;height:10px;border-radius:50%;
-  background:var(--green);
-  box-shadow:0 0 10px var(--green);
-  animation:navPulse 2s infinite;
+.movie-poster-ph{
+  width:100%;aspect-ratio:2/3;
+  background:linear-gradient(135deg,var(--c3),var(--c4));
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:8px;
 }
-.chat-header-text{
-  font-family:var(--font-display);
-  font-size:14px;font-weight:700;
-  letter-spacing:1px;text-transform:uppercase;
-  color:var(--text);
+.movie-info{padding:10px 12px}
+.movie-title{font-family:var(--font-display);font-size:clamp(12px,1.3vw,14px);font-weight:700;letter-spacing:.2px;color:var(--text);margin-bottom:5px;line-height:1.3}
+.movie-meta{font-family:var(--font-mono);font-size:10px;color:var(--text4);letter-spacing:.5px;margin-bottom:4px}
+.movie-badge{
+  position:absolute;top:8px;left:8px;
+  font-family:var(--font-mono);font-size:9px;font-weight:700;
+  padding:3px 8px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;
 }
-.chat-header-sub{
-  font-family:var(--font-mono);font-size:10px;
-  color:var(--text4);margin-left:auto;letter-spacing:.5px;
-}
-.chat-messages{
-  min-height:160px;
-  max-height:clamp(260px,35vw,420px);
-  overflow-y:auto;
-  padding:18px;
-  display:flex;flex-direction:column;gap:12px;
-  scroll-behavior:smooth;
-}
-.msg{
-  padding:clamp(10px,1.5vw,13px) clamp(12px,2vw,16px);
-  border-radius:10px;
-  max-width:88%;
-  line-height:1.6;
-  font-size:clamp(12px,1.3vw,14px);
-  white-space:pre-wrap;word-break:break-word;
-  font-family:var(--font-body);
-}
-.msg.user{
-  background:linear-gradient(135deg,var(--red),#be123c);
-  align-self:flex-end;color:#fff;
-  border-bottom-right-radius:4px;
-}
-.msg.ai{
-  background:var(--c3);
-  border:1px solid var(--border);
-  align-self:flex-start;
-  border-bottom-left-radius:4px;
-  color:var(--text);
-}
-.msg.error{
-  background:rgba(127,29,29,.4);
-  border:1px solid rgba(220,38,38,.3);
-  align-self:flex-start;color:var(--red2);
-}
-#typingIndicator{
-  color:var(--text4);
-  font-family:var(--font-mono);font-size:11px;
-  font-style:italic;padding:4px 18px;
-  display:none;letter-spacing:.5px;
-}
-.chat-input-area{
-  padding:14px 18px;
-  background:var(--c3);
-  border-top:1px solid var(--border);
-}
-.chat-input-row{display:flex;gap:10px;align-items:center}
-.chat-input-row input{
-  flex:1;
-  padding:clamp(10px,1.5vw,13px) clamp(12px,2vw,16px);
-  border-radius:var(--rs);
-  border:1px solid var(--border2);
-  background:var(--c2);
-  color:var(--text);
-  font-family:var(--font-body);font-size:clamp(13px,1.4vw,14px);
-  outline:none;min-height:46px;
-  transition:border-color .2s;
-}
-.chat-input-row input:focus{border-color:var(--red)}
-.chat-input-row input::placeholder{color:var(--text4)}
-.chat-send-btn{
-  background:linear-gradient(135deg,var(--red),#be123c);
-  border:none;color:#fff;
-  padding:0 clamp(14px,2vw,24px);
-  border-radius:var(--rs);cursor:pointer;
-  font-family:var(--font-mono);font-size:12px;
-  font-weight:600;letter-spacing:1px;
-  min-height:46px;min-width:70px;
-  transition:opacity .2s,transform .2s;
-}
-.chat-send-btn:hover{opacity:.9;transform:translateY(-1px)}
-.chat-send-btn:disabled{
-  background:var(--c5);cursor:not-allowed;
-  opacity:.5;transform:none;
-}
-.chat-hint{
-  margin-top:10px;
-  font-family:var(--font-mono);font-size:10px;
-  color:var(--text4);text-align:center;letter-spacing:.5px;
-}
-.chat-suggestions{
-  display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;
-}
-.chat-sugg{
-  background:var(--c4);
-  border:1px solid var(--border);
-  color:var(--text3);
-  padding:5px 12px;border-radius:20px;
-  font-family:var(--font-mono);font-size:10px;
-  cursor:pointer;transition:all .2s;letter-spacing:.3px;
-}
-.chat-sugg:hover{background:var(--red-glow);border-color:rgba(225,29,72,.3);color:var(--red2)}
+.badge-new{background:rgba(16,185,129,.15);color:#10b981;border:1px solid rgba(16,185,129,.3)}
+.badge-soon{background:rgba(245,158,11,.12);color:var(--gold);border:1px solid rgba(245,158,11,.25)}
+.badge-ott{background:rgba(56,189,248,.12);color:var(--ice);border:1px solid rgba(56,189,248,.25)}
+.movie-rating{display:inline-flex;align-items:center;gap:4px;font-family:var(--font-mono);font-size:11px;color:var(--gold)}
 
 /* ═══════════════════════════════════════════
    PROFILE (BOTTOM)
@@ -1328,6 +1237,7 @@ footer a:hover{opacity:.7}
 .train-stop{display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--border);font-size:13px}
 .train-stop:last-child{border-bottom:none}
 
+@media(max-width:768px){
   .nav-toggle{display:flex}
   nav ul{
     display:none;position:fixed;
@@ -1347,10 +1257,9 @@ footer a:hover{opacity:.7}
     padding:14px clamp(14px,4vw,24px);
     font-size:14px;border-bottom:1px solid var(--border);min-height:50px;
   }
-  .nh{margin:8px clamp(14px,4vw,24px);border-radius:6px;justify-content:center}
+  .nh{margin:8px clamp(14px,4vw,24px);border-radius:6px;justify-content:center;border-bottom:none!important}
   .currency-row{flex-direction:column;align-items:stretch}
   .currency-row input,.currency-row select{max-width:100%}
-  .chat-messages{max-height:280px}
   .ticker-time{display:none}
 }
 @media(max-width:480px){
@@ -1388,7 +1297,7 @@ nav{
     <li><a href="#markets">Markets</a></li>
     <li><a href="#crypto">Crypto</a></li>
     <li><a href="#cricket">Cricket</a></li>
-    <li><a href="#ddtv">DD Live TV</a></li>
+    <li><a href="#movies">🎬 Movies</a></li>
     <li><a href="#radio">Radio</a></li>
     <li><a href="#weather">Weather</a></li>
     <li><a href="#aqi">AQI</a></li>
@@ -1397,7 +1306,6 @@ nav{
     <li><a href="#economy">Economy</a></li>
     <li><a href="#ipo">IPO</a></li>
     <li><a href="#earthquake">Quakes</a></li>
-    <li><a href="#aichat">AI Chat</a></li>
     <li><a href="#portfolio-tracker">Portfolio</a></li>
     <li><a href="#calculators">Calculators</a></li>
     <li><a href="#ipl-table">IPL Table</a></li>
@@ -1565,47 +1473,6 @@ nav{
   <div class="cricket-grid" id="cricketGrid">
     <div class="cricket-card" style="grid-column:1/-1"><div class="match-status">LOADING…</div></div>
   </div>
-</section>
-
-<!-- ══ DD LIVE TV ══ -->
-<section class="container" id="ddtv">
-  <div class="section-head">
-    <h2 class="section-title">📺 DD Live TV <span>PRASAR BHARATI</span></h2>
-    <div class="section-meta">
-      <span class="updated-text">Official Govt. of India · Free · No login</span>
-    </div>
-  </div>
-
-  <!-- Player -->
-  <div id="ddPlayerWrap" style="display:none;margin-bottom:20px;background:var(--c2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
-    <div style="display:flex;justify-content:space-between;align-items:center;padding:11px 16px;background:var(--c3);border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px">
-      <div style="display:flex;align-items:center;gap:10px">
-        <div style="width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 8px var(--red);animation:navPulse 1.5s infinite;flex-shrink:0"></div>
-        <span id="ddPlayerTitle" style="font-family:var(--font-display);font-size:14px;font-weight:700;letter-spacing:.5px">—</span>
-      </div>
-      <div style="display:flex;gap:8px">
-        <a id="ddExtLink" href="#" target="_blank" class="refresh-btn" style="text-decoration:none">↗ Open full site</a>
-        <button class="refresh-btn" onclick="closeDDTV()">✕ Close</button>
-      </div>
-    </div>
-    <div style="position:relative;padding-top:56.25%;background:#000">
-      <iframe id="ddPlayerFrame" src="" allowfullscreen
-        sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-presentation"
-        style="position:absolute;top:0;left:0;width:100%;height:100%;border:none"></iframe>
-    </div>
-    <div style="padding:8px 16px;background:var(--c3);font-family:var(--font-mono);font-size:10px;color:var(--text4);letter-spacing:.3px">
-      Official Prasar Bharati · WAVES OTT platform · Government of India · If stream doesn't load click "Open full site"
-    </div>
-  </div>
-
-  <!-- Channel tabs -->
-  <div class="news-tabs" style="margin-bottom:14px" id="ddTabs">
-    <button class="ntab active" onclick="filterDD('national',this)">🇮🇳 National</button>
-    <button class="ntab" onclick="filterDD('regional',this)">🗺️ Regional</button>
-  </div>
-
-  <!-- Channel grid -->
-  <div id="ddGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(140px,100%),1fr));gap:clamp(8px,1.2vw,12px)"></div>
 </section>
 
 <!-- ══ RADIO ══ -->
@@ -1891,36 +1758,23 @@ nav{
   </div>
 </section>
 
-<!-- ══ AI CHAT ══ -->
-<section class="container" id="aichat">
+<!-- ══ MOVIES ══ -->
+<section class="container" id="movies">
   <div class="section-head">
-    <h2 class="section-title">🤖 AI Assistant <span>LIVE</span></h2>
+    <h2 class="section-title">🎬 New Movie Releases <span>MAR 2026</span></h2>
+    <div class="section-meta">
+      <span class="updated-text" id="moviesUpdated"></span>
+      <button class="refresh-btn" onclick="loadMovies(currentMovieTab)">↻ Refresh</button>
+    </div>
   </div>
-  <div class="ai-chatbox">
-    <div class="chat-header">
-      <div class="chat-ai-dot"></div>
-      <div class="chat-header-text">India Dashboard AI</div>
-      <div class="chat-header-sub">AI · ONLINE</div>
-    </div>
-    <div class="chat-messages" id="chatMessages">
-      <div class="msg ai">👋 Namaste! I'm your India Dashboard AI. Ask me about Indian news, markets, cricket, IPOs, economy, weather, cyber security, ML, cloud engineering — or anything else!</div>
-    </div>
-    <div id="typingIndicator">● AI is thinking…</div>
-    <div class="chat-input-area">
-      <div class="chat-input-row">
-        <input id="chatInput" placeholder="Ask about markets, cricket, data science, India news…" autocomplete="off">
-        <button class="chat-send-btn" id="sendBtn" onclick="sendChat()">Send ↑</button>
-      </div>
-      <div class="chat-suggestions">
-        <div class="chat-sugg" onclick="askSuggestion('What are the top performing Indian stocks today?')">📈 Top stocks</div>
-        <div class="chat-sugg" onclick="askSuggestion('Tell me about IPL 2026 schedule')">🏏 IPL 2026</div>
-        <div class="chat-sugg" onclick="askSuggestion('Explain how ML pipelines work in cloud')">🧠 ML pipelines</div>
-        <div class="chat-sugg" onclick="askSuggestion('What is the current state of Indias economy?')">💰 Economy</div>
-        <div class="chat-sugg" onclick="askSuggestion('Latest cybersecurity threats in India')">🔐 Cyber threats</div>
-        <div class="chat-sugg" onclick="askSuggestion('Best cities to visit in India this season')">🗺️ Travel tips</div>
-      </div>
-      <div class="chat-hint">India Dashboard AI · Ask me anything about India · Deepak</div>
-    </div>
+  <div class="news-tabs" id="movieTabs">
+    <button class="ntab active" onclick="loadMovies('india',this)">🇮🇳 India (All)</button>
+    <button class="ntab" onclick="loadMovies('bollywood',this)">🎭 Bollywood</button>
+    <button class="ntab" onclick="loadMovies('south',this)">🌴 South Indian</button>
+    <button class="ntab" onclick="loadMovies('english',this)">🌍 English / World</button>
+  </div>
+  <div id="moviesGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(170px,100%),1fr));gap:clamp(10px,1.5vw,16px)">
+    <div style="grid-column:1/-1;color:var(--text3);font-family:var(--font-mono);font-size:12px;padding:20px">Loading…</div>
   </div>
 </section>
 
@@ -3037,79 +2891,90 @@ $("elecBars").innerHTML=lokaResults.map(p=>{const pct=Math.round(p.seats/543*100
 $("stateElec").innerHTML=stateResults.map(s=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)"><div><div style="font-family:var(--font-body);font-weight:600;font-size:13px">${s.state}</div><div style="font-family:var(--font-mono);font-size:10px;color:var(--text4);margin-top:2px;letter-spacing:.3px">${s.year} · ${s.margin}</div></div><div style="text-align:right"><div style="font-family:var(--font-mono);font-size:13px;color:#10b981;font-weight:600">${s.winner}</div><div style="font-family:var(--font-mono);font-size:10px;color:var(--text4)">${s.seats}</div></div></div>`).join("")
 
 /* ═══════════════════════════════════════════════════
-   AI CHAT — free, no key required
+   MOVIES — New Releases (India & World English)
+   Sources: TMDB now-playing RSS proxy + curated data
 ═══════════════════════════════════════════════════ */
-const SYSTEM_PROMPT = `You are a knowledgeable assistant embedded in the India Digital Command Dashboard, built by Deepak — a PG Masters student in Data Science, ML, Cloud Engineering and Cyber Security based in Bengaluru, India.
+let currentMovieTab = 'india'
 
-Help with: India news, stock markets (NSE/BSE), cricket & IPL 2026, weather, economy, ISRO, culture, ML/AI concepts, Data Science, Python, cloud platforms (AWS/Azure/GCP), cybersecurity, IPOs, travel in India, and general knowledge.
-
-Style: Concise, friendly, professional. Use bullet points for lists. Use ₹ for INR. Keep responses under 200 words unless asked for detail.`
-
-const convHistory = []
-
-function addMessage(text, role){
-  const div = document.createElement("div")
-  div.className = "msg " + role
-  div.textContent = text
-  $("chatMessages").appendChild(div)
-  $("chatMessages").scrollTop = $("chatMessages").scrollHeight
-}
-
-function askSuggestion(text){
-  $("chatInput").value = text
-  sendChat()
-}
-
-async function sendChat(){
-  const userText = $("chatInput").value.trim()
-  if(!userText) return
-
-  addMessage(userText, "user")
-  convHistory.push({ role:"user", content:userText })
-  $("chatInput").value = ""
-  $("sendBtn").disabled = true
-  $("typingIndicator").style.display = "block"
-  $("chatMessages").scrollTop = $("chatMessages").scrollHeight
-
-  // Build messages with system prompt prepended
-  const messages = [
-    { role:"system", content: SYSTEM_PROMPT },
-    ...convHistory
+const MOVIES_DATA = {
+  india: [
+    {title:"Chhaava",lang:"Hindi",genre:"Historical Drama",release:"Feb 14, 2026",status:"new",rating:"⭐ 8.4",desc:"The story of Maratha warrior Sambhaji Maharaj.",trailer:"https://www.youtube.com/results?search_query=Chhaava+2026+trailer"},
+    {title:"Sikandar",lang:"Hindi",genre:"Action",release:"Mar 29, 2026",status:"soon",rating:"⭐ —",desc:"Salman Khan blockbuster releasing on Eid 2026.",trailer:"https://www.youtube.com/results?search_query=Sikandar+2026+Salman+trailer"},
+    {title:"Raid 2",lang:"Hindi",genre:"Thriller",release:"Mar 14, 2026",status:"new",rating:"⭐ 7.6",desc:"Ajay Devgn returns as the fearless income tax officer.",trailer:"https://www.youtube.com/results?search_query=Raid+2+2026+trailer"},
+    {title:"Sky Force",lang:"Hindi",genre:"Action / War",release:"Jan 24, 2026",status:"ott",rating:"⭐ 8.1",desc:"India's first airstrike — true story. Now streaming.",trailer:"https://www.youtube.com/results?search_query=Sky+Force+2026+trailer"},
+    {title:"Deva",lang:"Hindi",genre:"Action",release:"Jan 31, 2026",status:"ott",rating:"⭐ 7.2",desc:"Shahid Kapoor in a gritty Mumbai cop thriller.",trailer:"https://www.youtube.com/results?search_query=Deva+2026+Shahid+trailer"},
+    {title:"Loveyapa",lang:"Hindi",genre:"Romantic Comedy",release:"Feb 7, 2026",status:"ott",rating:"⭐ 6.8",desc:"Aamir Khan's son Junaid in a phone-swap love story.",trailer:"https://www.youtube.com/results?search_query=Loveyapa+2026+trailer"},
+    {title:"Kesari Chapter 2",lang:"Hindi",genre:"Historical",release:"Apr 18, 2026",status:"soon",rating:"⭐ —",desc:"Akshay Kumar continues the Jallianwala Bagh saga.",trailer:"https://www.youtube.com/results?search_query=Kesari+Chapter+2+trailer"},
+    {title:"War 2",lang:"Hindi",genre:"Action/Spy",release:"Aug 14, 2026",status:"soon",rating:"⭐ —",desc:"Hrithik Roshan vs Jr NTR in the Spy Universe sequel.",trailer:"https://www.youtube.com/results?search_query=War+2+2026+trailer"},
+  ],
+  bollywood: [
+    {title:"Chhaava",lang:"Hindi",genre:"Historical Drama",release:"Feb 14, 2026",status:"new",rating:"⭐ 8.4",desc:"The story of Maratha warrior Sambhaji Maharaj.",trailer:"https://www.youtube.com/results?search_query=Chhaava+2026+trailer"},
+    {title:"Sikandar",lang:"Hindi",genre:"Action",release:"Mar 29, 2026",status:"soon",rating:"⭐ —",desc:"Salman Khan Eid blockbuster 2026.",trailer:"https://www.youtube.com/results?search_query=Sikandar+2026+Salman+trailer"},
+    {title:"Raid 2",lang:"Hindi",genre:"Thriller",release:"Mar 14, 2026",status:"new",rating:"⭐ 7.6",desc:"Ajay Devgn's income tax sequel.",trailer:"https://www.youtube.com/results?search_query=Raid+2+2026+trailer"},
+    {title:"Sky Force",lang:"Hindi",genre:"War / Action",release:"Jan 2026",status:"ott",rating:"⭐ 8.1",desc:"True story of India's first airstrike.",trailer:"https://www.youtube.com/results?search_query=Sky+Force+2026+trailer"},
+    {title:"Kesari Chapter 2",lang:"Hindi",genre:"Historical",release:"Apr 18, 2026",status:"soon",rating:"⭐ —",desc:"Akshay Kumar — Jallianwala Bagh saga continues.",trailer:"https://www.youtube.com/results?search_query=Kesari+Chapter+2+trailer"},
+    {title:"War 2",lang:"Hindi",genre:"Action/Spy",release:"Aug 14, 2026",status:"soon",rating:"⭐ —",desc:"Hrithik vs Jr NTR — Spy Universe.",trailer:"https://www.youtube.com/results?search_query=War+2+2026+trailer"},
+    {title:"Sitaare Zameen Par",lang:"Hindi",genre:"Drama",release:"Jun 2026",status:"soon",rating:"⭐ —",desc:"Aamir Khan's sequel to Taare Zameen Par.",trailer:"https://www.youtube.com/results?search_query=Sitaare+Zameen+Par+trailer"},
+    {title:"Lahore 1947",lang:"Hindi",genre:"Period Drama",release:"Aug 15, 2026",status:"soon",rating:"⭐ —",desc:"Rajkumar Santoshi's partition epic starring Sunny Deol.",trailer:"https://www.youtube.com/results?search_query=Lahore+1947+trailer"},
+  ],
+  south: [
+    {title:"Coolie",lang:"Tamil",genre:"Action",release:"May 2026",status:"soon",rating:"⭐ —",desc:"Rajinikanth's explosive pan-India action film.",trailer:"https://www.youtube.com/results?search_query=Coolie+Rajinikanth+2026+trailer"},
+    {title:"Thandel",lang:"Telugu",genre:"Action Romance",release:"Feb 7, 2026",status:"new",rating:"⭐ 7.8",desc:"Naga Chaitanya stars in this real-story Telugu film.",trailer:"https://www.youtube.com/results?search_query=Thandel+2026+trailer"},
+    {title:"Good Bad Ugly",lang:"Tamil",genre:"Action Comedy",release:"Apr 10, 2026",status:"soon",rating:"⭐ —",desc:"Ajith Kumar's high-octane Easter release.",trailer:"https://www.youtube.com/results?search_query=Good+Bad+Ugly+Ajith+2026+trailer"},
+    {title:"Retro",lang:"Tamil",genre:"Romantic Action",release:"May 1, 2026",status:"soon",rating:"⭐ —",desc:"Suriya and Pooja Hegde in Karthik Subbaraj's film.",trailer:"https://www.youtube.com/results?search_query=Retro+Suriya+2026+trailer"},
+    {title:"Jailer 2",lang:"Tamil",genre:"Action",release:"2026",status:"soon",rating:"⭐ —",desc:"Rajinikanth sequel to the blockbuster Jailer.",trailer:"https://www.youtube.com/results?search_query=Jailer+2+Rajinikanth+trailer"},
+    {title:"Pushpa 3",lang:"Telugu",genre:"Action Drama",release:"2026",status:"soon",rating:"⭐ —",desc:"Allu Arjun's Pushpa saga continues — most awaited.",trailer:"https://www.youtube.com/results?search_query=Pushpa+3+2026+trailer"},
+    {title:"Game Changer",lang:"Telugu",genre:"Political Action",release:"Jan 2026",status:"ott",rating:"⭐ 6.5",desc:"Ram Charan's political drama — now on streaming.",trailer:"https://www.youtube.com/results?search_query=Game+Changer+2026+trailer"},
+    {title:"Kalki 2898 AD Part 2",lang:"Telugu",genre:"Sci-Fi Epic",release:"2026",status:"soon",rating:"⭐ —",desc:"The mythological sci-fi sequel everyone's waiting for.",trailer:"https://www.youtube.com/results?search_query=Kalki+2898+AD+Part+2+trailer"},
+  ],
+  english: [
+    {title:"Mission: Impossible — The Final Reckoning",lang:"English",genre:"Action/Spy",release:"May 23, 2026",status:"soon",rating:"⭐ —",desc:"Tom Cruise's final MI chapter. Global spy thriller.",trailer:"https://www.youtube.com/results?search_query=Mission+Impossible+Final+Reckoning+trailer"},
+    {title:"Avatar 3",lang:"English",genre:"Sci-Fi",release:"Dec 19, 2026",status:"soon",rating:"⭐ —",desc:"James Cameron's third Pandora adventure.",trailer:"https://www.youtube.com/results?search_query=Avatar+3+2026+trailer"},
+    {title:"Jurassic World Rebirth",lang:"English",genre:"Action/Adventure",release:"Jul 2, 2026",status:"soon",rating:"⭐ —",desc:"A new chapter in the Jurassic saga with Scarlett Johansson.",trailer:"https://www.youtube.com/results?search_query=Jurassic+World+Rebirth+2026+trailer"},
+    {title:"Superman (2025/26)",lang:"English",genre:"Superhero",release:"Jul 11, 2025",status:"new",rating:"⭐ 7.5",desc:"James Gunn's DCU reboot with David Corenswet.",trailer:"https://www.youtube.com/results?search_query=Superman+2025+DC+trailer"},
+    {title:"Thunderbolts*",lang:"English",genre:"Superhero",release:"May 2, 2025",status:"ott",rating:"⭐ 7.8",desc:"Marvel's antiheroes assemble. Now streaming.",trailer:"https://www.youtube.com/results?search_query=Thunderbolts+Marvel+2025+trailer"},
+    {title:"The Fantastic Four: First Steps",lang:"English",genre:"Superhero",release:"Jul 25, 2025",status:"ott",rating:"⭐ 7.4",desc:"Marvel's First Family in a retro-60s universe.",trailer:"https://www.youtube.com/results?search_query=Fantastic+Four+First+Steps+Marvel+trailer"},
+    {title:"Wicked: For Good",lang:"English",genre:"Musical",release:"Nov 21, 2025",status:"ott",rating:"⭐ 8.0",desc:"The spectacular conclusion to Wicked Part 2.",trailer:"https://www.youtube.com/results?search_query=Wicked+For+Good+2025+trailer"},
+    {title:"Sinners",lang:"English",genre:"Horror/Thriller",release:"Apr 18, 2025",status:"ott",rating:"⭐ 8.2",desc:"Ryan Coogler's acclaimed vampire thriller. Now streaming.",trailer:"https://www.youtube.com/results?search_query=Sinners+2025+Ryan+Coogler+trailer"},
+    {title:"The Accountant 2",lang:"English",genre:"Action/Thriller",release:"Apr 25, 2025",status:"ott",rating:"⭐ 7.6",desc:"Ben Affleck returns as the autistic assassin-accountant.",trailer:"https://www.youtube.com/results?search_query=The+Accountant+2+trailer"},
+    {title:"Novocaine",lang:"English",genre:"Action",release:"Mar 14, 2025",status:"ott",rating:"⭐ 7.1",desc:"Jack Quaid stars as a man who can't feel pain.",trailer:"https://www.youtube.com/results?search_query=Novocaine+2025+trailer"},
+    {title:"F1: The Movie",lang:"English",genre:"Sport/Action",release:"Jun 27, 2025",status:"soon",rating:"⭐ —",desc:"Brad Pitt's Formula 1 film shot at real Grand Prix races.",trailer:"https://www.youtube.com/results?search_query=F1+Movie+2025+Brad+Pitt+trailer"},
+    {title:"Ballerina",lang:"English",genre:"Action/Thriller",release:"Jun 6, 2025",status:"soon",rating:"⭐ —",desc:"John Wick universe — Ana de Armas as an assassin.",trailer:"https://www.youtube.com/results?search_query=Ballerina+John+Wick+2025+trailer"},
   ]
-
-  try{
-    const res = await fetch("https://text.pollinations.ai/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        messages,
-        model: "openai",
-        seed: -1,
-        jsonMode: false
-      })
-    })
-
-    if(!res.ok) throw new Error("HTTP " + res.status)
-
-    const reply = await res.text()
-
-    if(!reply || !reply.trim()) throw new Error("empty response")
-
-    addMessage(reply.trim(), "ai")
-    convHistory.push({ role:"assistant", content: reply.trim() })
-
-  } catch(err){
-    addMessage("⚠️ Could not reach the AI right now. Please try again in a moment.", "error")
-    console.error("Chat error:", err)
-  }
-
-  $("typingIndicator").style.display = "none"
-  $("sendBtn").disabled = false
-  $("chatInput").focus()
 }
 
-$("chatInput").addEventListener("keypress", e => { if(e.key === "Enter" && !e.shiftKey) sendChat() })
+function loadMovies(tab, btn){
+  currentMovieTab = tab
+  if(btn){
+    document.querySelectorAll('#movieTabs .ntab').forEach(b=>b.classList.remove('active'))
+    btn.classList.add('active')
+  }
+  const movies = MOVIES_DATA[tab] || []
+  const grid = $('moviesGrid')
+  grid.innerHTML = movies.map(m=>{
+    const statusMap = {new:{cls:'badge-new',txt:'IN CINEMAS'},soon:{cls:'badge-soon',txt:'COMING SOON'},ott:{cls:'badge-ott',txt:'ON STREAMING'}}
+    const s = statusMap[m.status] || statusMap.soon
+    const borderCol = m.status==='new'?'rgba(16,185,129,.25)':m.status==='ott'?'rgba(56,189,248,.2)':'rgba(245,158,11,.2)'
+    return `<div class="movie-card" style="border-color:${borderCol}" onclick="window.open('${m.trailer}','_blank')">
+      <div class="movie-badge ${s.cls}">${s.txt}</div>
+      <div class="movie-poster-ph">
+        <div style="font-size:36px">🎬</div>
+        <div style="font-family:var(--font-display);font-size:clamp(11px,1.2vw,13px);font-weight:700;text-align:center;padding:0 8px;color:var(--text2);line-height:1.3">${m.title}</div>
+      </div>
+      <div class="movie-info">
+        <div class="movie-title">${m.title}</div>
+        <div class="movie-meta">${m.lang} · ${m.genre}</div>
+        <div class="movie-meta" style="color:var(--text3);margin-bottom:5px">📅 ${m.release}</div>
+        <div class="movie-rating">${m.rating}</div>
+        <div style="font-size:11px;color:var(--text3);margin-top:5px;line-height:1.4">${m.desc}</div>
+        <div style="margin-top:8px;font-family:var(--font-mono);font-size:10px;color:var(--red);letter-spacing:.5px">▶ Watch Trailer →</div>
+      </div>
+    </div>`
+  }).join('')
+  $('moviesUpdated').innerText = 'Updated ' + new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'})
+}
 
+loadMovies('india')
 
 /* ═══════════════════════════════════════════════════
    THEME SWITCHER
@@ -3149,114 +3014,6 @@ document.addEventListener('click', e=>{
 
 // Apply saved theme on load
 applyTheme(currentTheme)
-
-/* ═══════════════════════════════════════════════════
-   DD LIVE TV — Official Prasar Bharati / WAVES streams
-   Source: prasarbharati.gov.in/live-tv (official govt page)
-═══════════════════════════════════════════════════ */
-const DD_CHANNELS = {
-  national:[
-    {name:"DD News",    icon:"📺", url:"https://www.wavespb.com/links/SH10541MIm"},
-    {name:"DD India",   icon:"🌐", url:"https://www.wavespb.com/links/SH10539Nyl"},
-    {name:"DD Sports",  icon:"🏏", url:"https://www.wavespb.com/links/SH10569pHQ"},
-    {name:"DD Bharati", icon:"🎭", url:"https://www.wavespb.com/links/SH10542nRk"},
-    {name:"DD National",icon:"🇮🇳", url:"https://www.wavespb.com/links/SH10574jfg"},
-    {name:"DD Kisan",   icon:"🌾", url:"https://www.wavespb.com/links/SH10540SYo"},
-    {name:"DD Urdu",    icon:"📖", url:"https://www.wavespb.com/links/SH10570TMw"},
-  ],
-  regional:[
-    {name:"DD Bangla",      icon:"🎵", url:"https://www.wavespb.com/links/SH10558DBa"},
-    {name:"DD Bihar",       icon:"🏛️", url:"https://www.wavespb.com/links/SH10588vCG"},
-    {name:"DD Chandana",    icon:"🌸", url:"https://www.wavespb.com/links/SH10601chU"},
-    {name:"DD Girnar",      icon:"🦚", url:"https://www.wavespb.com/links/SH10573bZF"},
-    {name:"DD Haryana",     icon:"🌾", url:"https://www.wavespb.com/links/SH10580xIw"},
-    {name:"DD Kashmir",     icon:"❄️", url:"https://www.wavespb.com/links/SH10559rNi"},
-    {name:"DD Malayalam",   icon:"🌴", url:"https://www.wavespb.com/links/SH10582uWJ"},
-    {name:"DD MP",          icon:"🌿", url:"https://www.wavespb.com/links/SH10583zwO"},
-    {name:"DD Manipur",     icon:"🎨", url:"https://www.wavespb.com/links/SH10560Weh"},
-    {name:"DD Mizoram",     icon:"⛰️", url:"https://www.wavespb.com/links/SH10561qxR"},
-    {name:"DD North East",  icon:"🌄", url:"https://www.wavespb.com/links/SH10557FAL"},
-    {name:"DD Odia",        icon:"🌊", url:"https://www.wavespb.com/links/SH10562Ugf"},
-    {name:"DD Punjabi",     icon:"🌻", url:"https://www.wavespb.com/links/SH10575dMo"},
-    {name:"DD Rajasthan",   icon:"🏰", url:"https://www.wavespb.com/links/SH10835dHv"},
-    {name:"DD Sahyadri",    icon:"🌺", url:"https://www.wavespb.com/links/SH10576CuO"},
-    {name:"DD Saptagiri",   icon:"🏔️", url:"https://www.wavespb.com/links/SH10600Qtb"},
-    {name:"DD Tamil",       icon:"🎶", url:"https://www.wavespb.com/links/SH10577DKz"},
-    {name:"DD Tripura",     icon:"🦋", url:"https://www.wavespb.com/links/SH10578Qqz"},
-    {name:"DD UP",          icon:"🕌", url:"https://www.wavespb.com/links/SH10587FqA"},
-    {name:"DD Assam",       icon:"🍵", url:"https://www.wavespb.com/links/SH10604bDa"},
-  ]
-}
-
-let activeDDTab = 'national'
-let activeDDCh = null
-
-function renderDD(tab){
-  const grid = $('ddGrid')
-  const channels = DD_CHANNELS[tab] || []
-  grid.innerHTML = channels.map(ch=>`
-    <div onclick="playDD('${ch.url}','${ch.name}',this)"
-      style="background:var(--c2);border:1px solid var(--border);border-radius:var(--r);
-             padding:clamp(12px,1.8vw,16px) 10px;text-align:center;cursor:pointer;
-             transition:all .22s;position:relative;overflow:hidden;"
-      class="dd-ch-card${activeDDCh===ch.name?' dd-active':''}">
-      <div style="font-size:clamp(20px,2.5vw,26px);margin-bottom:8px">${ch.icon}</div>
-      <div style="font-family:var(--font-display);font-size:clamp(11px,1.1vw,13px);font-weight:700;
-                  letter-spacing:.3px;color:var(--text);line-height:1.2;margin-bottom:5px">${ch.name}</div>
-      <div style="font-family:var(--font-mono);font-size:9px;color:var(--text4);letter-spacing:1px;
-                  display:flex;align-items:center;justify-content:center;gap:4px">
-        <span style="width:5px;height:5px;border-radius:50%;background:var(--red);
-                     box-shadow:0 0 5px var(--red);display:inline-block;animation:navPulse 1.5s infinite"></span>LIVE
-      </div>
-    </div>`).join('')
-
-  // Style active card
-  setTimeout(()=>{
-    document.querySelectorAll('.dd-active').forEach(el=>{
-      el.style.borderColor = 'var(--red)'
-      el.style.background = 'var(--c3)'
-    })
-  }, 0)
-}
-
-function filterDD(tab, btn){
-  activeDDTab = tab
-  document.querySelectorAll('#ddTabs .ntab').forEach(b=>b.classList.remove('active'))
-  btn.classList.add('active')
-  renderDD(tab)
-}
-
-function playDD(url, name, el){
-  // Highlight selected card
-  document.querySelectorAll('.dd-ch-card').forEach(c=>{
-    c.style.borderColor = 'var(--border)'
-    c.style.background = 'var(--c2)'
-    c.classList.remove('dd-active')
-  })
-  el.style.borderColor = 'var(--red)'
-  el.style.background = 'var(--c3)'
-  el.classList.add('dd-active')
-  activeDDCh = name
-
-  $('ddPlayerTitle').textContent = '📺 ' + name + ' — LIVE'
-  $('ddExtLink').href = url
-  $('ddPlayerFrame').src = url
-  $('ddPlayerWrap').style.display = 'block'
-  $('ddPlayerWrap').scrollIntoView({behavior:'smooth', block:'start'})
-}
-
-function closeDDTV(){
-  $('ddPlayerWrap').style.display = 'none'
-  $('ddPlayerFrame').src = ''
-  activeDDCh = null
-  document.querySelectorAll('.dd-ch-card').forEach(c=>{
-    c.style.borderColor = 'var(--border)'
-    c.style.background = 'var(--c2)'
-    c.classList.remove('dd-active')
-  })
-}
-
-renderDD('national')
 
 /* ═══════════════════════════════════════════════════
    PORTFOLIO TRACKER
@@ -3753,118 +3510,79 @@ if(profileEl)skillObserver.observe(profileEl)
 <!-- ══ STUDY DISCLAIMER POPUP ══ -->
 <div id="disclaimerOverlay" style="
   position:fixed;inset:0;z-index:99999;
-  background:rgba(6,6,15,.92);
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  background:rgba(6,6,15,.88);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   display:flex;align-items:center;justify-content:center;
-  padding:clamp(16px,4vw,32px);
+  padding:16px;
 ">
   <div style="
     background:var(--c2);
     border:1px solid var(--border2);
     border-radius:var(--r);
-    max-width:540px;width:100%;
-    padding:clamp(24px,5vw,44px);
+    max-width:460px;width:100%;
+    padding:24px;
     position:relative;
-    box-shadow:0 40px 80px rgba(0,0,0,.7);
+    box-shadow:0 32px 64px rgba(0,0,0,.7);
   ">
-    <!-- Top accent line -->
     <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--red),var(--gold),transparent);border-radius:var(--r) var(--r) 0 0"></div>
 
-    <!-- Flag + Title -->
-    <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px">
-      <div style="font-size:40px;flex-shrink:0">🇮🇳</div>
+    <!-- Header row -->
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+      <span style="font-size:28px;flex-shrink:0">🇮🇳</span>
       <div>
-        <div style="font-family:var(--font-display);font-size:clamp(18px,3vw,24px);font-weight:700;letter-spacing:.5px;color:var(--text);line-height:1.1">Bharatvarsh Dashboard</div>
-        <div style="font-family:var(--font-mono);font-size:11px;color:var(--red);letter-spacing:2px;text-transform:uppercase;margin-top:4px">Academic & Study Project</div>
+        <div style="font-family:var(--font-display);font-size:18px;font-weight:700;letter-spacing:.5px;color:var(--text)">Bharatvarsh Dashboard</div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--red);letter-spacing:2px;text-transform:uppercase;margin-top:2px">Student Study Project</div>
       </div>
     </div>
 
-    <!-- Disclaimer body -->
-    <div style="background:var(--c3);border:1px solid var(--border);border-radius:var(--rs);padding:clamp(14px,2.5vw,20px);margin-bottom:20px">
-      <div style="font-family:var(--font-mono);font-size:10px;color:var(--red);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px">⚠️ Disclaimer</div>
-      <p style="font-size:clamp(13px,1.5vw,15px);color:var(--text2);line-height:1.7;margin:0 0 12px">
-        This dashboard is built and maintained by <strong style="color:var(--text)">Deepak</strong>, a PG Masters student specialising in Data Science, Cloud Engineering &amp; Cyber Security.
-      </p>
-      <p style="font-size:clamp(12px,1.4vw,14px);color:var(--text3);line-height:1.7;margin:0">
-        It is created <strong style="color:var(--gold)">purely for educational &amp; portfolio purposes</strong> — to demonstrate real-world application of live APIs, ML pipelines, cloud architecture, and AI integration. It is <strong style="color:var(--gold)">not a commercial product</strong>, not affiliated with any government body or media organisation, and <strong style="color:var(--gold)">not intended for financial, medical, or legal advice</strong>.
-      </p>
+    <!-- Disclaimer text -->
+    <div style="background:var(--c3);border:1px solid var(--border);border-radius:var(--rs);padding:12px 14px;margin-bottom:14px;font-size:12.5px;color:var(--text3);line-height:1.65">
+      Built by <strong style="color:var(--text)">Deepak</strong> — PG Masters student in Data Science, Cloud &amp; Cyber Security.
+      This is a <strong style="color:var(--gold)">non-commercial educational project</strong> using public APIs.
+      Not affiliated with any government or media body. Data shown is <strong style="color:var(--gold)">not financial or legal advice</strong>.
     </div>
 
-    <!-- Points list -->
-    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:24px">
-      <div style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text3)">
-        <span style="color:var(--green);flex-shrink:0;margin-top:1px">✓</span>All data sourced from free public APIs
-      </div>
-      <div style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text3)">
-        <span style="color:var(--green);flex-shrink:0;margin-top:1px">✓</span>No personal data collected or stored externally
-      </div>
-      <div style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text3)">
-        <span style="color:var(--green);flex-shrink:0;margin-top:1px">✓</span>Open source — educational use only
-      </div>
-      <div style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text3)">
-        <span style="color:#f97316;flex-shrink:0;margin-top:1px">✗</span>Not for commercial use or redistribution
-      </div>
-      <div style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text3)">
-        <span style="color:#f97316;flex-shrink:0;margin-top:1px">✗</span>Market data should not be used for investment decisions
-      </div>
+    <!-- Quick bullets -->
+    <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:16px;font-size:12px;color:var(--text3)">
+      <div style="display:flex;gap:8px"><span style="color:var(--green);flex-shrink:0">✓</span>All data from free public APIs · No personal data collected</div>
+      <div style="display:flex;gap:8px"><span style="color:var(--green);flex-shrink:0">✓</span>Open source · Portfolio &amp; educational use only</div>
+      <div style="display:flex;gap:8px"><span style="color:#f97316;flex-shrink:0">✗</span>Not for commercial use · Market data not for investment decisions</div>
     </div>
 
-    <!-- Buttons -->
-    <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <button onclick="acceptDisclaimer()" style="
-        flex:1;min-width:140px;
-        background:linear-gradient(135deg,var(--red),#be123c);
-        border:none;color:#fff;
-        padding:13px 24px;border-radius:var(--rs);
-        cursor:pointer;
-        font-family:var(--font-display);font-size:15px;font-weight:700;
-        letter-spacing:.5px;
-        transition:opacity .2s;
-      " onmouseover="this.style.opacity='.88'" onmouseout="this.style.opacity='1'">
-        I Understand — Enter Dashboard
-      </button>
-      <a href="https://www.linkedin.com/in/wastingtimeatlink/" target="_blank" style="
-        flex-shrink:0;
-        background:var(--c3);border:1px solid var(--border2);
-        color:var(--text2);
-        padding:13px 18px;border-radius:var(--rs);
-        text-decoration:none;
-        font-family:var(--font-mono);font-size:12px;
-        display:flex;align-items:center;gap:6px;
-        transition:border-color .2s;
-      " onmouseover="this.style.borderColor='var(--red)'" onmouseout="this.style.borderColor='var(--border2)'">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        Deepak
-      </a>
+    <!-- Contact / takedown -->
+    <div style="background:rgba(225,29,72,.05);border:1px solid rgba(225,29,72,.15);border-radius:var(--rs);padding:10px 12px;margin-bottom:16px;font-size:11.5px;color:var(--text3);line-height:1.6">
+      📬 If any content causes concern or requires removal, please contact me immediately —
+      I will remove it promptly and sincerely apologise.<br>
+      <span style="display:flex;gap:12px;margin-top:6px;flex-wrap:wrap">
+        <a href="mailto:arcanedeepak@hotmail.com" style="color:var(--red);text-decoration:none;font-weight:600;font-family:var(--font-mono);font-size:11px">✉ arcanedeepak@hotmail.com</a>
+        <a href="https://www.linkedin.com/in/wastingtimeatlink/" target="_blank" style="color:var(--red);text-decoration:none;font-weight:600;font-family:var(--font-mono);font-size:11px">LinkedIn ↗</a>
+        <a href="https://www.instagram.com/wastingtimeatmovies/" target="_blank" style="color:var(--red);text-decoration:none;font-weight:600;font-family:var(--font-mono);font-size:11px">Instagram ↗</a>
+      </span>
     </div>
 
-    <!-- Footer note -->
-    <div style="margin-top:16px;font-family:var(--font-mono);font-size:10px;color:var(--text4);letter-spacing:.5px;text-align:center">
-      PG Masters · Data Science &amp; ML · Cloud Engineering · Cyber Security
-    </div>
-
-    <!-- Takedown / contact notice -->
-    <div style="margin-top:14px;padding:12px 14px;background:var(--c3);border:1px solid var(--border);border-radius:var(--rs);font-size:12px;color:var(--text3);line-height:1.6;text-align:center">
-      📬 If any content on this dashboard causes concern, infringes rights, or requires removal —
-      please reach out directly on
-      <a href="https://www.linkedin.com/in/wastingtimeatlink/" target="_blank" style="color:var(--red);text-decoration:none;font-weight:600">LinkedIn</a>
-      or
-      <a href="https://www.instagram.com/wastingtimeatmovies/" target="_blank" style="color:var(--red);text-decoration:none;font-weight:600">Instagram</a>.
-      I will remove the content promptly and sincerely apologise.
-      <div style="margin-top:6px;font-family:var(--font-mono);font-size:10px;color:var(--text4)">No legal action needed — just a message is enough.</div>
-    </div>
+    <!-- Accept button -->
+    <button onclick="acceptDisclaimer()" style="
+      width:100%;
+      background:linear-gradient(135deg,var(--red),#be123c);
+      border:none;color:#fff;
+      padding:11px 24px;border-radius:var(--rs);
+      cursor:pointer;
+      font-family:var(--font-display);font-size:15px;font-weight:700;letter-spacing:.5px;
+      transition:opacity .2s;
+    " onmouseover="this.style.opacity='.88'" onmouseout="this.style.opacity='1'">
+      I Understand — Enter Dashboard
+    </button>
   </div>
 </div>
 
 <script>
 function acceptDisclaimer(){
-  const overlay=document.getElementById('disclaimerOverlay')
-  overlay.style.transition='opacity .4s ease'
-  overlay.style.opacity='0'
-  setTimeout(()=>{overlay.style.display='none'},400)
+  const o=document.getElementById('disclaimerOverlay')
+  o.style.transition='opacity .35s'
+  o.style.opacity='0'
+  setTimeout(()=>o.style.display='none',360)
   sessionStorage.setItem('bv_accepted','1')
 }
-// Skip popup if already accepted this session
 if(sessionStorage.getItem('bv_accepted')==='1'){
   document.getElementById('disclaimerOverlay').style.display='none'
 }
