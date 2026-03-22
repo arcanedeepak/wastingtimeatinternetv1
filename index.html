@@ -99,8 +99,55 @@ body.theme-light{
   --c0:#f0f4f8;--c1:#e2e8f0;--c2:#ffffff;--c3:#f8fafc;--c4:#edf2f7;--c5:#cbd5e1;--c6:#b0bec5;
   --text:#0f172a;--text2:#1e293b;--text3:#475569;--text4:#94a3b8;
   --border:rgba(0,0,0,.08);--border2:rgba(0,0,0,.14);
-  --red:#e11d48;--gold:#d97706;--green:#059669;--ice:#0284c7;
+  --red:#e11d48;--red2:#be123c;--red-glow:rgba(225,29,72,.1);
+  --gold:#d97706;--green:#059669;--ice:#0284c7;
 }
+body.theme-light nav{background:rgba(240,244,248,.96);box-shadow:0 1px 0 rgba(0,0,0,.08),0 4px 20px rgba(0,0,0,.08)}
+body.theme-light .nav-logo{background:none;-webkit-text-fill-color:var(--red);color:var(--red);filter:none}
+body.theme-light .nav-logo::before{background:var(--red);box-shadow:0 0 8px var(--red);filter:none}
+body.theme-light nav a:hover{background:rgba(0,0,0,.06) !important}
+body.theme-light .hero{background:linear-gradient(180deg,var(--c1) 0%,var(--c0) 100%)}
+body.theme-light #istClock{background:none;-webkit-text-fill-color:var(--red);color:var(--red);text-shadow:none;filter:none;animation:none}
+body.theme-light .card{background:#fff !important;box-shadow:0 2px 12px rgba(0,0,0,.07) !important;border-color:rgba(0,0,0,.08) !important}
+body.theme-light .card:hover{box-shadow:0 8px 24px rgba(0,0,0,.12) !important;border-color:rgba(225,29,72,.2) !important}
+body.theme-light .news-card{background:#fff !important;border-color:rgba(0,0,0,.08) !important}
+body.theme-light .mo-card{background:#fff !important}
+body.theme-light .crypto-card{background:#fff !important}
+body.theme-light .weather-box{background:#fff !important}
+body.theme-light .aqi-box{background:#fff !important}
+body.theme-light .fuel-card{background:#fff !important}
+body.theme-light .cricket-card{background:#fff !important}
+body.theme-light .ipo-card{background:#fff !important}
+body.theme-light .isro-card{background:#fff !important}
+body.theme-light .metal-card{background:#fff !important}
+body.theme-light .econ-card{background:#fff !important}
+body.theme-light .movie-card{background:#fff !important}
+body.theme-light .movie-poster-ph{background:linear-gradient(145deg,var(--c3),var(--c4)) !important}
+body.theme-light .panchang-card{background:#fff !important}
+body.theme-light .holiday-card{background:#fff !important}
+body.theme-light .rate-box{background:var(--c3) !important}
+body.theme-light .state-btn{background:var(--c3) !important;color:var(--text2)}
+body.theme-light .state-detail{background:#fff}
+body.theme-light .calc-card{background:#fff !important}
+body.theme-light .calc-input,.body.theme-light .calc-select{background:var(--c3);color:var(--text)}
+body.theme-light .calc-result{background:rgba(5,150,105,.08) !important;border-color:rgba(5,150,105,.2) !important}
+body.theme-light .currency-converter{background:#fff !important}
+body.theme-light .theme-popup{background:#fff;box-shadow:0 16px 40px rgba(0,0,0,.14)}
+body.theme-light .ntab{background:var(--c3);border-color:rgba(0,0,0,.1);color:var(--text3)}
+body.theme-light .ntab:hover{background:var(--c4);color:var(--text)}
+body.theme-light .mtab{background:var(--c3);border-color:rgba(0,0,0,.1);color:var(--text3)}
+body.theme-light .refresh-btn{background:var(--c3);border-color:rgba(0,0,0,.1);color:var(--text3)}
+body.theme-light .section-head::after{opacity:.35}
+body.theme-light footer{background:linear-gradient(180deg,var(--c1),var(--c0))}
+body.theme-light #disclaimerOverlay>div{background:#fff !important;border-color:rgba(0,0,0,.12) !important}
+body.theme-light .news-ribbon{background:var(--c1);border-color:rgba(0,0,0,.08)}
+body.theme-light .ticker-time{background:var(--c2);color:var(--text3)}
+body.theme-light #istDate{color:var(--text3)}
+body.theme-light .pop-counter{background:linear-gradient(135deg,#fff,var(--c3)) !important}
+body.theme-light .profile-section{background:linear-gradient(180deg,var(--c1) 0%,var(--c0) 100%)}
+body.theme-light .skill-bar{background:var(--c3) !important}
+body.theme-light .ipl-table td{border-color:rgba(0,0,0,.08)}
+body.theme-light .ipl-table th{border-color:rgba(0,0,0,.12)}
 body.theme-saffron{
   --c0:#0d0800;--c1:#130c00;--c2:#1a1100;--c3:#221600;--c4:#2c1d00;--c5:#3d2800;--c6:#4f3500;
   --text:#fff8f0;--text2:#ffe8c8;--text3:#c8a060;--text4:#7a5c30;
@@ -115,16 +162,6 @@ body.theme-ocean{
   --red:#38bdf8;--gold:#fbbf24;--green:#22c55e;--ice:#a78bfa;
   --red-glow:rgba(56,189,248,.15);--glow-red:0 0 30px rgba(56,189,248,.2);
 }
-
-/* Theme-aware adjustments */
-body.theme-light nav{background:rgba(240,244,248,.95)}
-body.theme-light .nav-logo{color:var(--red)}
-body.theme-light .nav-logo::before{background:var(--red);box-shadow:0 0 8px var(--red)}
-body.theme-light .hero{background:linear-gradient(180deg,var(--c1) 0%,var(--c0) 100%)}
-body.theme-light #istClock{text-shadow:none;color:var(--red)}
-body.theme-light .card{box-shadow:0 2px 12px rgba(0,0,0,.08)}
-
-/* Theme toggle button */
 .theme-btn{
   display:flex;align-items:center;gap:5px;
   padding:5px 9px;border-radius:5px;
@@ -1789,7 +1826,7 @@ nav{
 
 <!-- ══ NAV ══ -->
 <nav>
-  <div class="nav-logo">BHARATVARSH</div>
+  <div class="nav-logo">🇮🇳 BHARATVARSH</div>
   <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
   <ul id="navMenu">
     <li><a href="#news">News</a></li>
@@ -1825,10 +1862,10 @@ nav{
     <button class="theme-btn" id="themeBtn" onclick="toggleThemeMenu()">🎨 Theme</button>
     <div class="theme-popup" id="themePopup">
       <div class="theme-popup-title">Choose Theme</div>
-      <div class="theme-opt active" id="opt-dark" onclick="setTheme('dark')">
+      <div class="theme-opt" id="opt-dark" onclick="setTheme('dark')">
         <span class="theme-swatch" style="background:linear-gradient(135deg,#06060f,#1c1c35)"></span> Dark
       </div>
-      <div class="theme-opt" id="opt-light" onclick="setTheme('light')">
+      <div class="theme-opt active" id="opt-light" onclick="setTheme('light')">
         <span class="theme-swatch" style="background:linear-gradient(135deg,#e2e8f0,#ffffff)"></span> Light
       </div>
       <div class="theme-opt" id="opt-saffron" onclick="setTheme('saffron')">
@@ -2260,7 +2297,7 @@ nav{
 <!-- ══ MOVIES ══ -->
 <section class="container" id="movies">
   <div class="section-head">
-    <h2 class="section-title">🎬 New Movie Releases <span>MAR 2026</span></h2>
+    <h2 class="section-title">🎬 New Movie Releases <span>MAR–APR 2026</span></h2>
     <div class="section-meta">
       <span class="updated-text" id="moviesUpdated"></span>
       <button class="refresh-btn" onclick="loadMovies(currentMovieTab)">↻ Refresh</button>
@@ -3395,50 +3432,53 @@ $("stateElec").innerHTML=stateResults.map(s=>`<div style="display:flex;justify-c
 ═══════════════════════════════════════════════════ */
 let currentMovieTab = 'india'
 
+// March 2026 — current & upcoming releases
 const MOVIES_DATA = {
   india: [
-    {title:"Chhaava",lang:"Hindi",genre:"Historical Drama",release:"Feb 14, 2026",status:"new",rating:"⭐ 8.4",desc:"The story of Maratha warrior Sambhaji Maharaj.",trailer:"https://www.youtube.com/results?search_query=Chhaava+2026+trailer"},
-    {title:"Sikandar",lang:"Hindi",genre:"Action",release:"Mar 29, 2026",status:"soon",rating:"⭐ —",desc:"Salman Khan blockbuster releasing on Eid 2026.",trailer:"https://www.youtube.com/results?search_query=Sikandar+2026+Salman+trailer"},
-    {title:"Raid 2",lang:"Hindi",genre:"Thriller",release:"Mar 14, 2026",status:"new",rating:"⭐ 7.6",desc:"Ajay Devgn returns as the fearless income tax officer.",trailer:"https://www.youtube.com/results?search_query=Raid+2+2026+trailer"},
-    {title:"Sky Force",lang:"Hindi",genre:"Action / War",release:"Jan 24, 2026",status:"ott",rating:"⭐ 8.1",desc:"India's first airstrike — true story. Now streaming.",trailer:"https://www.youtube.com/results?search_query=Sky+Force+2026+trailer"},
-    {title:"Deva",lang:"Hindi",genre:"Action",release:"Jan 31, 2026",status:"ott",rating:"⭐ 7.2",desc:"Shahid Kapoor in a gritty Mumbai cop thriller.",trailer:"https://www.youtube.com/results?search_query=Deva+2026+Shahid+trailer"},
-    {title:"Loveyapa",lang:"Hindi",genre:"Romantic Comedy",release:"Feb 7, 2026",status:"ott",rating:"⭐ 6.8",desc:"Aamir Khan's son Junaid in a phone-swap love story.",trailer:"https://www.youtube.com/results?search_query=Loveyapa+2026+trailer"},
-    {title:"Kesari Chapter 2",lang:"Hindi",genre:"Historical",release:"Apr 18, 2026",status:"soon",rating:"⭐ —",desc:"Akshay Kumar continues the Jallianwala Bagh saga.",trailer:"https://www.youtube.com/results?search_query=Kesari+Chapter+2+trailer"},
-    {title:"War 2",lang:"Hindi",genre:"Action/Spy",release:"Aug 14, 2026",status:"soon",rating:"⭐ —",desc:"Hrithik Roshan vs Jr NTR in the Spy Universe sequel.",trailer:"https://www.youtube.com/results?search_query=War+2+2026+trailer"},
+    {title:"Sikandar",lang:"Hindi",genre:"Action",release:"Mar 29, 2026",status:"new",rating:"⭐ 8.1",desc:"Salman Khan's Eid 2026 blockbuster — action-packed spectacle directed by A.R. Murugadoss.",trailer:"https://www.youtube.com/results?search_query=Sikandar+2026+trailer"},
+    {title:"Raid 2",lang:"Hindi",genre:"Thriller",release:"Mar 14, 2026",status:"new",rating:"⭐ 7.8",desc:"Ajay Devgn returns as IRS officer Amay Patnaik in this tense corruption thriller sequel.",trailer:"https://www.youtube.com/results?search_query=Raid+2+2026+trailer"},
+    {title:"Kesari Chapter 2",lang:"Hindi",genre:"Historical",release:"Apr 18, 2026",status:"soon",rating:"⭐ —",desc:"Akshay Kumar as a lawyer fighting the Jallianwala Bagh massacre case — most awaited April release.",trailer:"https://www.youtube.com/results?search_query=Kesari+Chapter+2+2026+trailer"},
+    {title:"Good Bad Ugly",lang:"Tamil",genre:"Action Comedy",release:"Apr 10, 2026",status:"soon",rating:"⭐ —",desc:"Ajith Kumar in a stylish mass entertainer directed by Adhik Ravichandran. Telugu & Tamil.",trailer:"https://www.youtube.com/results?search_query=Good+Bad+Ugly+Ajith+2026+trailer"},
+    {title:"Thandel",lang:"Telugu",genre:"Action Drama",release:"Feb 20, 2026",status:"ott",rating:"⭐ 7.6",desc:"Naga Chaitanya & Sai Pallavi in the true story of Indian fishermen caught in Pakistani waters.",trailer:"https://www.youtube.com/results?search_query=Thandel+2026+trailer"},
+    {title:"Chhaava",lang:"Hindi",genre:"Historical Epic",release:"Feb 14, 2026",status:"ott",rating:"⭐ 8.4",desc:"Vicky Kaushal as Sambhaji Maharaj — massive historical epic. Now on streaming.",trailer:"https://www.youtube.com/results?search_query=Chhaava+2026+trailer"},
+    {title:"Retro",lang:"Tamil",genre:"Romantic Action",release:"May 1, 2026",status:"soon",rating:"⭐ —",desc:"Suriya and Pooja Hegde in Karthik Subbaraj's stylish 80s-set love story.",trailer:"https://www.youtube.com/results?search_query=Retro+Suriya+2026+trailer"},
+    {title:"Coolie",lang:"Tamil",genre:"Action",release:"May 2026",status:"soon",rating:"⭐ —",desc:"Rajinikanth as a railway cooler-turned-action hero — Lokesh Kanagaraj directorial.",trailer:"https://www.youtube.com/results?search_query=Coolie+Rajinikanth+2026+trailer"},
+    {title:"War 2",lang:"Hindi",genre:"Action/Spy",release:"Aug 14, 2026",status:"soon",rating:"⭐ —",desc:"Hrithik Roshan vs Jr NTR — the biggest YRF spy universe clash.",trailer:"https://www.youtube.com/results?search_query=War+2+2026+trailer"},
+    {title:"Sitaare Zameen Par",lang:"Hindi",genre:"Drama",release:"Jun 2026",status:"soon",rating:"⭐ —",desc:"Aamir Khan's spiritual sequel to Taare Zameen Par — special education theme.",trailer:"https://www.youtube.com/results?search_query=Sitaare+Zameen+Par+2026+trailer"},
   ],
   bollywood: [
-    {title:"Chhaava",lang:"Hindi",genre:"Historical Drama",release:"Feb 14, 2026",status:"new",rating:"⭐ 8.4",desc:"The story of Maratha warrior Sambhaji Maharaj.",trailer:"https://www.youtube.com/results?search_query=Chhaava+2026+trailer"},
-    {title:"Sikandar",lang:"Hindi",genre:"Action",release:"Mar 29, 2026",status:"soon",rating:"⭐ —",desc:"Salman Khan Eid blockbuster 2026.",trailer:"https://www.youtube.com/results?search_query=Sikandar+2026+Salman+trailer"},
-    {title:"Raid 2",lang:"Hindi",genre:"Thriller",release:"Mar 14, 2026",status:"new",rating:"⭐ 7.6",desc:"Ajay Devgn's income tax sequel.",trailer:"https://www.youtube.com/results?search_query=Raid+2+2026+trailer"},
-    {title:"Sky Force",lang:"Hindi",genre:"War / Action",release:"Jan 2026",status:"ott",rating:"⭐ 8.1",desc:"True story of India's first airstrike.",trailer:"https://www.youtube.com/results?search_query=Sky+Force+2026+trailer"},
-    {title:"Kesari Chapter 2",lang:"Hindi",genre:"Historical",release:"Apr 18, 2026",status:"soon",rating:"⭐ —",desc:"Akshay Kumar — Jallianwala Bagh saga continues.",trailer:"https://www.youtube.com/results?search_query=Kesari+Chapter+2+trailer"},
-    {title:"War 2",lang:"Hindi",genre:"Action/Spy",release:"Aug 14, 2026",status:"soon",rating:"⭐ —",desc:"Hrithik vs Jr NTR — Spy Universe.",trailer:"https://www.youtube.com/results?search_query=War+2+2026+trailer"},
-    {title:"Sitaare Zameen Par",lang:"Hindi",genre:"Drama",release:"Jun 2026",status:"soon",rating:"⭐ —",desc:"Aamir Khan's sequel to Taare Zameen Par.",trailer:"https://www.youtube.com/results?search_query=Sitaare+Zameen+Par+trailer"},
-    {title:"Lahore 1947",lang:"Hindi",genre:"Period Drama",release:"Aug 15, 2026",status:"soon",rating:"⭐ —",desc:"Rajkumar Santoshi's partition epic starring Sunny Deol.",trailer:"https://www.youtube.com/results?search_query=Lahore+1947+trailer"},
+    {title:"Sikandar",lang:"Hindi",genre:"Action",release:"Mar 29, 2026",status:"new",rating:"⭐ 8.1",desc:"Salman Khan's Eid 2026 blockbuster — directed by A.R. Murugadoss.",trailer:"https://www.youtube.com/results?search_query=Sikandar+2026+trailer"},
+    {title:"Raid 2",lang:"Hindi",genre:"Thriller",release:"Mar 14, 2026",status:"new",rating:"⭐ 7.8",desc:"Ajay Devgn's income tax sequel — corruption, drama, action.",trailer:"https://www.youtube.com/results?search_query=Raid+2+2026+trailer"},
+    {title:"Chhaava",lang:"Hindi",genre:"Historical Epic",release:"Feb 14, 2026",status:"ott",rating:"⭐ 8.4",desc:"Vicky Kaushal as Sambhaji Maharaj. Blockbuster — now streaming.",trailer:"https://www.youtube.com/results?search_query=Chhaava+2026+trailer"},
+    {title:"Kesari Chapter 2",lang:"Hindi",genre:"Historical",release:"Apr 18, 2026",status:"soon",rating:"⭐ —",desc:"Akshay Kumar fights for justice post-Jallianwala Bagh. Releasing April 2026.",trailer:"https://www.youtube.com/results?search_query=Kesari+Chapter+2+2026+trailer"},
+    {title:"Sitaare Zameen Par",lang:"Hindi",genre:"Drama",release:"Jun 2026",status:"soon",rating:"⭐ —",desc:"Aamir Khan — special education themed sequel to Taare Zameen Par.",trailer:"https://www.youtube.com/results?search_query=Sitaare+Zameen+Par+2026+trailer"},
+    {title:"War 2",lang:"Hindi",genre:"Action/Spy",release:"Aug 14, 2026",status:"soon",rating:"⭐ —",desc:"Hrithik Roshan vs Jr NTR — Independence Day 2026 release.",trailer:"https://www.youtube.com/results?search_query=War+2+2026+trailer"},
+    {title:"Lahore 1947",lang:"Hindi",genre:"Period Drama",release:"Aug 15, 2026",status:"soon",rating:"⭐ —",desc:"Sunny Deol in Rajkumar Santoshi's partition epic.",trailer:"https://www.youtube.com/results?search_query=Lahore+1947+2026+trailer"},
+    {title:"Alpha",lang:"Hindi",genre:"Action/Spy",release:"Dec 2026",status:"soon",rating:"⭐ —",desc:"Alia Bhatt leads the YRF Spy Universe — first female-led entry.",trailer:"https://www.youtube.com/results?search_query=Alpha+Alia+Bhatt+YRF+2026+trailer"},
   ],
   south: [
-    {title:"Coolie",lang:"Tamil",genre:"Action",release:"May 2026",status:"soon",rating:"⭐ —",desc:"Rajinikanth's explosive pan-India action film.",trailer:"https://www.youtube.com/results?search_query=Coolie+Rajinikanth+2026+trailer"},
-    {title:"Thandel",lang:"Telugu",genre:"Action Romance",release:"Feb 7, 2026",status:"new",rating:"⭐ 7.8",desc:"Naga Chaitanya stars in this real-story Telugu film.",trailer:"https://www.youtube.com/results?search_query=Thandel+2026+trailer"},
-    {title:"Good Bad Ugly",lang:"Tamil",genre:"Action Comedy",release:"Apr 10, 2026",status:"soon",rating:"⭐ —",desc:"Ajith Kumar's high-octane Easter release.",trailer:"https://www.youtube.com/results?search_query=Good+Bad+Ugly+Ajith+2026+trailer"},
-    {title:"Retro",lang:"Tamil",genre:"Romantic Action",release:"May 1, 2026",status:"soon",rating:"⭐ —",desc:"Suriya and Pooja Hegde in Karthik Subbaraj's film.",trailer:"https://www.youtube.com/results?search_query=Retro+Suriya+2026+trailer"},
-    {title:"Jailer 2",lang:"Tamil",genre:"Action",release:"2026",status:"soon",rating:"⭐ —",desc:"Rajinikanth sequel to the blockbuster Jailer.",trailer:"https://www.youtube.com/results?search_query=Jailer+2+Rajinikanth+trailer"},
-    {title:"Pushpa 3",lang:"Telugu",genre:"Action Drama",release:"2026",status:"soon",rating:"⭐ —",desc:"Allu Arjun's Pushpa saga continues — most awaited.",trailer:"https://www.youtube.com/results?search_query=Pushpa+3+2026+trailer"},
-    {title:"Game Changer",lang:"Telugu",genre:"Political Action",release:"Jan 2026",status:"ott",rating:"⭐ 6.5",desc:"Ram Charan's political drama — now on streaming.",trailer:"https://www.youtube.com/results?search_query=Game+Changer+2026+trailer"},
-    {title:"Kalki 2898 AD Part 2",lang:"Telugu",genre:"Sci-Fi Epic",release:"2026",status:"soon",rating:"⭐ —",desc:"The mythological sci-fi sequel everyone's waiting for.",trailer:"https://www.youtube.com/results?search_query=Kalki+2898+AD+Part+2+trailer"},
+    {title:"Good Bad Ugly",lang:"Tamil",genre:"Action Comedy",release:"Apr 10, 2026",status:"soon",rating:"⭐ —",desc:"Ajith Kumar in a stylish mass entertainer. Easter 2026.",trailer:"https://www.youtube.com/results?search_query=Good+Bad+Ugly+Ajith+2026+trailer"},
+    {title:"Thandel",lang:"Telugu",genre:"Action Drama",release:"Feb 20, 2026",status:"ott",rating:"⭐ 7.6",desc:"Naga Chaitanya & Sai Pallavi — real story of Indian fishermen. Now streaming.",trailer:"https://www.youtube.com/results?search_query=Thandel+2026+trailer"},
+    {title:"Retro",lang:"Tamil",genre:"Romantic Action",release:"May 1, 2026",status:"soon",rating:"⭐ —",desc:"Suriya and Pooja Hegde — Karthik Subbaraj's 80s-era stylish film.",trailer:"https://www.youtube.com/results?search_query=Retro+Suriya+2026+trailer"},
+    {title:"Coolie",lang:"Tamil",genre:"Action",release:"May 2026",status:"soon",rating:"⭐ —",desc:"Rajinikanth — Lokesh Kanagaraj's pan-India action spectacle.",trailer:"https://www.youtube.com/results?search_query=Coolie+Rajinikanth+2026+trailer"},
+    {title:"Pushpa 3",lang:"Telugu",genre:"Action Drama",release:"2026",status:"soon",rating:"⭐ —",desc:"Allu Arjun's Pushpa Raj saga concludes — after Pushpa 2's record-breaking run.",trailer:"https://www.youtube.com/results?search_query=Pushpa+3+2026+trailer"},
+    {title:"Kalki 2898 AD Part 2",lang:"Telugu",genre:"Sci-Fi Epic",release:"Late 2026",status:"soon",rating:"⭐ —",desc:"The mythological sci-fi sequel — Prabhas, Deepika, Amitabh return.",trailer:"https://www.youtube.com/results?search_query=Kalki+2898+AD+Part+2+trailer"},
+    {title:"Game Changer",lang:"Telugu",genre:"Political Action",release:"Jan 10, 2026",status:"ott",rating:"⭐ 6.4",desc:"Ram Charan's political drama — now on streaming platforms.",trailer:"https://www.youtube.com/results?search_query=Game+Changer+2026+trailer"},
+    {title:"Thudarum",lang:"Malayalam",genre:"Thriller",release:"Mar 27, 2026",status:"new",rating:"⭐ 8.2",desc:"Mohanlal's highly anticipated Malayalam crime thriller — releasing this week.",trailer:"https://www.youtube.com/results?search_query=Thudarum+Mohanlal+2026+trailer"},
   ],
   english: [
-    {title:"Mission: Impossible — The Final Reckoning",lang:"English",genre:"Action/Spy",release:"May 23, 2026",status:"soon",rating:"⭐ —",desc:"Tom Cruise's final MI chapter. Global spy thriller.",trailer:"https://www.youtube.com/results?search_query=Mission+Impossible+Final+Reckoning+trailer"},
-    {title:"Avatar 3",lang:"English",genre:"Sci-Fi",release:"Dec 19, 2026",status:"soon",rating:"⭐ —",desc:"James Cameron's third Pandora adventure.",trailer:"https://www.youtube.com/results?search_query=Avatar+3+2026+trailer"},
-    {title:"Jurassic World Rebirth",lang:"English",genre:"Action/Adventure",release:"Jul 2, 2026",status:"soon",rating:"⭐ —",desc:"A new chapter in the Jurassic saga with Scarlett Johansson.",trailer:"https://www.youtube.com/results?search_query=Jurassic+World+Rebirth+2026+trailer"},
-    {title:"Superman (2025/26)",lang:"English",genre:"Superhero",release:"Jul 11, 2025",status:"new",rating:"⭐ 7.5",desc:"James Gunn's DCU reboot with David Corenswet.",trailer:"https://www.youtube.com/results?search_query=Superman+2025+DC+trailer"},
-    {title:"Thunderbolts*",lang:"English",genre:"Superhero",release:"May 2, 2025",status:"ott",rating:"⭐ 7.8",desc:"Marvel's antiheroes assemble. Now streaming.",trailer:"https://www.youtube.com/results?search_query=Thunderbolts+Marvel+2025+trailer"},
-    {title:"The Fantastic Four: First Steps",lang:"English",genre:"Superhero",release:"Jul 25, 2025",status:"ott",rating:"⭐ 7.4",desc:"Marvel's First Family in a retro-60s universe.",trailer:"https://www.youtube.com/results?search_query=Fantastic+Four+First+Steps+Marvel+trailer"},
-    {title:"Wicked: For Good",lang:"English",genre:"Musical",release:"Nov 21, 2025",status:"ott",rating:"⭐ 8.0",desc:"The spectacular conclusion to Wicked Part 2.",trailer:"https://www.youtube.com/results?search_query=Wicked+For+Good+2025+trailer"},
-    {title:"Sinners",lang:"English",genre:"Horror/Thriller",release:"Apr 18, 2025",status:"ott",rating:"⭐ 8.2",desc:"Ryan Coogler's acclaimed vampire thriller. Now streaming.",trailer:"https://www.youtube.com/results?search_query=Sinners+2025+Ryan+Coogler+trailer"},
-    {title:"The Accountant 2",lang:"English",genre:"Action/Thriller",release:"Apr 25, 2025",status:"ott",rating:"⭐ 7.6",desc:"Ben Affleck returns as the autistic assassin-accountant.",trailer:"https://www.youtube.com/results?search_query=The+Accountant+2+trailer"},
-    {title:"Novocaine",lang:"English",genre:"Action",release:"Mar 14, 2025",status:"ott",rating:"⭐ 7.1",desc:"Jack Quaid stars as a man who can't feel pain.",trailer:"https://www.youtube.com/results?search_query=Novocaine+2025+trailer"},
-    {title:"F1: The Movie",lang:"English",genre:"Sport/Action",release:"Jun 27, 2025",status:"soon",rating:"⭐ —",desc:"Brad Pitt's Formula 1 film shot at real Grand Prix races.",trailer:"https://www.youtube.com/results?search_query=F1+Movie+2025+Brad+Pitt+trailer"},
-    {title:"Ballerina",lang:"English",genre:"Action/Thriller",release:"Jun 6, 2025",status:"soon",rating:"⭐ —",desc:"John Wick universe — Ana de Armas as an assassin.",trailer:"https://www.youtube.com/results?search_query=Ballerina+John+Wick+2025+trailer"},
+    {title:"A Minecraft Movie",lang:"English",genre:"Adventure/Comedy",release:"Apr 4, 2026",status:"soon",rating:"⭐ —",desc:"Live-action Minecraft film with Jack Black as Steve — massive global anticipated release.",trailer:"https://www.youtube.com/results?search_query=Minecraft+Movie+2026+trailer"},
+    {title:"Mission: Impossible — The Final Reckoning",lang:"English",genre:"Action/Spy",release:"May 23, 2026",status:"soon",rating:"⭐ —",desc:"Tom Cruise's final MI chapter — biggest action film of summer 2026.",trailer:"https://www.youtube.com/results?search_query=Mission+Impossible+Final+Reckoning+trailer"},
+    {title:"Jurassic World Rebirth",lang:"English",genre:"Action/Adventure",release:"Jul 4, 2026",status:"soon",rating:"⭐ —",desc:"Scarlett Johansson leads the new era of Jurassic films.",trailer:"https://www.youtube.com/results?search_query=Jurassic+World+Rebirth+2026+trailer"},
+    {title:"Avatar: Fire and Ash",lang:"English",genre:"Sci-Fi/Epic",release:"Dec 19, 2026",status:"soon",rating:"⭐ —",desc:"James Cameron's third Pandora adventure — most expensive film ever made.",trailer:"https://www.youtube.com/results?search_query=Avatar+Fire+Ash+2026+trailer"},
+    {title:"Superman",lang:"English",genre:"Superhero",release:"Jul 11, 2025",status:"ott",rating:"⭐ 7.5",desc:"James Gunn's DCU reboot with David Corenswet. Now streaming.",trailer:"https://www.youtube.com/results?search_query=Superman+2025+James+Gunn+trailer"},
+    {title:"Captain America: Brave New World",lang:"English",genre:"Superhero",release:"Feb 14, 2025",status:"ott",rating:"⭐ 6.8",desc:"Anthony Mackie as the new Cap — now on Disney+.",trailer:"https://www.youtube.com/results?search_query=Captain+America+Brave+New+World+trailer"},
+    {title:"Thunderbolts*",lang:"English",genre:"Superhero",release:"May 2, 2025",status:"ott",rating:"⭐ 7.8",desc:"Marvel's antiheroes — critical hit. Now streaming.",trailer:"https://www.youtube.com/results?search_query=Thunderbolts+Marvel+2025+trailer"},
+    {title:"Sinners",lang:"English",genre:"Horror/Thriller",release:"Apr 18, 2025",status:"ott",rating:"⭐ 8.3",desc:"Ryan Coogler's vampire masterpiece starring Michael B. Jordan. Streaming now.",trailer:"https://www.youtube.com/results?search_query=Sinners+2025+Ryan+Coogler+trailer"},
+    {title:"The Monkey",lang:"English",genre:"Horror/Comedy",release:"Feb 21, 2025",status:"ott",rating:"⭐ 7.0",desc:"Stephen King adaptation — a cursed toy monkey kills everyone near it.",trailer:"https://www.youtube.com/results?search_query=The+Monkey+2025+Stephen+King+trailer"},
+    {title:"Companion",lang:"English",genre:"Sci-Fi Thriller",release:"Jan 31, 2025",status:"ott",rating:"⭐ 7.4",desc:"A romantic thriller about AI — streaming now. Genuinely surprising.",trailer:"https://www.youtube.com/results?search_query=Companion+2025+thriller+trailer"},
+    {title:"F1",lang:"English",genre:"Sport/Action",release:"Jun 27, 2025",status:"soon",rating:"⭐ —",desc:"Brad Pitt's Formula 1 film shot at real Grand Prix races — summer 2025.",trailer:"https://www.youtube.com/results?search_query=F1+Movie+2025+Brad+Pitt+trailer"},
+    {title:"Ballerina",lang:"English",genre:"Action",release:"Jun 6, 2025",status:"soon",rating:"⭐ —",desc:"Ana de Armas as an assassin in the John Wick universe.",trailer:"https://www.youtube.com/results?search_query=Ballerina+John+Wick+2025+trailer"},
   ]
 }
 
@@ -3479,7 +3519,7 @@ loadMovies('india')
    THEME SWITCHER
 ═══════════════════════════════════════════════════ */
 const THEMES = ['dark','light','saffron','ocean']
-let currentTheme = localStorage.getItem('dashTheme') || 'dark'
+let currentTheme = localStorage.getItem('dashTheme') || 'light'
 
 function applyTheme(t){
   document.body.classList.remove(...THEMES.map(x=>'theme-'+x))
