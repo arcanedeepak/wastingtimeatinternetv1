@@ -166,15 +166,16 @@ body.theme-light .card{box-shadow:0 2px 12px rgba(0,0,0,.08)}
 ═══════════════════════════════════════════ */
 nav{
   display:flex;justify-content:space-between;align-items:center;
-  padding:0 clamp(10px,2vw,20px);
-  height:var(--nav-h);
+  padding:6px clamp(10px,2vw,20px);
+  min-height:var(--nav-h);height:auto;
   background:rgba(6,6,15,.92);
   backdrop-filter:blur(24px) saturate(1.4);
   -webkit-backdrop-filter:blur(24px) saturate(1.4);
   position:sticky;top:0;z-index:9999;
   border-bottom:1px solid var(--border2);
   box-shadow:0 1px 40px rgba(0,0,0,.5);
-  gap:8px;
+  gap:6px;
+  flex-wrap:wrap;
 }
 .nav-logo{
   font-family:var(--font-display);
@@ -206,13 +207,16 @@ nav{
 .nav-toggle.open span:nth-child(2){opacity:0}
 .nav-toggle.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 nav ul{
-  display:flex;flex-wrap:nowrap;gap:1px;
-  list-style:none;align-items:center;justify-content:center;
-  overflow-x:auto;overflow-y:hidden;
-  scrollbar-width:none;-ms-overflow-style:none;
+  display:flex;
+  flex-wrap:wrap;
+  gap:2px;
+  list-style:none;
+  align-items:center;
+  justify-content:center;
   flex:1;
+  min-width:0;
+  padding:2px 0;
 }
-nav ul::-webkit-scrollbar{display:none}
 nav a{
   color:var(--text3);
   font-size:10.5px;
@@ -1277,8 +1281,8 @@ footer a:hover{opacity:.7}
   .news-grid{grid-template-columns:repeat(4,1fr)}
 }
 nav{
-  padding-left:max(clamp(14px,4vw,32px),env(safe-area-inset-left));
-  padding-right:max(clamp(14px,4vw,32px),env(safe-area-inset-right));
+  padding-left:max(clamp(10px,2vw,20px),env(safe-area-inset-left));
+  padding-right:max(clamp(10px,2vw,20px),env(safe-area-inset-right));
 }
 .container{
   padding-left:max(clamp(14px,4vw,32px),env(safe-area-inset-left));
@@ -3554,7 +3558,7 @@ if(profileEl)skillObserver.observe(profileEl)
       📬 If any content causes concern or requires removal, please contact me immediately —
       I will remove it promptly and sincerely apologise.<br>
       <span style="display:flex;gap:12px;margin-top:6px;flex-wrap:wrap">
-        <a href="mailto:arcanedeepak@hotmail.com" style="color:var(--red);text-decoration:none;font-weight:600;font-family:var(--font-mono);font-size:11px">✉ arcanedeepak@hotmail.com</a>
+        <a href="/cdn-cgi/l/email-protection#0f6e7d6c6e616a6b6a6a7f6e644f67607b626e6663216c6062" style="color:var(--red);text-decoration:none;font-weight:600;font-family:var(--font-mono);font-size:11px">✉ <span class="__cf_email__" data-cfemail="adccdfceccc3c8c9c8c8ddccc6edc5c2d9c0ccc4c183cec2c0">[email&#160;protected]</span></a>
         <a href="https://www.linkedin.com/in/wastingtimeatlink/" target="_blank" style="color:var(--red);text-decoration:none;font-weight:600;font-family:var(--font-mono);font-size:11px">LinkedIn ↗</a>
         <a href="https://www.instagram.com/wastingtimeatmovies/" target="_blank" style="color:var(--red);text-decoration:none;font-weight:600;font-family:var(--font-mono);font-size:11px">Instagram ↗</a>
       </span>
@@ -3575,15 +3579,7 @@ if(profileEl)skillObserver.observe(profileEl)
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function acceptDisclaimer(){
   const o=document.getElementById('disclaimerOverlay')
-  o.style.transition='opacity .35s'
-  o.style.opacity='0'
-  setTimeout(()=>o.style.display='none',360)
-  sessionStorage.setItem('bv_accepted','1')
-}
-if(sessionStorage.getItem('bv_accepted')==='1'){
-  document.getElementById('disclaimerOverlay').style.display='none'
-}
-</script>
+  o.style.transition='opa
