@@ -3847,22 +3847,22 @@ loadDisasterAlerts()
 /* ═══ HOLIDAYS 2026 ═══ */
 const HOLIDAYS_2026=[
   {date:'Jan 26',name:"Republic Day",type:'National'},
-  {date:'Mar 14',name:"Holi",type:'National'},
-  {date:'Mar 31',name:"Id-ul-Fitr (Eid)",type:'National'},
-  {date:'Apr 6',name:"Ram Navami",type:'National'},
-  {date:'Apr 10',name:"Good Friday",type:'National'},
+  {date:'Mar 3',name:"Holi",type:'National'},
+  {date:'Mar 20',name:"Id-ul-Fitr (Eid)",type:'National'},
+  {date:'Mar 26',name:"Ram Navami",type:'National'},
+  {date:'Apr 3',name:"Good Friday",type:'National'},
   {date:'Apr 14',name:"Dr. Ambedkar Jayanti",type:'National'},
-  {date:'May 12',name:"Buddha Purnima",type:'National'},
-  {date:'Jun 7',name:"Id-ul-Zuha (Bakrid)",type:'National'},
-  {date:'Jul 6',name:"Muharram",type:'National'},
+  {date:'May 1',name:"Buddha Purnima",type:'National'},
+  {date:'May 27',name:"Id-ul-Zuha (Bakrid)",type:'National'},
+  {date:'Jun 26',name:"Muharram",type:'National'},
   {date:'Aug 15',name:"Independence Day",type:'National'},
-  {date:'Sep 5',name:"Janmashtami",type:'National'},
-  {date:'Sep 17',name:"Milad-un-Nabi",type:'National'},
+  {date:'Aug 25',name:"Janmashtami",type:'National'},
+  {date:'Sep 5',name:"Milad-un-Nabi",type:'National'},
   {date:'Oct 2',name:"Gandhi Jayanti",type:'National'},
-  {date:'Oct 20',name:"Dussehra",type:'National'},
+  {date:'Oct 12',name:"Dussehra",type:'National'},
   {date:'Nov 8',name:"Diwali",type:'National'},
-  {date:'Nov 15',name:"Guru Nanak Jayanti",type:'National'},
-  {date:'Dec 25',name:"Christmas Day",type:'National'},
+  {date:'Nov 24',name:"Guru Nanak Jayanti",type:'National'},
+  {date:'Dec 25',name:"Christmas Day",type:'National'}
 ]
 $('holidayGrid').innerHTML=HOLIDAYS_2026.map(h=>`<div class="holiday-card">
   <div class="holiday-date">${h.date}</div>
@@ -3870,7 +3870,7 @@ $('holidayGrid').innerHTML=HOLIDAYS_2026.map(h=>`<div class="holiday-card">
 </div>`).join('')
 
 /* ═══ STATE INFO ═══ */
-const STATES=[
+const STATES=[[
   {name:'Andhra Pradesh',cap:'Amaravati',cm:'N. Chandrababu Naidu',gdp:'₹14.8L Cr',pop:'5.4 Cr',lang:'Telugu'},
   {name:'Arunachal Pradesh',cap:'Itanagar',cm:'Pema Khandu',gdp:'₹38K Cr',pop:'16L',lang:'English/Nyishi'},
   {name:'Assam',cap:'Dispur',cm:'Himanta Biswa Sarma',gdp:'₹4.3L Cr',pop:'3.5 Cr',lang:'Assamese'},
@@ -3886,22 +3886,22 @@ const STATES=[
   {name:'Kerala',cap:'Thiruvananthapuram',cm:'Pinarayi Vijayan',gdp:'₹10.5L Cr',pop:'3.5 Cr',lang:'Malayalam'},
   {name:'Madhya Pradesh',cap:'Bhopal',cm:'Mohan Yadav',gdp:'₹14.7L Cr',pop:'8.5 Cr',lang:'Hindi'},
   {name:'Maharashtra',cap:'Mumbai',cm:'Devendra Fadnavis',gdp:'₹40.5L Cr',pop:'13 Cr',lang:'Marathi'},
-  {name:'Manipur',cap:'Imphal',cm:'N. Biren Singh',gdp:'₹40K Cr',pop:'34L',lang:'Meitei'},
+  {name:'Manipur',cap:'Imphal',cm:'Yumnam Khemchand Singh',gdp:'₹40K Cr',pop:'34L',lang:'Meitei'},
   {name:'Meghalaya',cap:'Shillong',cm:'Conrad Sangma',gdp:'₹44K Cr',pop:'34L',lang:'English/Khasi'},
   {name:'Mizoram',cap:'Aizawl',cm:'Lalduhoma',gdp:'₹31K Cr',pop:'13L',lang:'Mizo'},
   {name:'Nagaland',cap:'Kohima',cm:'Neiphiu Rio',gdp:'₹35K Cr',pop:'22L',lang:'English/Nagamese'},
-  {name:'Odisha',cap:'Bhubaneswar',cm:'Mohan Majhi',gdp:'₹8.5L Cr',pop:'4.7 Cr',lang:'Odia'},
+  {name:'Odisha',cap:'Bhubaneswar',cm:'Mohan Charan Majhi',gdp:'₹8.5L Cr',pop:'4.7 Cr',lang:'Odia'},
   {name:'Punjab',cap:'Chandigarh',cm:'Bhagwant Mann',gdp:'₹8.6L Cr',pop:'3.1 Cr',lang:'Punjabi'},
   {name:'Rajasthan',cap:'Jaipur',cm:'Bhajan Lal Sharma',gdp:'₹15.6L Cr',pop:'8.1 Cr',lang:'Hindi/Rajasthani'},
-  {name:'Sikkim',cap:'Gangtok',cm:'PS Golay',gdp:'₹50K Cr',pop:'7L',lang:'Nepali/Sikkimese'},
+  {name:'Sikkim',cap:'Gangtok',cm:'Prem Singh Tamang (P.S. Golay)',gdp:'₹50K Cr',pop:'7L',lang:'Nepali/Sikkimese'},
   {name:'Tamil Nadu',cap:'Chennai',cm:'M.K. Stalin',gdp:'₹28.2L Cr',pop:'8.4 Cr',lang:'Tamil'},
   {name:'Telangana',cap:'Hyderabad',cm:'A. Revanth Reddy',gdp:'₹14.5L Cr',pop:'4 Cr',lang:'Telugu'},
   {name:'Tripura',cap:'Agartala',cm:'Manik Saha',gdp:'₹72K Cr',pop:'43L',lang:'Bengali/Kokborok'},
   {name:'Uttar Pradesh',cap:'Lucknow',cm:'Yogi Adityanath',gdp:'₹25L Cr',pop:'24 Cr',lang:'Hindi'},
   {name:'Uttarakhand',cap:'Dehradun',cm:'Pushkar Singh Dhami',gdp:'₹3.8L Cr',pop:'1.2 Cr',lang:'Hindi/Garhwali'},
   {name:'West Bengal',cap:'Kolkata',cm:'Mamata Banerjee',gdp:'₹18.2L Cr',pop:'10 Cr',lang:'Bengali'},
-  {name:'J&K (UT)',cap:'Srinagar/Jammu',cm:'Omar Abdullah (LG admin)',gdp:'₹2.4L Cr',pop:'1.3 Cr',lang:'Kashmiri/Dogri'},
-  {name:'Ladakh (UT)',cap:'Leh',cm:'LG Sinha',gdp:'₹32K Cr',pop:'3L',lang:'Ladakhi/Hindi'},
+  {name:'Jammu & Kashmir (UT)',cap:'Srinagar (Summer) / Jammu (Winter)',cm:'Omar Abdullah',gdp:'₹2.4L Cr',pop:'1.3 Cr',lang:'Kashmiri/Dogri'},
+  {name:'Ladakh (UT)',cap:'Leh',cm:'No CM (LG administered)',gdp:'₹32K Cr',pop:'3L',lang:'Ladakhi/Hindi'}
 ]
 $('stateGrid').innerHTML=STATES.map((s,i)=>`<div class="state-btn" onclick="showState(${i})">${s.name}</div>`).join('')
 function showState(i){
