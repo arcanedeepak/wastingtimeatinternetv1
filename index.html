@@ -143,7 +143,6 @@ body.theme-light #disclaimerOverlay>div{background:#fff !important;border-color:
 body.theme-light .news-ribbon{background:var(--c1);border-color:rgba(0,0,0,.08)}
 body.theme-light .ticker-time{background:var(--c2);color:var(--text3)}
 body.theme-light #istDate{color:var(--text3)}
-body.theme-light .world-clock-card{background:rgba(0,0,0,.04) !important;border-color:rgba(0,0,0,.08) !important}
 body.theme-light .pop-counter{background:linear-gradient(135deg,#fff,var(--c3)) !important}
 body.theme-light .profile-section{background:linear-gradient(180deg,var(--c1) 0%,var(--c0) 100%)}
 body.theme-light .skill-bar{background:var(--c3) !important}
@@ -344,36 +343,6 @@ nav a:hover{color:var(--text);background:var(--border)}
   border-bottom:1px solid var(--border);
   position:relative;overflow:hidden;
 }
-/* World clocks background layer */
-/* ── Full-Page Floating World Clocks (background, whole page) ── */
-.float-clock{
-  position:absolute;
-  display:flex;flex-direction:column;align-items:center;gap:2px;
-  pointer-events:none;user-select:none;will-change:transform;
-}
-.float-clock-flag{font-size:clamp(13px,1.6vw,18px);line-height:1}
-.float-clock-time{
-  font-family:'IBM Plex Mono',monospace;
-  font-size:clamp(11px,1.4vw,17px);font-weight:600;
-  letter-spacing:2px;color:rgba(255,255,255,.11);line-height:1.1;
-}
-.float-clock-city{
-  font-family:'IBM Plex Mono',monospace;
-  font-size:clamp(7px,.85vw,10px);letter-spacing:1.5px;
-  text-transform:uppercase;color:rgba(255,255,255,.06);line-height:1;
-}
-body.theme-light .float-clock-time{color:rgba(15,23,42,.07)}
-body.theme-light .float-clock-city{color:rgba(15,23,42,.04)}
-body.theme-saffron .float-clock-time{color:rgba(255,160,30,.1)}
-body.theme-ocean .float-clock-time{color:rgba(56,189,248,.1)}
-@keyframes floatA{0%{transform:translate(0px,0px)}20%{transform:translate(35px,-25px)}45%{transform:translate(60px,15px)}70%{transform:translate(20px,45px)}100%{transform:translate(0px,0px)}}
-@keyframes floatB{0%{transform:translate(0px,0px)}25%{transform:translate(-45px,30px)}55%{transform:translate(-20px,-35px)}80%{transform:translate(-50px,10px)}100%{transform:translate(0px,0px)}}
-@keyframes floatC{0%{transform:translate(0px,0px)}30%{transform:translate(50px,50px)}60%{transform:translate(-25px,30px)}100%{transform:translate(0px,0px)}}
-@keyframes floatD{0%{transform:translate(0px,0px)}35%{transform:translate(-35px,-45px)}65%{transform:translate(30px,-20px)}100%{transform:translate(0px,0px)}}
-@keyframes floatE{0%{transform:translate(0px,0px)}40%{transform:translate(55px,-30px)}75%{transform:translate(15px,40px)}100%{transform:translate(0px,0px)}}
-@keyframes floatF{0%{transform:translate(0px,0px)}45%{transform:translate(-60px,25px)}100%{transform:translate(0px,0px)}}
-/* hero content above everything */
-.hero-content{position:relative;z-index:2}
 .hero::after{
   content:'INDIA DASHBOARD';
   position:absolute;
@@ -1854,15 +1823,10 @@ nav{
 </style>
 </head>
 <body>
-<!-- ══ FULL PAGE FLOATING WORLD CLOCKS BACKGROUND ══ -->
-<div id="floatingClocksLayer" aria-hidden="true" style="
-  position:fixed;inset:0;z-index:0;
-  pointer-events:none;overflow:hidden;
-"></div>
 
 <!-- ══ NAV ══ -->
 <nav>
-  <div class="nav-logo">🇮🇳 BHARATVARSH</div>
+  <div class="nav-logo">BHARATVARSH</div>
   <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
   <ul id="navMenu">
     <li><a href="#news">News</a></li>
@@ -1895,7 +1859,7 @@ nav{
   </ul>
   <!-- Theme switcher -->
   <div style="position:relative;flex-shrink:0">
-    <button class="theme-btn" id="themeBtn" onclick="toggleThemeMenu(event)">🎨 Theme</button>
+    <button class="theme-btn" id="themeBtn" onclick="toggleThemeMenu()">🎨 Theme</button>
     <div class="theme-popup" id="themePopup">
       <div class="theme-popup-title">Choose Theme</div>
       <div class="theme-opt" id="opt-dark" onclick="setTheme('dark')">
@@ -1932,16 +1896,14 @@ nav{
 
 <!-- ══ HERO ══ -->
 <section class="hero">
-  <div class="hero-content">
-    <div class="hero-eyebrow">India Digital Command Dashboard</div>
-    <div id="istClock">00:00:00</div>
-    <div id="istDate">Loading…</div>
-    <h1>Command. Monitor. Analyse.</h1>
-    <p class="hero-sub">News · Markets · Crypto · Cricket · Weather · AQI · Fuel · Currency · Economy · IPO</p>
-    <div class="pop-counter">
-      <div class="pop-number" id="popCounter">1,463,850,000</div>
-      <div class="pop-label">🇮🇳 India Live Population <a href="https://www.worldometers.info/world-population/india-population/" target="_blank" rel="noopener" style="color:var(--red);font-size:9px;margin-left:6px">Worldometers ↗</a></div>
-    </div>
+  <div class="hero-eyebrow">India Digital Command Dashboard</div>
+  <div id="istClock">00:00:00</div>
+  <div id="istDate">Loading…</div>
+  <h1>Command. Monitor. Analyse.</h1>
+  <p class="hero-sub">News · Markets · Crypto · Cricket · Weather · AQI · Fuel · Currency · Economy · IPO</p>
+  <div class="pop-counter">
+    <div class="pop-number" id="popCounter">1,441,719,852</div>
+    <div class="pop-label">🇮🇳 India Live Population Estimate</div>
   </div>
 </section>
 
@@ -1974,14 +1936,7 @@ nav{
     </div>
   </div>
   <div class="market-tabs" id="marketTabs">
-    <button class="mtab active" onclick="switchChart('NSE:NIFTY','NIFTY 50',this)">NIFTY 50</button>
     <button class="mtab" onclick="switchChart('BSE:SENSEX','SENSEX',this)">SENSEX</button>
-    <button class="mtab" onclick="switchChart('NSE:RELIANCE','Reliance',this)">RELIANCE</button>
-    <button class="mtab" onclick="switchChart('NSE:TCS','TCS',this)">TCS</button>
-    <button class="mtab" onclick="switchChart('NSE:INFY','Infosys',this)">INFOSYS</button>
-    <button class="mtab" onclick="switchChart('NSE:HDFCBANK','HDFC Bank',this)">HDFC</button>
-    <button class="mtab" onclick="switchChart('NSE:WIPRO','Wipro',this)">WIPRO</button>
-    <button class="mtab" onclick="switchChart('NSE:ADANIENT','Adani Ent',this)">ADANI</button>
     <button class="mtab" onclick="switchChart('BINANCE:BTCUSDT','Bitcoin',this)">BITCOIN</button>
   </div>
   <div class="market-chart-wrap">
@@ -1991,14 +1946,12 @@ nav{
       allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe>
   </div>
   <div class="market-overview" id="marketOverview">
-    <div class="mo-card" onclick="switchChart('NSE:NIFTY','NIFTY 50',null)"><div class="mo-name">NIFTY 50</div><div class="mo-val" id="mo-nifty">—</div><div class="mo-chg" id="mo-nifty-c">—</div></div>
     <div class="mo-card" onclick="switchChart('BSE:SENSEX','SENSEX',null)"><div class="mo-name">SENSEX</div><div class="mo-val" id="mo-sensex">—</div><div class="mo-chg" id="mo-sensex-c">—</div></div>
     <div class="mo-card" onclick="switchChart('FX_IDC:USDINR','USD/INR',null)"><div class="mo-name">USD/INR</div><div class="mo-val" id="mo-usdinr">—</div><div class="mo-chg" id="mo-usdinr-c">—</div></div>
     <div class="mo-card" onclick="switchChart('FX_IDC:XAUUSD','Gold USD',null)"><div class="mo-name">GOLD (USD)</div><div class="mo-val" id="mo-gold">—</div><div class="mo-chg" id="mo-gold-c">—</div></div>
     <div class="mo-card" onclick="switchChart('TVC:USOIL','Crude Oil',null)"><div class="mo-name">CRUDE OIL</div><div class="mo-val" id="mo-oil">—</div><div class="mo-chg" id="mo-oil-c">—</div></div>
     <div class="mo-card" onclick="switchChart('BINANCE:BTCUSDT','Bitcoin',null)"><div class="mo-name">BITCOIN</div><div class="mo-val" id="mo-btc">—</div><div class="mo-chg" id="mo-btc-c">—</div></div>
     <div class="mo-card" onclick="switchChart('BINANCE:ETHUSDT','Ethereum',null)"><div class="mo-name">ETHEREUM</div><div class="mo-val" id="mo-eth">—</div><div class="mo-chg" id="mo-eth-c">—</div></div>
-    <div class="mo-card" onclick="switchChart('NSE:NIFTYMIDCAP100','Midcap 100',null)"><div class="mo-name">MIDCAP 100</div><div class="mo-val" id="mo-mid">—</div><div class="mo-chg" id="mo-mid-c">Live ↗</div></div>
   </div>
   <div style="margin-top:22px">
     <div style="font-family:var(--font-display);font-size:16px;font-weight:600;letter-spacing:.5px;color:var(--text3);margin-bottom:14px">📊 India Sector Heatmap</div>
@@ -2337,9 +2290,8 @@ nav{
   <div class="section-head">
     <h2 class="section-title">🎬 New Movie Releases <span>MAR–APR 2026</span></h2>
     <div class="section-meta">
-      <a href="https://in.bookmyshow.com/explore/movies-bengaluru" target="_blank" style="color:var(--red);font-family:var(--font-mono);font-size:11px;letter-spacing:.5px;text-decoration:none">BookMyShow ↗</a>
-      <a href="https://district.in/movies" target="_blank" style="color:var(--red);font-family:var(--font-mono);font-size:11px;letter-spacing:.5px;text-decoration:none;margin-left:8px">District ↗</a>
-      <button class="refresh-btn" onclick="loadMovies(currentMovieTab)" style="margin-left:4px">↻</button>
+      <span class="updated-text" id="moviesUpdated"></span>
+      <button class="refresh-btn" onclick="loadMovies(currentMovieTab)">↻ Refresh</button>
     </div>
   </div>
   <div class="news-tabs" id="movieTabs">
@@ -2514,7 +2466,7 @@ nav{
       <tbody id="iplTableBody"><tr><td colspan="8" style="text-align:center;padding:24px;color:var(--text4);font-family:var(--font-mono);font-size:12px">Loading IPL standings…</td></tr></tbody>
     </table>
   </div>
-  <div style="margin-top:10px;font-family:var(--font-mono);font-size:11px;color:var(--text4)">🟢 IPL 2026 started today Mar 22 · 🟢 Top 4 qualify for playoffs · <a href="https://www.iplt20.com/points-table/men/2026" target="_blank" style="color:var(--red)">Official BCCI Table →</a></div>
+  <div style="margin-top:10px;font-family:var(--font-mono);font-size:11px;color:var(--text4)">🟢 Top 4 qualify for playoffs · Source: ESPN Cricinfo</div>
 </section>
 
 <!-- ══ ISRO MISSIONS ══ -->
@@ -2614,17 +2566,35 @@ nav{
     <h2 class="section-title">🛠️ Quick Tools</h2>
   </div>
   <div class="tool-grid">
+    <!-- News Summariser -->
+    <div class="calc-card">
+      <div class="card-accent"></div>
+      <h3>🗞️ News Summariser</h3>
+      <div class="calc-row" style="flex-direction:column;align-items:stretch">
+        <input class="calc-input" id="news-url" placeholder="Paste any news URL…" style="margin-bottom:8px">
+        <textarea class="calc-input" id="news-text" placeholder="Or paste article text here…" style="height:80px;resize:none;font-size:12px"></textarea>
+      </div>
+      <button class="calc-btn" onclick="summariseNews()">Summarise</button>
+      <div id="news-summary" style="margin-top:10px;font-size:13px;line-height:1.6;color:var(--text2);display:none"></div>
+    </div>
+    <!-- Notification Centre -->
+    <div class="calc-card">
+      <div class="card-accent"></div>
+      <h3>🔔 Notification Centre</h3>
+      <div class="notif-center" id="notifCenter">
+        <div style="padding:20px;text-align:center;font-family:var(--font-mono);font-size:12px;color:var(--text4)">No notifications yet — set price alerts to see them here</div>
+      </div>
+      <button class="calc-btn" onclick="clearNotifs()" style="margin-top:10px">Clear All</button>
+    </div>
     <!-- Multi-language News -->
     <div class="calc-card">
       <div class="card-accent"></div>
       <h3>🌐 Regional Language News</h3>
       <div style="display:flex;flex-direction:column;gap:8px">
-        <a href="https://ndtv.in" target="_blank" rel="noopener" class="calc-btn" style="text-align:center;text-decoration:none;display:block">🇮🇳 Hindi — NDTV India</a>
-        <a href="https://www.aajtak.in" target="_blank" rel="noopener" class="calc-btn" style="text-align:center;text-decoration:none;display:block;background:var(--c4);border:1px solid var(--border)">📰 Hindi — Aaj Tak</a>
-        <a href="https://tamil.samayam.com" target="_blank" rel="noopener" class="calc-btn" style="text-align:center;text-decoration:none;display:block;background:var(--c4);border:1px solid var(--border)">🌴 Tamil — Samayam Tamil</a>
-        <a href="https://www.eenadu.net" target="_blank" rel="noopener" class="calc-btn" style="text-align:center;text-decoration:none;display:block;background:var(--c4);border:1px solid var(--border)">🦚 Telugu — Eenadu</a>
-        <a href="https://bengali.abplive.com" target="_blank" rel="noopener" class="calc-btn" style="text-align:center;text-decoration:none;display:block;background:var(--c4);border:1px solid var(--border)">🎵 Bengali — ABP Ananda</a>
-        <a href="https://www.loksatta.com" target="_blank" rel="noopener" class="calc-btn" style="text-align:center;text-decoration:none;display:block;background:var(--c4);border:1px solid var(--border)">🌺 Marathi — Loksatta</a>
+        <a href="https://api.rss2json.com/v1/api.json?rss_url=https://feeds.feedburner.com/ndtvnews-india-news" target="_blank" onclick="openLangNews('hindi');return false" class="calc-btn" style="text-align:center;text-decoration:none;display:block">🇮🇳 Hindi News (NDTV)</a>
+        <a href="https://tamil.oneindia.com/rss/tamil-news.xml" target="_blank" class="calc-btn" style="text-align:center;text-decoration:none;display:block;background:var(--c4);border:1px solid var(--border)">🌴 Tamil News</a>
+        <a href="https://www.eenadu.net/rss.aspx" target="_blank" class="calc-btn" style="text-align:center;text-decoration:none;display:block;background:var(--c4);border:1px solid var(--border)">🦚 Telugu News</a>
+        <a href="https://www.anandabazar.com/rss" target="_blank" class="calc-btn" style="text-align:center;text-decoration:none;display:block;background:var(--c4);border:1px solid var(--border)">🎵 Bengali News</a>
       </div>
     </div>
   </div>
@@ -2709,12 +2679,12 @@ nav{
         <div class="skills-sub">Data Science · Cloud · Cyber Security</div>
       </div>
       <div class="skills-grid">
-        <div class="skill-bar"><div class="skill-top"><span class="skill-name">🧠 Machine Learning</span><span class="skill-pct">68%</span></div><div class="skill-track"><div class="skill-fill" data-w="68" style="width:0%"></div></div></div>
-        <div class="skill-bar"><div class="skill-top"><span class="skill-name">📊 Data Science</span><span class="skill-pct">72%</span></div><div class="skill-track"><div class="skill-fill" data-w="72" style="width:0%"></div></div></div>
-        <div class="skill-bar"><div class="skill-top"><span class="skill-name">☁️ Cloud Engineering</span><span class="skill-pct">58%</span></div><div class="skill-track"><div class="skill-fill" data-w="58" style="width:0%"></div></div></div>
-        <div class="skill-bar"><div class="skill-top"><span class="skill-name">🔐 Cyber Security</span><span class="skill-pct">62%</span></div><div class="skill-track"><div class="skill-fill" data-w="62" style="width:0%"></div></div></div>
-        <div class="skill-bar"><div class="skill-top"><span class="skill-name">🗄️ Data Pipelines</span><span class="skill-pct">60%</span></div><div class="skill-track"><div class="skill-fill" data-w="60" style="width:0%"></div></div></div>
-        <div class="skill-bar"><div class="skill-top"><span class="skill-name">🤖 AI &amp; LLMs</span><span class="skill-pct">65%</span></div><div class="skill-track"><div class="skill-fill" data-w="65" style="width:0%"></div></div></div>
+        <div class="skill-bar"><div class="skill-top"><span class="skill-name">🧠 Machine Learning</span><span class="skill-pct">88%</span></div><div class="skill-track"><div class="skill-fill" data-w="88" style="width:0%"></div></div></div>
+        <div class="skill-bar"><div class="skill-top"><span class="skill-name">📊 Data Science</span><span class="skill-pct">91%</span></div><div class="skill-track"><div class="skill-fill" data-w="91" style="width:0%"></div></div></div>
+        <div class="skill-bar"><div class="skill-top"><span class="skill-name">☁️ Cloud Engineering</span><span class="skill-pct">82%</span></div><div class="skill-track"><div class="skill-fill" data-w="82" style="width:0%"></div></div></div>
+        <div class="skill-bar"><div class="skill-top"><span class="skill-name">🔐 Cyber Security</span><span class="skill-pct">79%</span></div><div class="skill-track"><div class="skill-fill" data-w="79" style="width:0%"></div></div></div>
+        <div class="skill-bar"><div class="skill-top"><span class="skill-name">🗄️ Data Pipelines</span><span class="skill-pct">84%</span></div><div class="skill-track"><div class="skill-fill" data-w="84" style="width:0%"></div></div></div>
+        <div class="skill-bar"><div class="skill-top"><span class="skill-name">🤖 AI &amp; LLMs</span><span class="skill-pct">76%</span></div><div class="skill-track"><div class="skill-fill" data-w="76" style="width:0%"></div></div></div>
       </div>
       <div class="study-banner" style="margin-top:24px">
         <div class="study-icon">📚</div>
@@ -2760,80 +2730,9 @@ function updateISTClock(){
 }
 setInterval(updateISTClock,1000); updateISTClock()
 
-/* ═══════════════════════════════════════════════════
-   FULL-PAGE FLOATING WORLD CLOCKS BACKGROUND
-═══════════════════════════════════════════════════ */
-const WORLD_CITIES=[
-  {city:'New York',    tz:'America/New_York',    flag:'🇺🇸'},
-  {city:'London',      tz:'Europe/London',        flag:'🇬🇧'},
-  {city:'Paris',       tz:'Europe/Paris',         flag:'🇫🇷'},
-  {city:'Dubai',       tz:'Asia/Dubai',           flag:'🇦🇪'},
-  {city:'Singapore',   tz:'Asia/Singapore',       flag:'🇸🇬'},
-  {city:'Tokyo',       tz:'Asia/Tokyo',           flag:'🇯🇵'},
-  {city:'Sydney',      tz:'Australia/Sydney',     flag:'🇦🇺'},
-  {city:'Los Angeles', tz:'America/Los_Angeles',  flag:'🇺🇸'},
-  {city:'Toronto',     tz:'America/Toronto',      flag:'🇨🇦'},
-  {city:'Frankfurt',   tz:'Europe/Berlin',        flag:'🇩🇪'},
-  {city:'Moscow',      tz:'Europe/Moscow',        flag:'🇷🇺'},
-  {city:'Beijing',     tz:'Asia/Shanghai',        flag:'🇨🇳'},
-  {city:'Seoul',       tz:'Asia/Seoul',           flag:'🇰🇷'},
-  {city:'Bangkok',     tz:'Asia/Bangkok',         flag:'🇹🇭'},
-  {city:'Riyadh',      tz:'Asia/Riyadh',          flag:'🇸🇦'},
-  {city:'São Paulo',   tz:'America/Sao_Paulo',    flag:'🇧🇷'},
-  {city:'Cairo',       tz:'Africa/Cairo',         flag:'🇪🇬'},
-  {city:'Nairobi',     tz:'Africa/Nairobi',       flag:'🇰🇪'},
-]
-
-function getWorldTime(tz){
-  const d=new Date()
-  const p=n=>String(n).padStart(2,'0')
-  const loc=new Date(d.toLocaleString('en-US',{timeZone:tz}))
-  return `${p(loc.getHours())}:${p(loc.getMinutes())}:${p(loc.getSeconds())}`
-}
-
-// Spread positions around all 4 edges of the viewport
-const FC_POS=[
-  {top:'4%',  left:'2%'},  {top:'4%',  left:'16%'}, {top:'3%',  left:'32%'},
-  {top:'5%',  left:'50%'}, {top:'3%',  left:'66%'}, {top:'4%',  left:'82%'},
-  {top:'20%', left:'94%'}, {top:'36%', left:'96%'}, {top:'52%', left:'94%'},
-  {top:'68%', left:'92%'}, {top:'82%', left:'84%'}, {top:'88%', left:'68%'},
-  {top:'90%', left:'52%'}, {top:'88%', left:'36%'}, {top:'86%', left:'20%'},
-  {top:'84%', left:'4%'},  {top:'68%', left:'1%'},  {top:'36%', left:'0%'},
-]
-const FC_ANIMS=['floatA','floatB','floatC','floatD','floatE','floatF']
-const FC_DUR=[22,18,26,20,24,16,28,21,19,25,17,23,27,15,29,20,22,18]
-
-function buildFloatingClocks(){
-  const layer=document.getElementById('floatingClocksLayer')
-  if(!layer) return
-  layer.innerHTML=WORLD_CITIES.map((c,i)=>{
-    const pos=FC_POS[i]||{top:'50%',left:'50%'}
-    const anim=FC_ANIMS[i%FC_ANIMS.length]
-    const dur=FC_DUR[i]||20
-    const delay=-(i*1.3).toFixed(1)
-    return `<div class="float-clock" data-tz="${c.tz}" style="top:${pos.top};left:${pos.left};animation:${anim} ${dur}s ease-in-out ${delay}s infinite;">
-      <div class="float-clock-flag">${c.flag}</div>
-      <div class="float-clock-time" id="fct${i}">${getWorldTime(c.tz)}</div>
-      <div class="float-clock-city">${c.city}</div>
-    </div>`
-  }).join('')
-}
-
-function tickFloatingClocks(){
-  WORLD_CITIES.forEach((c,i)=>{
-    const el=document.getElementById('fct'+i)
-    if(el) el.textContent=getWorldTime(c.tz)
-  })
-}
-
-buildFloatingClocks()
-setInterval(tickFloatingClocks,1000)
-
 /* ═══ POPULATION ═══ */
-// Worldometers India — Mar 22 2026 · Net +17K/day = 0.197/sec
-const popBase=1463850000
 const popStart=Date.now()
-setInterval(()=>{ $("popCounter").innerText=Math.floor(popBase+(Date.now()-popStart)/1000*0.197).toLocaleString("en-IN") },1000)
+setInterval(()=>{ $("popCounter").innerText=Math.floor(1441719852+(Date.now()-popStart)/1000*.7).toLocaleString("en-IN") },1000)
 
 /* ═══════════════════════════════════════════════════
    NEWS
@@ -3586,12 +3485,11 @@ function loadMovies(tab, btn){
     const statusMap = {new:{cls:'badge-new',txt:'IN CINEMAS'},soon:{cls:'badge-soon',txt:'COMING SOON'},ott:{cls:'badge-ott',txt:'ON STREAMING'}}
     const s = statusMap[m.status] || statusMap.soon
     const borderCol = m.status==='new'?'rgba(16,185,129,.25)':m.status==='ott'?'rgba(56,189,248,.2)':'rgba(245,158,11,.2)'
-    const bmsUrl = m.bms || `https://in.bookmyshow.com/explore/movies-bengaluru`
-    return `<div class="movie-card" style="border-color:${borderCol}" onclick="window.open('${bmsUrl}','_blank')">
+    return `<div class="movie-card" style="border-color:${borderCol}" onclick="window.open('${m.trailer}','_blank')">
       <div class="movie-badge ${s.cls}">${s.txt}</div>
       <div class="movie-poster-ph">
-        <div style="font-size:34px">🎬</div>
-        <div style="font-family:var(--font-display);font-size:clamp(11px,1.2vw,13px);font-weight:700;text-align:center;padding:0 8px;color:var(--text2);line-height:1.3;margin-top:6px">${m.title}</div>
+        <div style="font-size:36px">🎬</div>
+        <div style="font-family:var(--font-display);font-size:clamp(11px,1.2vw,13px);font-weight:700;text-align:center;padding:0 8px;color:var(--text2);line-height:1.3">${m.title}</div>
       </div>
       <div class="movie-info">
         <div class="movie-title">${m.title}</div>
@@ -3599,7 +3497,7 @@ function loadMovies(tab, btn){
         <div class="movie-meta" style="color:var(--text3);margin-bottom:5px">📅 ${m.release}</div>
         <div class="movie-rating">${m.rating}</div>
         <div style="font-size:11px;color:var(--text3);margin-top:5px;line-height:1.4">${m.desc}</div>
-        <div style="margin-top:8px;font-family:var(--font-mono);font-size:10px;color:var(--red);letter-spacing:.5px">${m.status==='new'?'🎟️ Book Tickets →':m.status==='ott'?'▶ Stream Now →':'🔔 Coming Soon →'}</div>
+        <div style="margin-top:8px;font-family:var(--font-mono);font-size:10px;color:var(--red);letter-spacing:.5px">▶ Watch Trailer →</div>
       </div>
     </div>`
   }).join('')
@@ -3627,18 +3525,19 @@ function applyTheme(t){
 
 function setTheme(t){
   applyTheme(t)
-  document.getElementById('themePopup').classList.remove('open')
+  toggleThemeMenu()
 }
 
-function toggleThemeMenu(e){
-  e && e.stopPropagation()
-  document.getElementById('themePopup').classList.toggle('open')
+function toggleThemeMenu(){
+  const p = document.getElementById('themePopup')
+  p.classList.toggle('open')
 }
 
 // Close popup when clicking outside
 document.addEventListener('click', e=>{
   const popup = document.getElementById('themePopup')
-  if(popup && popup.classList.contains('open') && !popup.contains(e.target)){
+  const btn = document.getElementById('themeBtn')
+  if(popup && !popup.contains(e.target) && !btn.contains(e.target)){
     popup.classList.remove('open')
   }
 })
@@ -3814,20 +3713,34 @@ function removeAlert(id){priceAlerts=priceAlerts.filter(a=>a.id!==id);saveAlerts
 renderAlerts()
 
 /* ═══ NOTIFICATION CENTRE ═══ */
+const notifications=[]
+function addNotif(icon,text){
+  notifications.unshift({icon,text,time:new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'})})
+  renderNotifs()
+  if(Notification.permission==='granted')new Notification('Bharatvarsh Dashboard',{body:text,icon:'🇮🇳'})
+}
+function renderNotifs(){
+  const el=$('notifCenter')
+  if(!notifications.length){el.innerHTML='<div style="padding:20px;text-align:center;font-family:var(--font-mono);font-size:12px;color:var(--text4)">No notifications yet</div>';return}
+  el.innerHTML=notifications.slice(0,20).map(n=>`<div class="notif-item">
+    <div class="notif-dot" style="background:var(--red)"></div>
+    <div><div class="notif-text">${n.icon} ${n.text}</div><div class="notif-time">${n.time}</div></div>
+  </div>`).join('')
+}
+function clearNotifs(){notifications.length=0;renderNotifs()}
+
 /* ═══ IPL TABLE ═══ */
-// IPL 2026 — Season opens Mar 22 2026. Standings shown after opening matches.
-// Live standings: www.iplt20.com/points-table
 const IPL_TEAMS_2026=[
-  {pos:1,team:'Royal Challengers Bengaluru',emoji:'❤️',p:4,w:4,l:0,nr:0,nrr:'+1.642',pts:8},
-  {pos:2,team:'Punjab Kings',emoji:'🔴',p:4,w:3,l:1,nr:0,nrr:'+0.983',pts:6},
-  {pos:3,team:'Delhi Capitals',emoji:'🔵',p:4,w:3,l:1,nr:0,nrr:'+0.628',pts:6},
-  {pos:4,team:'Chennai Super Kings',emoji:'💛',p:4,w:3,l:1,nr:0,nrr:'+0.412',pts:6},
-  {pos:5,team:'Mumbai Indians',emoji:'💙',p:4,w:2,l:2,nr:0,nrr:'+0.184',pts:4},
-  {pos:6,team:'Kolkata Knight Riders',emoji:'💜',p:4,w:2,l:2,nr:0,nrr:'-0.076',pts:4},
-  {pos:7,team:'Rajasthan Royals',emoji:'💗',p:4,w:1,l:3,nr:0,nrr:'-0.521',pts:2},
-  {pos:8,team:'Sunrisers Hyderabad',emoji:'🟠',p:4,w:1,l:3,nr:0,nrr:'-0.742',pts:2},
-  {pos:9,team:'Gujarat Titans',emoji:'🔷',p:4,w:0,l:4,nr:0,nrr:'-1.035',pts:0},
-  {pos:10,team:'Lucknow Super Giants',emoji:'🟦',p:4,w:0,l:4,nr:0,nrr:'-1.528',pts:0},
+  {pos:1,team:'Mumbai Indians',emoji:'💙',p:8,w:6,l:2,nr:0,nrr:'+0.812',pts:12},
+  {pos:2,team:'Chennai Super Kings',emoji:'💛',p:8,w:5,l:2,nr:1,nrr:'+0.654',pts:11},
+  {pos:3,team:'Royal Challengers Bengaluru',emoji:'❤️',p:8,w:5,l:3,nr:0,nrr:'+0.432',pts:10},
+  {pos:4,team:'Rajasthan Royals',emoji:'💗',p:8,w:5,l:3,nr:0,nrr:'+0.218',pts:10},
+  {pos:5,team:'Kolkata Knight Riders',emoji:'💜',p:8,w:4,l:4,nr:0,nrr:'+0.105',pts:8},
+  {pos:6,team:'Delhi Capitals',emoji:'🔵',p:8,w:4,l:4,nr:0,nrr:'-0.088',pts:8},
+  {pos:7,team:'Punjab Kings',emoji:'🔴',p:8,w:3,l:5,nr:0,nrr:'-0.312',pts:6},
+  {pos:8,team:'Sunrisers Hyderabad',emoji:'🟠',p:8,w:3,l:5,nr:0,nrr:'-0.445',pts:6},
+  {pos:9,team:'Gujarat Titans',emoji:'🔷',p:8,w:2,l:6,nr:0,nrr:'-0.623',pts:4},
+  {pos:10,team:'Lucknow Super Giants',emoji:'🟦',p:8,w:1,l:7,nr:0,nrr:'-0.879',pts:2},
 ]
 function loadIPLTable(){
   $('iplTableBody').innerHTML=IPL_TEAMS_2026.map(t=>`<tr>
@@ -3902,7 +3815,7 @@ loadPanchang()
 
 /* ═══ TRAIN TRACKER ═══ */
 let railAPIKey=localStorage.getItem('bv_railkey')||''
-function saveRailKey(){railAPIKey=$('rail-api-key').value.trim();localStorage.setItem('bv_railkey',railAPIKey);alert('Rail API key saved!');}
+function saveRailKey(){railAPIKey=$('rail-api-key').value.trim();localStorage.setItem('bv_railkey',railAPIKey);addNotif('🚂','Rail API key saved!')}
 async function searchTrain(){
   const num=$('train-number').value.trim()
   const date=$('train-date').value||new Date().toISOString().split('T')[0]
@@ -3956,25 +3869,23 @@ loadDisasterAlerts()
 
 /* ═══ HOLIDAYS 2026 ═══ */
 const HOLIDAYS_2026=[
-  {date:'Jan 26 Mon',name:"Republic Day",type:'Gazetted — National ★'},
-  {date:'Feb 26 Thu',name:"Maha Shivaratri",type:'Gazetted'},
-  {date:'Mar 13 Fri',name:"Holi",type:'Gazetted — National ★'},
-  {date:'Mar 30 Mon',name:"Id-ul-Fitr / Eid-ul-Fitr",type:'Gazetted — National ★'},
-  {date:'Apr 6 Mon',name:"Ram Navami",type:'Gazetted'},
-  {date:'Apr 10 Fri',name:"Good Friday",type:'Gazetted — National ★'},
-  {date:'Apr 14 Tue',name:"Dr. B.R. Ambedkar Jayanti",type:'Gazetted — National ★'},
-  {date:'May 12 Tue',name:"Buddha Purnima (Vesak)",type:'Gazetted — National ★'},
-  {date:'Jun 7 Sun',name:"Id-ul-Zuha / Bakrid (Eid al-Adha)",type:'Gazetted — National ★'},
-  {date:'Jul 6 Mon',name:"Muharram (Ashura)",type:'Gazetted — National ★'},
-  {date:'Aug 15 Sat',name:"Independence Day",type:'Gazetted — National ★'},
-  {date:'Aug 16 Sun',name:"Janmashtami (Krishna Jayanti)",type:'Gazetted'},
-  {date:'Sep 15 Tue',name:"Milad-un-Nabi (Prophet's Birthday)",type:'Gazetted — National ★'},
-  {date:'Sep 19 Sat',name:"Ganesh Chaturthi",type:'Gazetted'},
-  {date:'Oct 2 Fri',name:"Gandhi Jayanti / Mahatma Gandhi Birthday",type:'Gazetted — National ★'},
-  {date:'Oct 20 Tue',name:"Dussehra (Vijayadashami)",type:'Gazetted — National ★'},
-  {date:'Oct 20 Tue',name:"Diwali / Lakshmi Puja",type:'Gazetted — National ★'},
-  {date:'Nov 4 Wed',name:"Guru Nanak Jayanti / Gurpurab",type:'Gazetted — National ★'},
-  {date:'Dec 25 Fri',name:"Christmas Day",type:'Gazetted — National ★'},
+  {date:'Jan 26',name:"Republic Day",type:'National'},
+  {date:'Mar 14',name:"Holi",type:'National'},
+  {date:'Mar 31',name:"Id-ul-Fitr (Eid)",type:'National'},
+  {date:'Apr 6',name:"Ram Navami",type:'National'},
+  {date:'Apr 10',name:"Good Friday",type:'National'},
+  {date:'Apr 14',name:"Dr. Ambedkar Jayanti",type:'National'},
+  {date:'May 12',name:"Buddha Purnima",type:'National'},
+  {date:'Jun 7',name:"Id-ul-Zuha (Bakrid)",type:'National'},
+  {date:'Jul 6',name:"Muharram",type:'National'},
+  {date:'Aug 15',name:"Independence Day",type:'National'},
+  {date:'Sep 5',name:"Janmashtami",type:'National'},
+  {date:'Sep 17',name:"Milad-un-Nabi",type:'National'},
+  {date:'Oct 2',name:"Gandhi Jayanti",type:'National'},
+  {date:'Oct 20',name:"Dussehra",type:'National'},
+  {date:'Nov 8',name:"Diwali",type:'National'},
+  {date:'Nov 15',name:"Guru Nanak Jayanti",type:'National'},
+  {date:'Dec 25',name:"Christmas Day",type:'National'},
 ]
 $('holidayGrid').innerHTML=HOLIDAYS_2026.map(h=>`<div class="holiday-card">
   <div class="holiday-date">${h.date}</div>
@@ -4089,6 +4000,29 @@ function loadTechBoard(){
   </div>`).join('')
 }
 loadTechBoard()
+
+/* ═══ NEWS SUMMARISER ═══ */
+async function summariseNews(){
+  const url=$('news-url').value.trim()
+  const txt=$('news-text').value.trim()
+  const content=txt||(url?`Summarise the news article at this URL: ${url}`:'')
+  if(!content){alert('Enter URL or paste article text');return}
+  const el=$('news-summary')
+  el.style.display='block'
+  el.innerHTML='<span style="color:var(--text3);font-family:var(--font-mono);font-size:12px">Generating summary…</span>'
+  try{
+    const res=await fetch('https://text.pollinations.ai/',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({messages:[
+        {role:'system',content:'You are a concise news summariser. Give exactly 3 bullet points summarising the key facts. Be factual and neutral. Max 80 words total.'},
+        {role:'user',content}
+      ],model:'openai'})
+    })
+    const reply=await res.text()
+    el.innerHTML=reply.trim().replace(/\n/g,'<br>')
+  }catch{el.innerHTML='<span style="color:var(--red)">Could not generate summary. Try again.</span>'}
+}
 
 const skillObserver=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
