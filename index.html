@@ -96,29 +96,30 @@ a{color:inherit;text-decoration:none}
 ═══════════════════════════════════════════ */
 nav{
   display:flex;justify-content:space-between;align-items:center;
-  padding:0 clamp(14px,4vw,32px);
+  padding:0 clamp(10px,2vw,20px);
   height:var(--nav-h);
-  background:rgba(6,6,15,.85);
+  background:rgba(6,6,15,.92);
   backdrop-filter:blur(24px) saturate(1.4);
   -webkit-backdrop-filter:blur(24px) saturate(1.4);
   position:sticky;top:0;z-index:9999;
   border-bottom:1px solid var(--border2);
   box-shadow:0 1px 40px rgba(0,0,0,.5);
+  gap:10px;
 }
 .nav-logo{
   font-family:var(--font-display);
-  font-size:clamp(15px,2vw,19px);
+  font-size:clamp(13px,1.4vw,16px);
   font-weight:700;
   color:var(--red);
-  letter-spacing:2px;
+  letter-spacing:1.5px;
   text-transform:uppercase;
   white-space:nowrap;
   flex-shrink:0;
-  display:flex;align-items:center;gap:8px;
+  display:flex;align-items:center;gap:7px;
 }
 .nav-logo::before{
   content:'';
-  width:8px;height:8px;
+  width:7px;height:7px;
   background:var(--red);
   border-radius:50%;
   box-shadow:0 0 10px var(--red);
@@ -127,7 +128,7 @@ nav{
 @keyframes navPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
 .nav-toggle{
   display:none;flex-direction:column;gap:5px;
-  cursor:pointer;padding:10px;background:none;border:none;z-index:10001;
+  cursor:pointer;padding:10px;background:none;border:none;z-index:10001;flex-shrink:0;
 }
 .nav-toggle span{
   display:block;width:22px;height:1.5px;
@@ -137,17 +138,21 @@ nav{
 .nav-toggle.open span:nth-child(2){opacity:0}
 .nav-toggle.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 nav ul{
-  display:flex;flex-wrap:wrap;gap:2px 4px;
+  display:flex;flex-wrap:nowrap;gap:1px;
   list-style:none;align-items:center;
+  overflow-x:auto;overflow-y:hidden;
+  scrollbar-width:none;-ms-overflow-style:none;
+  flex:1;
 }
+nav ul::-webkit-scrollbar{display:none}
 nav a{
   color:var(--text3);
-  font-size:clamp(10px,.95vw,12px);
+  font-size:10.5px;
   font-family:var(--font-body);
   font-weight:500;
-  letter-spacing:.3px;
-  padding:6px 10px;
-  border-radius:6px;
+  letter-spacing:.2px;
+  padding:5px 7px;
+  border-radius:5px;
   display:flex;align-items:center;
   white-space:nowrap;
   transition:all .2s;
@@ -156,10 +161,11 @@ nav a:hover{color:var(--text);background:var(--border)}
 .nh{
   background:linear-gradient(135deg,var(--red),#be123c) !important;
   color:#fff !important;
-  padding:6px 12px !important;
+  padding:5px 10px !important;
   font-weight:600 !important;
-  font-size:clamp(10px,.95vw,11px) !important;
-  letter-spacing:.5px !important;
+  font-size:10.5px !important;
+  letter-spacing:.3px !important;
+  flex-shrink:0;
 }
 .nh:hover{opacity:.9;transform:translateY(-1px)}
 
@@ -1222,18 +1228,18 @@ footer a:hover{opacity:.7}
   animation:navPulse 1.5s infinite;
 }
 
-@media(max-width:768px){
+@media(max-width:1100px){
   .nav-toggle{display:flex}
   nav ul{
     display:none;position:fixed;
     top:var(--nav-h);left:0;right:0;
     background:rgba(6,6,15,.97);
     backdrop-filter:blur(20px);
-    flex-direction:column;gap:0;
+    flex-direction:column;flex-wrap:nowrap;gap:0;
     padding:12px 0 28px;
     border-bottom:1px solid var(--border2);
     box-shadow:0 20px 60px rgba(0,0,0,.8);
-    max-height:calc(100vh - var(--nav-h));overflow-y:auto;
+    max-height:calc(100vh - var(--nav-h));overflow-y:auto;overflow-x:hidden;
     z-index:9998;
   }
   nav ul.open{display:flex}
@@ -1277,24 +1283,24 @@ nav{
 
 <!-- ══ NAV ══ -->
 <nav>
-  <div class="nav-logo">🇮🇳 INDIA DASHBOARD</div>
+  <div class="nav-logo">🇮🇳 INDIA</div>
   <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
   <ul id="navMenu">
-    <li><a href="#news">📰 News</a></li>
-    <li><a href="#markets">📈 Markets</a></li>
-    <li><a href="#crypto">₿ Crypto</a></li>
-    <li><a href="#cricket">🏏 Cricket</a></li>
-    <li><a href="#radio">📻 Radio</a></li>
-    <li><a href="#livetv">📺 Live TV</a></li>
-    <li><a href="#weather">🌤️ Weather</a></li>
-    <li><a href="#aqi">🌫️ AQI</a></li>
-    <li><a href="#fuel">⛽ Fuel</a></li>
-    <li><a href="#currency">💱 Currency</a></li>
-    <li><a href="#economy">📊 Economy</a></li>
-    <li><a href="#ipo">🚀 IPO</a></li>
-    <li><a href="#earthquake">🌍 Quakes</a></li>
-    <li><a href="#aichat">🤖 AI</a></li>
-    <li><a href="#profile">👤 About</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#markets">Markets</a></li>
+    <li><a href="#crypto">Crypto</a></li>
+    <li><a href="#cricket">Cricket</a></li>
+    <li><a href="#radio">Radio</a></li>
+    <li><a href="#livetv">Live TV</a></li>
+    <li><a href="#weather">Weather</a></li>
+    <li><a href="#aqi">AQI</a></li>
+    <li><a href="#fuel">Fuel</a></li>
+    <li><a href="#currency">Currency</a></li>
+    <li><a href="#economy">Economy</a></li>
+    <li><a href="#ipo">IPO</a></li>
+    <li><a href="#earthquake">Quakes</a></li>
+    <li><a href="#aichat">AI Chat</a></li>
+    <li><a href="#profile">About</a></li>
     <li><a class="nh" href="https://wastingyourtimeatinternet.b12sites.com/index#home" target="_blank">Portfolio ↗</a></li>
     <li><a class="nh" href="https://www.linkedin.com/in/wastingtimeatlink/" target="_blank">LinkedIn ↗</a></li>
   </ul>
@@ -1450,19 +1456,24 @@ nav{
 <!-- ══ LIVE TV ══ -->
 <section class="container" id="livetv">
   <div class="section-head">
-    <h2 class="section-title">📺 India Live TV <span>YOUTUBE</span></h2>
+    <h2 class="section-title">📺 India Live TV <span>LIVE</span></h2>
     <div class="section-meta">
-      <span class="updated-text">Select a channel to watch</span>
+      <span class="updated-text">Click a channel · Opens YouTube live</span>
     </div>
   </div>
+  <div style="background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);border-radius:var(--rs);padding:10px 14px;margin-bottom:14px;font-family:var(--font-mono);font-size:11px;color:var(--text3);letter-spacing:.3px">
+    📺 Most Indian channels block iframe embedding due to broadcast rights. Clicking any channel will open it on <strong style="color:var(--gold)">YouTube</strong> in a new tab — the most reliable way to watch live Indian TV for free.
+  </div>
   <div class="news-tabs" style="margin-bottom:14px">
-    <button class="ntab active" onclick="filterTV('all',this)">📡 All</button>
+    <button class="ntab active" onclick="filterTV('all',this)">All</button>
     <button class="ntab" onclick="filterTV('news',this)">📰 News</button>
-    <button class="ntab" onclick="filterTV('govt',this)">🏛️ Government</button>
+    <button class="ntab" onclick="filterTV('govt',this)">🏛️ Govt</button>
     <button class="ntab" onclick="filterTV('entertainment',this)">🎬 Entertainment</button>
     <button class="ntab" onclick="filterTV('sports',this)">🏏 Sports</button>
   </div>
   <div class="tv-channel-grid" id="tvChannelGrid"></div>
+
+  <!-- Embedded player — only shown when a DD/embeddable channel is selected -->
   <div class="tv-player-wrap" id="tvPlayerWrap" style="display:none;margin-top:20px;background:var(--c2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
     <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--c3);border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px">
       <div style="display:flex;align-items:center;gap:10px">
@@ -1479,7 +1490,7 @@ nav{
         style="position:absolute;top:0;left:0;width:100%;height:100%;border:none"></iframe>
     </div>
     <div style="padding:10px 16px;background:var(--c3);font-family:var(--font-mono);font-size:10px;color:var(--text4);letter-spacing:.5px">
-      💡 If the stream shows an error, click "Open in YouTube" to watch directly. Some channels restrict embedding.
+      💡 If the stream shows an error, use "Open in YouTube" above to watch directly.
     </div>
   </div>
 </section>
@@ -2642,34 +2653,36 @@ async function sendChat(){
 $("chatInput").addEventListener("keypress", e => { if(e.key === "Enter" && !e.shiftKey) sendChat() })
 
 /* ═══════════════════════════════════════════════════
-   LIVE TV — India Channels via YouTube Live
+   LIVE TV — India Channels
+   Strategy: Open YouTube live in new tab (always works).
+   For DD channels, also try Prasar Bharati embed.
 ═══════════════════════════════════════════════════ */
 const TV_CHANNELS = [
-  // Government
-  {name:"DD News",         icon:"🔵", cat:"govt",          ytId:"UCLHFhMDH8mUkMXGlQST34gw", ytUrl:"https://www.youtube.com/@DDNewsofficial/live"},
-  {name:"DD National",     icon:"🇮🇳", cat:"govt",          ytId:"UCbmNph6atAoGfqLoCL_duAg", ytUrl:"https://www.youtube.com/@DDNational/live"},
-  {name:"Sansad TV",       icon:"🏛️", cat:"govt",          ytId:"UChhXkBmSNZPSvQEWRMEoFyQ", ytUrl:"https://www.youtube.com/@sansadtv/live"},
-  {name:"DD India",        icon:"🌍", cat:"govt",          ytId:"UCt1_MHq-MBVAHEAHuOtRtLg", ytUrl:"https://www.youtube.com/@DDIndia/live"},
-  // News Hindi
-  {name:"Aaj Tak",         icon:"🔴", cat:"news",          ytId:"UCt4t-jeY85JegMlZ-E5UWtA", ytUrl:"https://www.youtube.com/@aajtak/live"},
-  {name:"ABP News",        icon:"🟠", cat:"news",          ytId:"UC5r1SP5BS8UmgOJa4v2Q3HQ", ytUrl:"https://www.youtube.com/@ABPNews/live"},
-  {name:"India TV",        icon:"🟡", cat:"news",          ytId:"UCrBKUhqnos1-GE0Dzwi7Pjw", ytUrl:"https://www.youtube.com/@IndiaTV/live"},
-  {name:"Zee News",        icon:"🟣", cat:"news",          ytId:"UCIvagjGTLSv4TaFJxoKpAAA", ytUrl:"https://www.youtube.com/@zeenews/live"},
-  {name:"News18 India",    icon:"⚫", cat:"news",          ytId:"UCmouVHi4FIsf52LJGWKG9Sg", ytUrl:"https://www.youtube.com/@News18India/live"},
-  // News English
-  {name:"NDTV 24x7",       icon:"🔵", cat:"news",          ytId:"UCZFMm1mMw0F81Z37aaEzTUA", ytUrl:"https://www.youtube.com/@ndtv/live"},
-  {name:"Republic TV",     icon:"🔶", cat:"news",          ytId:"UCvGCmAfSjsFnfXxVA1LHTOQ", ytUrl:"https://www.youtube.com/@RepublicTV/live"},
-  {name:"Times Now",       icon:"⏱️", cat:"news",          ytId:"UCt1_MHq-MBVAHEAHuOtRtLg", ytUrl:"https://www.youtube.com/@TimesNow/live"},
-  {name:"Mirror Now",      icon:"🪞", cat:"news",          ytId:"UCfnc5_6tgf_23A3HqXfMdvg", ytUrl:"https://www.youtube.com/@MirrorNow/live"},
-  {name:"WION",            icon:"🌐", cat:"news",          ytId:"UCEATDpyRQ1oZb3B9K6FHo5A", ytUrl:"https://www.youtube.com/@wion/live"},
-  // Entertainment
-  {name:"Colors TV",       icon:"🎨", cat:"entertainment", ytId:"UCB5GIHBXPoNH-LMePAyMNJg", ytUrl:"https://www.youtube.com/@Colors/live"},
-  {name:"Sony LIV",        icon:"🎬", cat:"entertainment", ytId:"UCqwUrj10T4CEd7BJ1sSEu5g", ytUrl:"https://www.youtube.com/@SonyLIV/live"},
-  {name:"Zee TV",          icon:"⭐", cat:"entertainment", ytId:"UCppHpDNM6sIBMTOf8MKXkLQ", ytUrl:"https://www.youtube.com/@ZeeTV/live"},
-  {name:"Star Plus",       icon:"🌟", cat:"entertainment", ytId:"UCHrQ4TxfKyJBygpYBJnGMuw", ytUrl:"https://www.youtube.com/@StarPlus/live"},
+  // Government — DD channels sometimes allow embed via Prasar Bharati
+  {name:"DD News",      icon:"🔵", cat:"govt",          ytUrl:"https://www.youtube.com/@DDNewsofficial/live",   embed:"https://www.youtube.com/embed/live_stream?channel=UCLHFhMDH8mUkMXGlQST34gw", canEmbed:true},
+  {name:"DD National",  icon:"🇮🇳", cat:"govt",          ytUrl:"https://www.youtube.com/@DDNational/live",       embed:"https://www.youtube.com/embed/live_stream?channel=UCbmNph6atAoGfqLoCL_duAg", canEmbed:true},
+  {name:"Sansad TV",    icon:"🏛️", cat:"govt",          ytUrl:"https://www.youtube.com/@sansadtv/live",         embed:"https://www.youtube.com/embed/live_stream?channel=UChhXkBmSNZPSvQEWRMEoFyQ", canEmbed:true},
+  {name:"DD India",     icon:"🌐", cat:"govt",          ytUrl:"https://www.youtube.com/@DDIndia/live",           embed:"https://www.youtube.com/embed/live_stream?channel=UCt1_MHq-MBVAHEAHuOtRtLg", canEmbed:true},
+  // News Hindi — open in YouTube (embedding blocked)
+  {name:"Aaj Tak",      icon:"🔴", cat:"news",          ytUrl:"https://www.youtube.com/@aajtak/live",            canEmbed:false},
+  {name:"ABP News",     icon:"🟠", cat:"news",          ytUrl:"https://www.youtube.com/@ABPNews/live",           canEmbed:false},
+  {name:"India TV",     icon:"🟡", cat:"news",          ytUrl:"https://www.youtube.com/@IndiaTV/live",           canEmbed:false},
+  {name:"Zee News",     icon:"🟣", cat:"news",          ytUrl:"https://www.youtube.com/@zeenews/live",           canEmbed:false},
+  {name:"News18 India", icon:"⚫", cat:"news",          ytUrl:"https://www.youtube.com/@News18India/live",       canEmbed:false},
+  // News English — open in YouTube
+  {name:"NDTV 24x7",    icon:"🔵", cat:"news",          ytUrl:"https://www.youtube.com/@ndtv/live",              canEmbed:false},
+  {name:"Republic TV",  icon:"🔶", cat:"news",          ytUrl:"https://www.youtube.com/@RepublicTV/live",        canEmbed:false},
+  {name:"Times Now",    icon:"⏱️", cat:"news",          ytUrl:"https://www.youtube.com/@TimesNow/live",          canEmbed:false},
+  {name:"Mirror Now",   icon:"🪞", cat:"news",          ytUrl:"https://www.youtube.com/@MirrorNow/live",         canEmbed:false},
+  {name:"WION",         icon:"🌍", cat:"news",          ytUrl:"https://www.youtube.com/@wion/live",              canEmbed:false},
+  // Entertainment — open in YouTube
+  {name:"Colors TV",    icon:"🎨", cat:"entertainment", ytUrl:"https://www.youtube.com/@Colors/live",            canEmbed:false},
+  {name:"Sony LIV",     icon:"🎬", cat:"entertainment", ytUrl:"https://www.youtube.com/@SonyLIV/live",           canEmbed:false},
+  {name:"Zee TV",       icon:"⭐", cat:"entertainment", ytUrl:"https://www.youtube.com/@ZeeTV/live",             canEmbed:false},
+  {name:"Star Plus",    icon:"🌟", cat:"entertainment", ytUrl:"https://www.youtube.com/@StarPlus/live",          canEmbed:false},
   // Sports
-  {name:"DD Sports",       icon:"🏏", cat:"sports",        ytId:"UCMZoODfHMhMiQxuvqCmAlJA", ytUrl:"https://www.youtube.com/@DDSports/live"},
-  {name:"Sports18",        icon:"⚽", cat:"sports",        ytId:"UCUo9OHDocUVkZvFqJcFulcQ", ytUrl:"https://www.youtube.com/@Sports18/live"},
+  {name:"DD Sports",    icon:"🏏", cat:"sports",        ytUrl:"https://www.youtube.com/@DDSports/live",          embed:"https://www.youtube.com/embed/live_stream?channel=UCMZoODfHMhMiQxuvqCmAlJA", canEmbed:true},
+  {name:"Sports18",     icon:"⚽", cat:"sports",        ytUrl:"https://www.youtube.com/@Sports18/live",          canEmbed:false},
 ]
 
 let activeTV = null
@@ -2677,44 +2690,81 @@ let activeTV = null
 function renderTV(filter='all'){
   const grid = $('tvChannelGrid')
   const channels = filter==='all' ? TV_CHANNELS : TV_CHANNELS.filter(c=>c.cat===filter)
-  grid.innerHTML = channels.map((ch,i)=>`
-    <div class="tv-card${activeTV===ch.ytId?' active':''}" onclick="playTV('${ch.ytId}','${ch.name}','${ch.ytUrl}',this)">
+  grid.innerHTML = channels.map(ch=>`
+    <div class="tv-card${activeTV===ch.name?' active':''}" onclick="playTV(${JSON.stringify(ch).replace(/"/g,'&quot;')},this)">
       <div class="tv-icon">${ch.icon}</div>
       <div class="tv-name">${ch.name}</div>
-      <div class="tv-cat"><span class="tv-live-dot"></span>${ch.cat}</div>
+      <div class="tv-cat">
+        <span class="tv-live-dot"></span>${ch.canEmbed?'embed available':'opens YouTube'}
+      </div>
     </div>`).join('')
 }
 
 function filterTV(cat, btn){
-  document.querySelectorAll('.news-tabs .ntab').forEach(b=>b.classList.remove('active'))
+  document.querySelectorAll('#livetv .ntab').forEach(b=>b.classList.remove('active'))
   btn.classList.add('active')
   renderTV(cat)
 }
 
-function playTV(ytId, name, ytUrl, el){
-  // Deactivate all
+function playTV(chObj, el){
   document.querySelectorAll('.tv-card').forEach(c=>c.classList.remove('active'))
   el.classList.add('active')
-  activeTV = ytId
+  activeTV = chObj.name
 
-  const wrap = $('tvPlayerWrap')
-  const frame = $('tvPlayerFrame')
-  const title = $('tvPlayerTitle')
-  const ytLink = $('tvYtLink')
+  $('tvYtLink').href = chObj.ytUrl
 
-  title.textContent = '📺 ' + name + ' — LIVE'
-  ytLink.href = ytUrl
-
-  // Use YouTube live_stream channel embed
-  frame.src = `https://www.youtube.com/embed/live_stream?channel=${ytId}&autoplay=1&mute=0`
-
-  wrap.style.display = 'block'
-  wrap.scrollIntoView({behavior:'smooth', block:'start'})
+  if(chObj.canEmbed && chObj.embed){
+    // Try to embed — works for DD/Sansad which allow it
+    $('tvPlayerTitle').textContent = '📺 ' + chObj.name + ' — LIVE'
+    $('tvPlayerFrame').src = chObj.embed + '&autoplay=1'
+    $('tvPlayerWrap').style.display = 'block'
+    $('tvPlayerWrap').scrollIntoView({behavior:'smooth', block:'start'})
+  } else {
+    // Non-embeddable — just open in new tab instantly
+    window.open(chObj.ytUrl, '_blank')
+    // Also show a brief toast-style note
+    $('tvPlayerTitle').textContent = '📺 ' + chObj.name + ' — Opening YouTube…'
+    $('tvPlayerFrame').src = ''
+    $('tvPlayerWrap').style.display = 'block'
+    $('tvPlayerWrap').scrollIntoView({behavior:'smooth', block:'start'})
+    // Show info instead of blank iframe
+    $('tvPlayerFrame').style.display = 'none'
+    const infoBox = document.getElementById('tvInfoBox')
+    if(infoBox){
+      infoBox.style.display = 'flex'
+      infoBox.querySelector('.tv-info-name').textContent = chObj.name
+      infoBox.querySelector('.tv-info-link').href = chObj.ytUrl
+    }
+  }
 }
+
+// Patch the player wrap to include an info box for non-embeddable channels
+document.addEventListener('DOMContentLoaded', ()=>{
+  const wrap = $('tvPlayerWrap')
+  if(!wrap) return
+  const infoBox = document.createElement('div')
+  infoBox.id = 'tvInfoBox'
+  infoBox.style.cssText = 'display:none;position:absolute;top:0;left:0;width:100%;height:100%;background:var(--c1);align-items:center;justify-content:center;flex-direction:column;gap:16px;text-align:center;padding:24px'
+  infoBox.innerHTML = `
+    <div style="font-size:48px">📺</div>
+    <div style="font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--text)" class="tv-info-name"></div>
+    <div style="font-family:var(--font-mono);font-size:12px;color:var(--text3)">This channel restricts embedding. Watch it live on YouTube:</div>
+    <a class="tv-info-link convert-btn" href="#" target="_blank" style="text-decoration:none;display:inline-block;padding:12px 28px;font-size:14px">▶ Watch Live on YouTube</a>
+  `
+  // Insert inside the iframe container
+  const iframeWrap = wrap.querySelector('[style*="padding-top:56.25%"]')
+  if(iframeWrap){
+    iframeWrap.style.position = 'relative'
+    iframeWrap.appendChild(infoBox)
+  }
+})
 
 function closeTV(){
   $('tvPlayerWrap').style.display = 'none'
   $('tvPlayerFrame').src = ''
+  $('tvPlayerFrame').style.display = 'block'
+  const infoBox = document.getElementById('tvInfoBox')
+  if(infoBox) infoBox.style.display = 'none'
   activeTV = null
   document.querySelectorAll('.tv-card').forEach(c=>c.classList.remove('active'))
 }
