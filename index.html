@@ -139,7 +139,7 @@ nav{
 .nav-toggle.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 nav ul{
   display:flex;flex-wrap:nowrap;gap:1px;
-  list-style:none;align-items:center;
+  list-style:none;align-items:center;justify-content:center;
   overflow-x:auto;overflow-y:hidden;
   scrollbar-width:none;-ms-overflow-style:none;
   flex:1;
@@ -1189,44 +1189,7 @@ footer a{color:var(--red);transition:opacity .2s}
 footer a:hover{opacity:.7}
 .footer-top{font-size:13px;color:var(--text3);margin-bottom:6px;font-family:var(--font-display);letter-spacing:1px}
 
-/* ═══════════════════════════════════════════
-   LIVE TV
-═══════════════════════════════════════════ */
-.tv-channel-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(min(140px,100%),1fr));
-  gap:clamp(8px,1.2vw,12px);
-  margin-bottom:4px;
-}
-.tv-card{
-  background:var(--c2);
-  border:1px solid var(--border);
-  border-radius:var(--r);
-  padding:clamp(12px,2vw,16px) 10px;
-  text-align:center;
-  cursor:pointer;
-  transition:all .22s;
-  position:relative;
-  overflow:hidden;
-}
-.tv-card::before{
-  content:'';
-  position:absolute;bottom:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,var(--red),transparent);
-  opacity:0;transition:opacity .3s;
-}
-.tv-card:hover{border-color:rgba(225,29,72,.3);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.4)}
-.tv-card:hover::before,.tv-card.active::before{opacity:1}
-.tv-card.active{border-color:var(--red);background:var(--c3)}
-.tv-icon{font-size:clamp(22px,3vw,28px);margin-bottom:8px}
-.tv-name{font-family:var(--font-display);font-size:clamp(11px,1.2vw,13px);font-weight:700;letter-spacing:.3px;margin-bottom:4px;color:var(--text);line-height:1.2}
-.tv-cat{font-family:var(--font-mono);font-size:9px;color:var(--text4);letter-spacing:1px;text-transform:uppercase}
-.tv-live-dot{
-  display:inline-block;width:6px;height:6px;border-radius:50%;
-  background:var(--red);margin-right:4px;
-  box-shadow:0 0 6px var(--red);
-  animation:navPulse 1.5s infinite;
-}
+
 
 @media(max-width:1100px){
   .nav-toggle{display:flex}
@@ -1276,7 +1239,6 @@ nav{
   padding-left:max(clamp(14px,4vw,32px),env(safe-area-inset-left));
   padding-right:max(clamp(14px,4vw,32px),env(safe-area-inset-right));
 }
-<script src="https://js.puter.com/v2/"></script>
 </style>
 </head>
 <body>
@@ -1291,7 +1253,6 @@ nav{
     <li><a href="#crypto">Crypto</a></li>
     <li><a href="#cricket">Cricket</a></li>
     <li><a href="#radio">Radio</a></li>
-    <li><a href="#livetv">Live TV</a></li>
     <li><a href="#weather">Weather</a></li>
     <li><a href="#aqi">AQI</a></li>
     <li><a href="#fuel">Fuel</a></li>
@@ -1451,48 +1412,6 @@ nav{
     <div style="font-family:var(--font-mono);font-size:11px;color:var(--text4);letter-spacing:.5px">Click to start · HLS live stream</div>
   </div>
   <audio id="radioPlayer" controls style="width:100%;min-height:48px;margin-top:14px;border-radius:var(--rs);accent-color:var(--red)"></audio>
-</section>
-
-<!-- ══ LIVE TV ══ -->
-<section class="container" id="livetv">
-  <div class="section-head">
-    <h2 class="section-title">📺 India Live TV <span>LIVE</span></h2>
-    <div class="section-meta">
-      <span class="updated-text">Click a channel · Opens YouTube live</span>
-    </div>
-  </div>
-  <div style="background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);border-radius:var(--rs);padding:10px 14px;margin-bottom:14px;font-family:var(--font-mono);font-size:11px;color:var(--text3);letter-spacing:.3px">
-    📺 Most Indian channels block iframe embedding due to broadcast rights. Clicking any channel will open it on <strong style="color:var(--gold)">YouTube</strong> in a new tab — the most reliable way to watch live Indian TV for free.
-  </div>
-  <div class="news-tabs" style="margin-bottom:14px">
-    <button class="ntab active" onclick="filterTV('all',this)">All</button>
-    <button class="ntab" onclick="filterTV('news',this)">📰 News</button>
-    <button class="ntab" onclick="filterTV('govt',this)">🏛️ Govt</button>
-    <button class="ntab" onclick="filterTV('entertainment',this)">🎬 Entertainment</button>
-    <button class="ntab" onclick="filterTV('sports',this)">🏏 Sports</button>
-  </div>
-  <div class="tv-channel-grid" id="tvChannelGrid"></div>
-
-  <!-- Embedded player — only shown when a DD/embeddable channel is selected -->
-  <div class="tv-player-wrap" id="tvPlayerWrap" style="display:none;margin-top:20px;background:var(--c2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
-    <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--c3);border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px">
-      <div style="display:flex;align-items:center;gap:10px">
-        <div style="width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 8px var(--red);animation:navPulse 1.5s infinite"></div>
-        <span id="tvPlayerTitle" style="font-family:var(--font-display);font-size:15px;font-weight:700;letter-spacing:.5px">—</span>
-      </div>
-      <div style="display:flex;gap:8px;align-items:center">
-        <a id="tvYtLink" href="#" target="_blank" class="refresh-btn" style="text-decoration:none">▶ Open in YouTube</a>
-        <button class="refresh-btn" onclick="closeTV()">✕ Close</button>
-      </div>
-    </div>
-    <div style="position:relative;padding-top:56.25%;background:#000">
-      <iframe id="tvPlayerFrame" src="" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture"
-        style="position:absolute;top:0;left:0;width:100%;height:100%;border:none"></iframe>
-    </div>
-    <div style="padding:10px 16px;background:var(--c3);font-family:var(--font-mono);font-size:10px;color:var(--text4);letter-spacing:.5px">
-      💡 If the stream shows an error, use "Open in YouTube" above to watch directly.
-    </div>
-  </div>
 </section>
 
 <!-- ══ WEATHER ══ -->
@@ -1792,7 +1711,7 @@ nav{
         <div class="chat-sugg" onclick="askSuggestion('Latest cybersecurity threats in India')">🔐 Cyber threats</div>
         <div class="chat-sugg" onclick="askSuggestion('Best cities to visit in India this season')">🗺️ Travel tips</div>
       </div>
-      <div class="chat-hint">⚡ Free AI · No API key needed · Powered by Puter.js · India Dashboard · Deepak</div>
+      <div class="chat-hint">India Dashboard AI · Ask me anything about India · Deepak</div>
     </div>
   </div>
 </section>
@@ -2575,16 +2494,13 @@ $("elecBars").innerHTML=lokaResults.map(p=>{const pct=Math.round(p.seats/543*100
 $("stateElec").innerHTML=stateResults.map(s=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)"><div><div style="font-family:var(--font-body);font-weight:600;font-size:13px">${s.state}</div><div style="font-family:var(--font-mono);font-size:10px;color:var(--text4);margin-top:2px;letter-spacing:.3px">${s.year} · ${s.margin}</div></div><div style="text-align:right"><div style="font-family:var(--font-mono);font-size:13px;color:#10b981;font-weight:600">${s.winner}</div><div style="font-family:var(--font-mono);font-size:10px;color:var(--text4)">${s.seats}</div></div></div>`).join("")
 
 /* ═══════════════════════════════════════════════════
-   AI CHAT — Puter.js (free, no API key required)
+   AI CHAT — free, no key required
 ═══════════════════════════════════════════════════ */
-const SYSTEM_MSG = {
-  role: "system",
-  content: `You are a knowledgeable AI assistant embedded in the India Digital Command Dashboard, built by Deepak — a PG Masters student in Data Science, ML, Cloud Engineering and Cyber Security based in Bengaluru, India.
+const SYSTEM_PROMPT = `You are a knowledgeable assistant embedded in the India Digital Command Dashboard, built by Deepak — a PG Masters student in Data Science, ML, Cloud Engineering and Cyber Security based in Bengaluru, India.
 
-Help with: India news, stock markets (NSE/BSE), cricket scores & IPL 2026, weather, economy, ISRO, culture, AI/ML, Data Science, Python, cloud platforms (AWS/Azure/GCP), cybersecurity, IPOs, travel in India, and general knowledge.
+Help with: India news, stock markets (NSE/BSE), cricket & IPL 2026, weather, economy, ISRO, culture, ML/AI concepts, Data Science, Python, cloud platforms (AWS/Azure/GCP), cybersecurity, IPOs, travel in India, and general knowledge.
 
-Style: Concise, friendly, professional. Use bullet points for lists. Use ₹ for INR. Format numbers clearly. Keep responses focused and under 200 words unless the user asks for detail.`
-}
+Style: Concise, friendly, professional. Use bullet points for lists. Use ₹ for INR. Keep responses under 200 words unless asked for detail.`
 
 const convHistory = []
 
@@ -2606,43 +2522,42 @@ async function sendChat(){
   if(!userText) return
 
   addMessage(userText, "user")
-  convHistory.push({ role: "user", content: userText })
+  convHistory.push({ role:"user", content:userText })
   $("chatInput").value = ""
   $("sendBtn").disabled = true
   $("typingIndicator").style.display = "block"
   $("chatMessages").scrollTop = $("chatMessages").scrollHeight
 
+  // Build messages with system prompt prepended
+  const messages = [
+    { role:"system", content: SYSTEM_PROMPT },
+    ...convHistory
+  ]
+
   try{
-    // Build full message array: system prompt + history
-    const messages = [SYSTEM_MSG, ...convHistory]
+    const res = await fetch("https://text.pollinations.ai/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        messages,
+        model: "openai",
+        seed: -1,
+        jsonMode: false
+      })
+    })
 
-    const response = await puter.ai.chat(messages)
+    if(!res.ok) throw new Error("HTTP " + res.status)
 
-    // Puter.js response can be a string or object — handle both
-    let reply = ""
-    if(typeof response === "string"){
-      reply = response
-    } else if(response?.message?.content?.[0]?.text){
-      reply = response.message.content[0].text
-    } else if(response?.content?.[0]?.text){
-      reply = response.content[0].text
-    } else if(response?.text){
-      reply = response.text
-    } else {
-      reply = String(response) || "Sorry, I couldn't generate a response."
-    }
+    const reply = await res.text()
 
-    addMessage(reply, "ai")
-    convHistory.push({ role: "assistant", content: reply })
+    if(!reply || !reply.trim()) throw new Error("empty response")
+
+    addMessage(reply.trim(), "ai")
+    convHistory.push({ role:"assistant", content: reply.trim() })
 
   } catch(err){
-    // Puter may need sign-in on first use — guide the user
-    if(err?.message?.toLowerCase().includes("auth") || err?.message?.toLowerCase().includes("sign")){
-      addMessage("⚠️ Please sign in to Puter.com once (free account) to activate the AI chat — then come back and ask again!", "error")
-    } else {
-      addMessage("⚠️ AI unavailable right now. Try again in a moment — no API key needed.", "error")
-    }
-    console.error("Puter AI error:", err)
+    addMessage("⚠️ Could not reach the AI right now. Please try again in a moment.", "error")
+    console.error("Chat error:", err)
   }
 
   $("typingIndicator").style.display = "none"
@@ -2651,125 +2566,6 @@ async function sendChat(){
 }
 
 $("chatInput").addEventListener("keypress", e => { if(e.key === "Enter" && !e.shiftKey) sendChat() })
-
-/* ═══════════════════════════════════════════════════
-   LIVE TV — India Channels
-   Strategy: Open YouTube live in new tab (always works).
-   For DD channels, also try Prasar Bharati embed.
-═══════════════════════════════════════════════════ */
-const TV_CHANNELS = [
-  // Government — DD channels sometimes allow embed via Prasar Bharati
-  {name:"DD News",      icon:"🔵", cat:"govt",          ytUrl:"https://www.youtube.com/@DDNewsofficial/live",   embed:"https://www.youtube.com/embed/live_stream?channel=UCLHFhMDH8mUkMXGlQST34gw", canEmbed:true},
-  {name:"DD National",  icon:"🇮🇳", cat:"govt",          ytUrl:"https://www.youtube.com/@DDNational/live",       embed:"https://www.youtube.com/embed/live_stream?channel=UCbmNph6atAoGfqLoCL_duAg", canEmbed:true},
-  {name:"Sansad TV",    icon:"🏛️", cat:"govt",          ytUrl:"https://www.youtube.com/@sansadtv/live",         embed:"https://www.youtube.com/embed/live_stream?channel=UChhXkBmSNZPSvQEWRMEoFyQ", canEmbed:true},
-  {name:"DD India",     icon:"🌐", cat:"govt",          ytUrl:"https://www.youtube.com/@DDIndia/live",           embed:"https://www.youtube.com/embed/live_stream?channel=UCt1_MHq-MBVAHEAHuOtRtLg", canEmbed:true},
-  // News Hindi — open in YouTube (embedding blocked)
-  {name:"Aaj Tak",      icon:"🔴", cat:"news",          ytUrl:"https://www.youtube.com/@aajtak/live",            canEmbed:false},
-  {name:"ABP News",     icon:"🟠", cat:"news",          ytUrl:"https://www.youtube.com/@ABPNews/live",           canEmbed:false},
-  {name:"India TV",     icon:"🟡", cat:"news",          ytUrl:"https://www.youtube.com/@IndiaTV/live",           canEmbed:false},
-  {name:"Zee News",     icon:"🟣", cat:"news",          ytUrl:"https://www.youtube.com/@zeenews/live",           canEmbed:false},
-  {name:"News18 India", icon:"⚫", cat:"news",          ytUrl:"https://www.youtube.com/@News18India/live",       canEmbed:false},
-  // News English — open in YouTube
-  {name:"NDTV 24x7",    icon:"🔵", cat:"news",          ytUrl:"https://www.youtube.com/@ndtv/live",              canEmbed:false},
-  {name:"Republic TV",  icon:"🔶", cat:"news",          ytUrl:"https://www.youtube.com/@RepublicTV/live",        canEmbed:false},
-  {name:"Times Now",    icon:"⏱️", cat:"news",          ytUrl:"https://www.youtube.com/@TimesNow/live",          canEmbed:false},
-  {name:"Mirror Now",   icon:"🪞", cat:"news",          ytUrl:"https://www.youtube.com/@MirrorNow/live",         canEmbed:false},
-  {name:"WION",         icon:"🌍", cat:"news",          ytUrl:"https://www.youtube.com/@wion/live",              canEmbed:false},
-  // Entertainment — open in YouTube
-  {name:"Colors TV",    icon:"🎨", cat:"entertainment", ytUrl:"https://www.youtube.com/@Colors/live",            canEmbed:false},
-  {name:"Sony LIV",     icon:"🎬", cat:"entertainment", ytUrl:"https://www.youtube.com/@SonyLIV/live",           canEmbed:false},
-  {name:"Zee TV",       icon:"⭐", cat:"entertainment", ytUrl:"https://www.youtube.com/@ZeeTV/live",             canEmbed:false},
-  {name:"Star Plus",    icon:"🌟", cat:"entertainment", ytUrl:"https://www.youtube.com/@StarPlus/live",          canEmbed:false},
-  // Sports
-  {name:"DD Sports",    icon:"🏏", cat:"sports",        ytUrl:"https://www.youtube.com/@DDSports/live",          embed:"https://www.youtube.com/embed/live_stream?channel=UCMZoODfHMhMiQxuvqCmAlJA", canEmbed:true},
-  {name:"Sports18",     icon:"⚽", cat:"sports",        ytUrl:"https://www.youtube.com/@Sports18/live",          canEmbed:false},
-]
-
-let activeTV = null
-
-function renderTV(filter='all'){
-  const grid = $('tvChannelGrid')
-  const channels = filter==='all' ? TV_CHANNELS : TV_CHANNELS.filter(c=>c.cat===filter)
-  grid.innerHTML = channels.map(ch=>`
-    <div class="tv-card${activeTV===ch.name?' active':''}" onclick="playTV(${JSON.stringify(ch).replace(/"/g,'&quot;')},this)">
-      <div class="tv-icon">${ch.icon}</div>
-      <div class="tv-name">${ch.name}</div>
-      <div class="tv-cat">
-        <span class="tv-live-dot"></span>${ch.canEmbed?'embed available':'opens YouTube'}
-      </div>
-    </div>`).join('')
-}
-
-function filterTV(cat, btn){
-  document.querySelectorAll('#livetv .ntab').forEach(b=>b.classList.remove('active'))
-  btn.classList.add('active')
-  renderTV(cat)
-}
-
-function playTV(chObj, el){
-  document.querySelectorAll('.tv-card').forEach(c=>c.classList.remove('active'))
-  el.classList.add('active')
-  activeTV = chObj.name
-
-  $('tvYtLink').href = chObj.ytUrl
-
-  if(chObj.canEmbed && chObj.embed){
-    // Try to embed — works for DD/Sansad which allow it
-    $('tvPlayerTitle').textContent = '📺 ' + chObj.name + ' — LIVE'
-    $('tvPlayerFrame').src = chObj.embed + '&autoplay=1'
-    $('tvPlayerWrap').style.display = 'block'
-    $('tvPlayerWrap').scrollIntoView({behavior:'smooth', block:'start'})
-  } else {
-    // Non-embeddable — just open in new tab instantly
-    window.open(chObj.ytUrl, '_blank')
-    // Also show a brief toast-style note
-    $('tvPlayerTitle').textContent = '📺 ' + chObj.name + ' — Opening YouTube…'
-    $('tvPlayerFrame').src = ''
-    $('tvPlayerWrap').style.display = 'block'
-    $('tvPlayerWrap').scrollIntoView({behavior:'smooth', block:'start'})
-    // Show info instead of blank iframe
-    $('tvPlayerFrame').style.display = 'none'
-    const infoBox = document.getElementById('tvInfoBox')
-    if(infoBox){
-      infoBox.style.display = 'flex'
-      infoBox.querySelector('.tv-info-name').textContent = chObj.name
-      infoBox.querySelector('.tv-info-link').href = chObj.ytUrl
-    }
-  }
-}
-
-// Patch the player wrap to include an info box for non-embeddable channels
-document.addEventListener('DOMContentLoaded', ()=>{
-  const wrap = $('tvPlayerWrap')
-  if(!wrap) return
-  const infoBox = document.createElement('div')
-  infoBox.id = 'tvInfoBox'
-  infoBox.style.cssText = 'display:none;position:absolute;top:0;left:0;width:100%;height:100%;background:var(--c1);align-items:center;justify-content:center;flex-direction:column;gap:16px;text-align:center;padding:24px'
-  infoBox.innerHTML = `
-    <div style="font-size:48px">📺</div>
-    <div style="font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--text)" class="tv-info-name"></div>
-    <div style="font-family:var(--font-mono);font-size:12px;color:var(--text3)">This channel restricts embedding. Watch it live on YouTube:</div>
-    <a class="tv-info-link convert-btn" href="#" target="_blank" style="text-decoration:none;display:inline-block;padding:12px 28px;font-size:14px">▶ Watch Live on YouTube</a>
-  `
-  // Insert inside the iframe container
-  const iframeWrap = wrap.querySelector('[style*="padding-top:56.25%"]')
-  if(iframeWrap){
-    iframeWrap.style.position = 'relative'
-    iframeWrap.appendChild(infoBox)
-  }
-})
-
-function closeTV(){
-  $('tvPlayerWrap').style.display = 'none'
-  $('tvPlayerFrame').src = ''
-  $('tvPlayerFrame').style.display = 'block'
-  const infoBox = document.getElementById('tvInfoBox')
-  if(infoBox) infoBox.style.display = 'none'
-  activeTV = null
-  document.querySelectorAll('.tv-card').forEach(c=>c.classList.remove('active'))
-}
-
-renderTV('all')
 
 
 const skillObserver=new IntersectionObserver(entries=>{
