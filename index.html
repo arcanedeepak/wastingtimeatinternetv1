@@ -1,92 +1,173 @@
-<!-- ═════ APP STORE + APPLE ARCADE ADD-ON ═════
-     Paste this whole block just before </body> (after apple-layer.css is loaded).
-     It inserts a "Today" page, an Arcade game shelf, a Top Free chart and a bottom tab bar. -->
+<!-- Paste this whole block right before </head>. Styling only: no content or script changes. -->
 <style>
-@property --p{syntax:'<percentage>';inherits:false;initial-value:0%}
-:root{--sf:-apple-system,BlinkMacSystemFont,"SF Pro Display",Inter,"Helvetica Neue",system-ui,sans-serif;--sp:cubic-bezier(.34,1.56,.64,1)}
-#appstore{max-width:1200px;margin:0 auto;padding:clamp(20px,4vw,44px) clamp(14px,3vw,24px);font-family:var(--sf);position:relative;z-index:1}
-.as-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:18px}
-.as-date{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text3,#94a3b8)}
-.as-title{font-size:clamp(40px,7.5vw,60px);font-weight:800;letter-spacing:-.045em;line-height:1;color:var(--text,#fff)}
-.as-av{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-size:22px;background:linear-gradient(#17172b,#17172b) padding-box,conic-gradient(#FF375F,#FF9F0A,#FFD60A,#30D158,#64D2FF,#0A84FF,#BF5AF2,#FF375F) border-box;border:3px solid transparent}
-.as-h2{display:flex;justify-content:space-between;align-items:baseline;margin:34px 0 12px;padding-top:14px;border-top:1px solid rgba(255,255,255,.12)}
-.as-h2 b{font-size:clamp(22px,3.2vw,28px);font-weight:800;letter-spacing:-.03em;color:var(--text,#fff)}
-.as-h2 a{font-size:15px;font-weight:600;color:#0A84FF}
-/* squircle app icon */
-.as-ic{flex:none;width:var(--s,60px);height:var(--s,60px);border-radius:22.37%;display:grid;place-items:center;font-size:calc(var(--s,60px)*.52);
-  background:linear-gradient(145deg,var(--a),var(--b));box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -2px 6px rgba(0,0,0,.25),0 8px 18px -6px var(--b)}
-/* featured Today card */
-.as-feat{position:relative;overflow:hidden;border-radius:32px;min-height:clamp(360px,54vw,500px);padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;justify-content:space-between;color:#fff;
-  background:radial-gradient(70% 60% at 85% 10%,#FF375F,transparent 60%),radial-gradient(60% 60% at 10% 90%,#0A84FF,transparent 60%),radial-gradient(50% 50% at 60% 100%,#BF5AF2,transparent 65%),#241a4a;
-  box-shadow:0 40px 80px -30px rgba(94,92,230,.8),inset 0 1px 0 rgba(255,255,255,.4);transition:transform .6s var(--sp)}
-.as-feat:hover{transform:scale(1.015)}
-.as-feat::before{content:'🎮';position:absolute;right:-2%;top:6%;font-size:clamp(180px,32vw,340px);opacity:.95;filter:drop-shadow(0 30px 40px rgba(0,0,0,.5));transform:rotate(-12deg);animation:fl 7s ease-in-out infinite alternate}
-@keyframes fl{to{transform:rotate(-4deg) translateY(-16px)}}
-.as-eye{position:relative;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
-.as-big{position:relative;font-size:clamp(34px,6vw,58px);font-weight:800;letter-spacing:-.04em;line-height:1.02;margin-top:6px;max-width:11em;text-shadow:0 4px 30px rgba(0,0,0,.35)}
-.as-bar{position:relative;display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:22px;background:rgba(20,20,40,.38);backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);border:1px solid rgba(255,255,255,.2)}
-.as-bar div{flex:1;min-width:0}.as-bar b{display:block;font-size:16px}.as-bar small{opacity:.75;font-size:13px}
-/* GET button with download ring */
-.as-get{position:relative;border:none;cursor:pointer;padding:7px 22px;border-radius:999px;font:800 15px var(--sf);color:#0A84FF;background:rgba(120,130,170,.28);transition:transform .3s var(--sp);min-width:72px;min-height:32px}
-.as-get:hover{transform:scale(1.08)}.as-get:active{transform:scale(.92)}
-.as-get.load{font-size:0;min-width:0;width:32px;padding:0;background:conic-gradient(#0A84FF var(--p),rgba(255,255,255,.22) 0);animation:fill 1.5s linear forwards}
-.as-get.load::after{content:'';position:absolute;inset:3px;border-radius:50%;background:#1b1b33}
-@keyframes fill{to{--p:100%}}
-/* arcade shelf */
-.as-row{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 24px;scrollbar-width:none}.as-row::-webkit-scrollbar{display:none}
-.as-game{flex:0 0 clamp(250px,30vw,320px);scroll-snap-align:start;border-radius:28px;overflow:hidden;background:linear-gradient(160deg,rgba(255,255,255,.17),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.16);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 22px 44px -18px rgba(0,0,0,.6);backdrop-filter:blur(26px);transition:transform .5s var(--sp)}
-.as-game:hover{transform:translateY(-8px) scale(1.025)}
-.as-art{position:relative;height:190px;display:grid;place-items:center;font-size:92px;overflow:hidden;background:radial-gradient(80% 90% at 20% 0%,var(--a),transparent 70%),radial-gradient(80% 90% at 90% 100%,var(--b),transparent 70%),#1a1a30}
-.as-art span{filter:drop-shadow(0 14px 18px rgba(0,0,0,.45));transition:transform .6s var(--sp)}.as-game:hover .as-art span{transform:scale(1.18) rotate(-8deg)}
-.as-art i{position:absolute;top:12px;left:12px;font:800 10px var(--sf);letter-spacing:.12em;padding:4px 10px;border-radius:99px;background:rgba(0,0,0,.35);color:#fff;backdrop-filter:blur(10px)}
-.as-info{display:flex;align-items:center;gap:12px;padding:14px}.as-info div{flex:1;min-width:0}
-.as-info b,.as-li b{display:block;font-size:16px;font-weight:700;color:var(--text,#fff);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.as-info small,.as-li small{font-size:13px;color:var(--text3,#94a3b8)}
-/* top free chart */
-.as-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(320px,100%),1fr));column-gap:28px}
-.as-li{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.1)}.as-li div{flex:1;min-width:0}
-.as-li em{font:800 18px var(--sf);font-style:normal;width:22px;text-align:center;color:var(--text,#fff)}
-/* bottom tab bar */
-.as-dock{position:fixed;left:50%;bottom:max(14px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:9500;display:flex;gap:2px;padding:7px;border-radius:999px;
-  background:rgba(25,25,50,.55);backdrop-filter:blur(34px) saturate(1.9);-webkit-backdrop-filter:blur(34px) saturate(1.9);border:1px solid rgba(255,255,255,.2);box-shadow:0 20px 50px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.35)}
-.as-dock a{display:flex;flex-direction:column;align-items:center;gap:1px;padding:7px 14px;border-radius:999px;font:700 10px var(--sf);color:#e8e8ff;transition:all .3s var(--sp)}
-.as-dock a span{font-size:19px}.as-dock a:hover{background:rgba(255,255,255,.16);transform:scale(1.1)}
-#backTop{bottom:96px !important}footer{padding-bottom:110px !important}
-@media(max-width:480px){.as-dock a{padding:7px 9px}}
+/* ═══════════ APPLE LAYER — paste as the LAST <style> in <head> ═══════════ */
+:root{
+  --sf:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,"Helvetica Neue",system-ui,sans-serif;
+  --font-display:var(--sf);--font-body:var(--sf);--font-mono:ui-monospace,"SF Mono","IBM Plex Mono",Menlo,monospace;
+  --red:#FF375F;--red2:#FF6482;--gold:#FF9F0A;--gold2:#FFD60A;--green:#30D158;--ice:#64D2FF;
+  --red-glow:rgba(255,55,95,.18);
+  --r:26px;--rs:14px;--nav-h:58px;
+  --m1:#5E5CE6;--m2:#FF375F;--m3:#0A84FF;--m4:#BF5AF2;--ma:58%;--mb:#05050d;
+  --g1:rgba(255,255,255,.18);--g2:rgba(255,255,255,.05);--gb:rgba(255,255,255,.16);
+  --gs:inset 0 1px 0 rgba(255,255,255,.42),inset 0 -1px 0 rgba(0,0,0,.25),0 22px 46px -16px rgba(0,0,0,.65);
+  --spring:cubic-bezier(.34,1.56,.64,1);
+  --rainbow:linear-gradient(90deg,#FF375F,#FF9F0A,#FFD60A,#30D158,#64D2FF,#0A84FF,#BF5AF2);
+}
+body.theme-light{--ma:30%;--mb:#f2f4ff;--g1:rgba(255,255,255,.92);--g2:rgba(255,255,255,.6);--gb:rgba(255,255,255,.95);
+  --gs:inset 0 1px 0 #fff,0 16px 36px -14px rgba(70,70,140,.28)}
+body.theme-saffron{--m1:#FF6B00;--m2:#FFD60A;--m3:#FF375F;--m4:#FF9F0A}
+body.theme-ocean{--m1:#0A84FF;--m2:#64D2FF;--m3:#5E5CE6;--m4:#30D158}
+
+/* section accent colours (Apple system palette, rotating) */
+section.container{--acc:#FF375F}
+section.container:nth-of-type(6n+2){--acc:#0A84FF}
+section.container:nth-of-type(6n+3){--acc:#30D158}
+section.container:nth-of-type(6n+4){--acc:#FF9F0A}
+section.container:nth-of-type(6n+5){--acc:#BF5AF2}
+section.container:nth-of-type(6n+6){--acc:#64D2FF}
+
+/* living mesh-gradient wallpaper + film-grain texture */
+body::before{
+  background:
+   radial-gradient(55% 50% at 8% 0%,color-mix(in srgb,var(--m1) var(--ma),transparent),transparent 62%),
+   radial-gradient(50% 45% at 96% 8%,color-mix(in srgb,var(--m2) var(--ma),transparent),transparent 62%),
+   radial-gradient(55% 50% at 88% 98%,color-mix(in srgb,var(--m3) var(--ma),transparent),transparent 62%),
+   radial-gradient(45% 40% at 4% 92%,color-mix(in srgb,var(--m4) var(--ma),transparent),transparent 62%),var(--mb);
+  animation:meshDrift 28s ease-in-out infinite alternate;
+}
+@keyframes meshDrift{from{transform:scale(1.05) translate(0,0)}to{transform:scale(1.22) translate(-2.5%,2%)}}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:2;opacity:.09;mix-blend-mode:overlay;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+body.theme-light::after{opacity:.05}
+body {font-family:var(--sf);-webkit-font-smoothing:antialiased;letter-spacing:-.011em}
+
+/* floating glass navigation capsule */
+body:not(#_) nav{margin:10px clamp(8px,2vw,18px) 0;top:10px;border-radius:24px;border:1px solid var(--gb);border-image:none;
+  background:color-mix(in srgb,var(--c1) 45%,transparent);backdrop-filter:blur(34px) saturate(1.9);-webkit-backdrop-filter:blur(34px) saturate(1.9);
+  box-shadow:var(--gs)}
+body:not(#_) .nav-logo{background:var(--rainbow);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  font-weight:800;letter-spacing:.14em;filter:none}
+body:not(#_) .nav-logo::before{background:var(--rainbow);box-shadow:0 0 14px 2px rgba(10,132,255,.7);filter:none}
+body:not(#_) nav a{font-size:11.5px;font-weight:600;border-radius:999px;padding:6px 10px;transition:all .25s var(--spring)}
+body:not(#_) nav a:hover{background:rgba(255,255,255,.14) !important;transform:scale(1.06)}
+body:not(#_) .nh{border:1px solid var(--gb) !important;border-radius:999px !important;background:rgba(255,255,255,.08) !important}
+body:not(#_) .theme-btn{border-radius:999px;background:rgba(255,255,255,.1);border:1px solid var(--gb);font-family:var(--sf);font-weight:600;font-size:11px}
+body:not(#_) .theme-popup{border-radius:22px;background:color-mix(in srgb,var(--c2) 70%,transparent);backdrop-filter:blur(30px) saturate(1.8);box-shadow:var(--gs)}
+body:not(#_) .theme-opt{border-radius:12px}
+
+/* hero */
+body:not(#_) .hero{background:none;border:none;padding-top:clamp(46px,9vw,100px)}
+body:not(#_) .hero::after{color:rgba(255,255,255,.035);font-weight:800;letter-spacing:-.02em}
+body:not(#_) .hero-eyebrow{font-weight:700;color:var(--ice)}
+body:not(#_) .hero-eyebrow::before,body:not(#_) .hero-eyebrow::after{background:var(--rainbow);height:2px;border-radius:2px;opacity:.9}
+body:not(#_) #istClock{font-family:var(--sf);font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums;
+  background:linear-gradient(120deg,#fff 20%,#ffd9e2 45%,#9fd0ff 75%,#e0b8ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 8px 40px rgba(94,92,230,.6));animation:none}
+body:not(#_) #istDate{font-weight:600;letter-spacing:.18em;color:var(--text2)}
+body:not(#_) .hero h1{font-weight:800;letter-spacing:-.035em;background:var(--rainbow);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;background-size:200%;animation:shimmer 9s linear infinite}
+@keyframes shimmer{to{background-position:200% 0}}
+body:not(#_) .hero-sub{font-weight:500;color:var(--text2)}
+
+/* section headers */
+body:not(#_) .section-head::after{height:2px;border-radius:2px;background:linear-gradient(90deg,var(--acc),transparent 70%);opacity:.8}
+body:not(#_) .section-title{font-weight:800;letter-spacing:-.03em;font-size:clamp(22px,3.4vw,32px)}
+body:not(#_) .section-title span{background:linear-gradient(135deg,var(--acc),color-mix(in srgb,var(--acc) 60%,#fff));color:#fff;border:none;
+  border-radius:999px;font-weight:800;letter-spacing:.14em;box-shadow:0 6px 18px -4px var(--acc),inset 0 1px 0 rgba(255,255,255,.5)}
+
+/* glass surfaces */
+body:not(#_) .card,body:not(#_) .news-card,body:not(#_) .mo-card,body:not(#_) .crypto-card,body:not(#_) .weather-box,body:not(#_) .aqi-box,body:not(#_) .fuel-card,body:not(#_) .currency-converter,body:not(#_) .econ-card,body:not(#_) .ipo-card,body:not(#_) .cricket-card,body:not(#_) .isro-card,body:not(#_) .metal-card,body:not(#_) .movie-card,body:not(#_) .panchang-card,body:not(#_) .holiday-card,body:not(#_) .rate-box,body:not(#_) .state-btn,body:not(#_) .state-detail,body:not(#_) .calc-card,body:not(#_) .skill-bar,body:not(#_) .study-banner,body:not(#_) .train-result,body:not(#_) .notif-center,body:not(#_) .pop-counter,body:not(#_) .dd-ch-card{
+  background:linear-gradient(160deg,var(--g1),var(--g2) 55%,rgba(255,255,255,.03)) !important;
+  backdrop-filter:blur(30px) saturate(1.8);-webkit-backdrop-filter:blur(30px) saturate(1.8);
+  border:1px solid var(--gb) !important;border-radius:var(--r) !important;box-shadow:var(--gs) !important;
+  transition:transform .45s var(--spring),box-shadow .35s,border-color .3s !important;
+}
+body:not(#_) .card:hover,body:not(#_) .news-card:hover,body:not(#_) .mo-card:hover,body:not(#_) .crypto-card:hover,body:not(#_) .weather-box:hover,body:not(#_) .aqi-box:hover,body:not(#_) .fuel-card:hover,body:not(#_) .currency-converter:hover,body:not(#_) .econ-card:hover,body:not(#_) .ipo-card:hover,body:not(#_) .cricket-card:hover,body:not(#_) .isro-card:hover,body:not(#_) .metal-card:hover,body:not(#_) .movie-card:hover,body:not(#_) .panchang-card:hover,body:not(#_) .holiday-card:hover,body:not(#_) .rate-box:hover,body:not(#_) .state-btn:hover,body:not(#_) .calc-card:hover,body:not(#_) .skill-bar:hover,body:not(#_) .pop-counter:hover,body:not(#_) .dd-ch-card:hover{transform:translateY(-5px) scale(1.015) !important;
+  border-color:color-mix(in srgb,var(--acc,#0A84FF) 70%,#fff) !important;
+  box-shadow:var(--gs),0 0 0 1px color-mix(in srgb,var(--acc,#0A84FF) 40%,transparent),0 26px 60px -18px var(--acc,#0A84FF) !important}
+body:not(#_) .card-accent{height:3px;border-radius:3px;margin:0 22px;background:linear-gradient(90deg,var(--acc),transparent);opacity:1;top:0}
+body:not(#_) .mo-card,body:not(#_) .crypto-card,body:not(#_) .aqi-box,body:not(#_) .rate-box,body:not(#_) .panchang-card,body:not(#_) .holiday-card,body:not(#_) .state-btn,body:not(#_) .skill-bar{border-radius:20px !important}
+body:not(#_) .fuel-card::before,body:not(#_) .cricket-card,body:not(#_) .isro-card{border-radius:var(--r)}
+body:not(#_) .fuel-card::before{height:4px;background:var(--rainbow)}
+body:not(#_) .mo-name,body:not(#_) .econ-label,body:not(#_) .panchang-label,body:not(#_) .fuel-label{font-weight:700;letter-spacing:.12em}
+body:not(#_) .econ-value,body:not(#_) .fuel-price,body:not(#_) .pop-number,body:not(#_) .aqi-value,body:not(#_) .mo-val{font-family:var(--sf);font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+body:not(#_) .fuel-price{color:var(--gold2)}
+
+/* news — cinematic imagery */
+body:not(#_) .news-card{overflow:hidden}
+body:not(#_) .news-card img{filter:saturate(1.3) contrast(1.06);transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+body:not(#_) .news-card:hover img{transform:scale(1.09)}
+body:not(#_) .news-content h4{font-weight:700;letter-spacing:-.015em}
+
+/* segmented-control tabs */
+body:not(#_) .news-tabs,body:not(#_) .market-tabs{display:inline-flex;max-width:100%;overflow-x:auto;padding:5px;border-radius:999px;gap:2px;
+  background:rgba(255,255,255,.08);border:1px solid var(--gb);backdrop-filter:blur(20px)}
+body:not(#_) .ntab,body:not(#_) .mtab{background:transparent !important;border:none !important;box-shadow:none !important;border-radius:999px;font-family:var(--sf);font-weight:700;color:var(--text2);transition:all .3s var(--spring)}
+body:not(#_) .ntab.active,body:not(#_) .mtab.active{color:#fff !important;background:linear-gradient(135deg,var(--acc),color-mix(in srgb,var(--acc) 55%,#fff)) !important;
+  box-shadow:0 8px 20px -6px var(--acc),inset 0 1px 0 rgba(255,255,255,.55) !important}
+
+/* buttons — iOS blue pills */
+body:not(#_) .refresh-btn,body:not(#_) .calc-btn,body:not(#_) .convert-btn,body:not(#_) #enterBtn{
+  background:linear-gradient(180deg,#4aa8ff,#0A84FF 55%,#0066d6) !important;color:#fff !important;border:none !important;border-radius:999px !important;
+  font-family:var(--sf) !important;font-weight:700;letter-spacing:0;box-shadow:0 10px 22px -8px rgba(10,132,255,.9),inset 0 1px 0 rgba(255,255,255,.55) !important;
+  transition:transform .3s var(--spring),filter .2s !important}
+body:not(#_) .refresh-btn:hover,body:not(#_) .calc-btn:hover,body:not(#_) .convert-btn:hover,body:not(#_) #enterBtn:hover{transform:scale(1.07) !important;filter:brightness(1.1)}
+body:not(#_) .refresh-btn:active,body:not(#_) .calc-btn:active,body:not(#_) .convert-btn:active{transform:scale(.94) !important}
+body:not(#_) .radio-btn{border-radius:999px !important;background:linear-gradient(135deg,#FF375F,#BF5AF2) !important;color:#fff;font-weight:700;box-shadow:0 14px 30px -10px #FF375F !important}
+body:not(#_) #backTop{background:rgba(255,255,255,.16) !important;backdrop-filter:blur(20px);border:1px solid var(--gb);box-shadow:var(--gs) !important}
+
+/* inputs */
+body:not(#_) .calc-input,body:not(#_) .calc-select,body:not(#_) .currency-row input,body:not(#_) .currency-row select{background:rgba(255,255,255,.1) !important;color:var(--text) !important;
+  border:1px solid var(--gb) !important;border-radius:14px !important;font-family:var(--sf);font-weight:600;transition:box-shadow .25s,border-color .25s}
+body:not(#_) .calc-input:focus,body:not(#_) .calc-select:focus,body:not(#_) .currency-row input:focus,body:not(#_) .currency-row select:focus{border-color:#0A84FF !important;box-shadow:0 0 0 4px rgba(10,132,255,.35)}
+body:not(#_) .calc-result,body:not(#_) #convertResult{border-radius:16px;background:linear-gradient(135deg,rgba(48,209,88,.22),rgba(100,210,255,.12)) !important;border:1px solid rgba(48,209,88,.4) !important}
+
+/* Apple-Arcade style movie posters */
+body:not(#_) .movie-poster-ph{background:radial-gradient(circle at 18% 12%,#FF375F,transparent 55%),radial-gradient(circle at 88% 28%,#5E5CE6,transparent 55%),
+  radial-gradient(circle at 50% 105%,#0A84FF,transparent 62%),#1b1b30 !important;position:relative;overflow:hidden}
+body:not(#_) .movie-poster-ph::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.28) 48%,transparent 60%);transform:translateX(-120%);transition:transform .9s}
+body:not(#_) .movie-card:hover .movie-poster-ph::after{transform:translateX(120%)}
+body:not(#_) .movie-card:nth-child(3n+2) .movie-poster-ph{filter:hue-rotate(95deg) saturate(1.2)}
+body:not(#_) .movie-card:nth-child(3n) .movie-poster-ph{filter:hue-rotate(210deg) saturate(1.25)}
+body:not(#_) .movie-badge{backdrop-filter:blur(14px);font-weight:800}
+body:not(#_) .movie-title{font-weight:800}
+
+/* tables, status pills, bars */
+body:not(#_) .ipl-table th,body:not(#_) .portfolio-table th{font-weight:800;letter-spacing:.12em}
+body:not(#_) .ipl-table tr:hover td,body:not(#_) .portfolio-table tr:hover td{background:rgba(255,255,255,.07) !important}
+body:not(#_) .skill-track{height:10px;border-radius:10px;background:rgba(255,255,255,.12)}
+body:not(#_) .skill-fill{border-radius:10px;background:var(--rainbow);box-shadow:0 0 16px rgba(10,132,255,.7)}
+body:not(#_) .profile-avatar{border:4px solid transparent;background:linear-gradient(#17172b,#17172b) padding-box,conic-gradient(#FF375F,#FF9F0A,#FFD60A,#30D158,#64D2FF,#0A84FF,#BF5AF2,#FF375F) border-box;
+  box-shadow:0 0 50px rgba(191,90,242,.5)}
+body:not(#_) .profile-section{background:none}
+body:not(#_) .profile-name{font-weight:800;letter-spacing:-.03em}
+body:not(#_) .ptag{border-radius:999px;background:rgba(255,255,255,.1);backdrop-filter:blur(12px);font-weight:600}
+body:not(#_) .ptag.hot{background:linear-gradient(135deg,rgba(255,55,95,.35),rgba(191,90,242,.3));color:#fff;border-color:rgba(255,255,255,.25)}
+body:not(#_) .plink{border-radius:999px;font-weight:700}
+body:not(#_) footer{background:none;border:none}
+
+/* maps, chart frames, popup */
+body:not(#_) #quakeMap,body:not(#_) #flightMap,body:not(#_) #issMap,body:not(#_) .market-chart-wrap{border-radius:var(--r);overflow:hidden;border:1px solid var(--gb);box-shadow:var(--gs)}
+body:not(.theme-light) .leaflet-tile-pane{filter:invert(1) hue-rotate(205deg) brightness(.9) saturate(.9)}
+body:not(#_) #disclaimerOverlay>div{border-radius:30px;background:color-mix(in srgb,var(--c2) 72%,transparent) !important;backdrop-filter:blur(40px) saturate(1.8);border:1px solid var(--gb)}
+
+/* entrance + scroll polish */
+@keyframes rise{from{opacity:0;transform:translateY(34px) scale(.97);filter:blur(10px)}to{opacity:1;transform:none;filter:none}}
+body:not(#_) .container{animation:rise .8s var(--spring) both}
+::-webkit-scrollbar-thumb{background:linear-gradient(#0A84FF,#BF5AF2);border-radius:6px}
+@media(max-width:768px){body:not(#_) nav ul{top:calc(var(--nav-h) + 22px);margin:0 10px;border-radius:24px;background:color-mix(in srgb,var(--c1) 88%,transparent);backdrop-filter:blur(30px)}}
+@media(prefers-reduced-motion:reduce){*,::before,::after{animation:none !important;transition:none !important}}
+
+/* ═══ APP STORE COSMETICS (styling only) ═══ */
+body:not(#_) .movie-poster-ph{aspect-ratio:1/1 !important}
+body:not(#_) .movie-info>div:last-child{display:inline-block;padding:5px 18px;border-radius:999px;background:rgba(120,130,170,.28);color:#0A84FF !important;font-weight:800;letter-spacing:0 !important;font-family:var(--sf) !important}
+body:not(#_) .crypto-icon{width:54px;height:54px;border-radius:22.37%;display:grid;place-items:center;font-size:26px;
+  background:linear-gradient(145deg,rgba(255,255,255,.28),rgba(255,255,255,.06));box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -2px 6px rgba(0,0,0,.2),0 8px 18px -8px rgba(0,0,0,.6)}
+body:not(#_) .news-card:first-child{grid-column:span 2}
+body:not(#_) .news-card:first-child img{aspect-ratio:21/9}
+body:not(#_) .news-card:first-child h4{font-size:clamp(16px,2vw,22px);font-weight:800;letter-spacing:-.03em}
+body:not(#_) .section-head{border-top:1px solid rgba(255,255,255,.14);padding-top:18px}
+body:not(#_) .metal-card div:first-child,body:not(#_) .econ-card>div:first-child{width:46px;height:46px;border-radius:22.37%;display:grid;place-items:center;margin-inline:auto;background:linear-gradient(145deg,rgba(255,255,255,.26),rgba(255,255,255,.06));box-shadow:inset 0 1.5px 0 rgba(255,255,255,.5)}
+body:not(#_) .econ-card>div:first-child{margin-inline:0}
+@media(max-width:480px){body:not(#_) .news-card:first-child{grid-column:auto}}
+
 </style>
-<script>
-(function(){
-  const G=[ // [name, genre, emoji, colour A, colour B]
-   ["Sneaky Sasquatch","Open-world comedy","🏕️","#30D158","#0A84FF"],
-   ["Hello Kitty Island Adventure","Cosy adventure","🎀","#FF6482","#BF5AF2"],
-   ["Fruit Ninja Classic+","Arcade action","🍉","#FF9F0A","#FF375F"],
-   ["Cut the Rope Remastered","Physics puzzle","🍬","#64D2FF","#30D158"],
-   ["Sonic Dream Team","3D platformer","💨","#0A84FF","#5E5CE6"],
-   ["Skate City: New York","Sports","🛹","#FFD60A","#FF9F0A"],
-   ["Dead Cells+","Roguelite","☠️","#BF5AF2","#FF375F"],
-   ["Angry Birds Reloaded","Puzzle action","🐦","#FF375F","#FFD60A"]];
-  const T=[["Subway Surfers","Arcade","🏃","#FFD60A","#0A84FF"],["Candy Crush Saga","Puzzle","🍭","#FF6482","#BF5AF2"],
-   ["Clash Royale","Strategy","👑","#0A84FF","#5E5CE6"],["Among Us","Party","🧑‍🚀","#FF375F","#FF9F0A"],
-   ["Roblox","Adventure","🧱","#64D2FF","#0A84FF"],["Pokémon GO","Adventure","🔴","#30D158","#64D2FF"]];
-  const ic=(g,s)=>`<div class="as-ic" style="--a:${g[3]};--b:${g[4]};--s:${s}px">${g[2]}</div>`;
-  const get='<button class="as-get">GET</button>';
-  const d=new Date().toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long'});
-  const s=document.createElement('section');s.id='appstore';
-  s.innerHTML=`
-   <div class="as-head"><div><div class="as-date">${d}</div><div class="as-title">Today</div></div><div class="as-av">☁️</div></div>
-   <div class="as-feat"><div><div class="as-eye">Apple Arcade · Featured</div><div class="as-big">Play without limits.</div></div>
-     <div class="as-bar">${ic(G[2],54)}<div><b>${G[2][0]}</b><small>${G[2][1]} · Arcade</small></div>${get}</div></div>
-   <div class="as-h2" id="arcade"><b>Apple Arcade Picks</b><a href="https://www.apple.com/apple-arcade/" target="_blank">See All</a></div>
-   <div class="as-row">${G.map(g=>`<div class="as-game"><div class="as-art" style="--a:${g[3]};--b:${g[4]}"><i>ARCADE</i><span>${g[2]}</span></div>
-     <div class="as-info">${ic(g,48)}<div><b>${g[0]}</b><small>${g[1]}</small></div>${get}</div></div>`).join('')}</div>
-   <div class="as-h2" id="topfree"><b>Top Free Games</b><a href="https://apps.apple.com/in/charts/iphone/games/6014" target="_blank">See All</a></div>
-   <div class="as-list">${T.map((g,i)=>`<div class="as-li"><em>${i+1}</em>${ic(g,58)}<div><b>${g[0]}</b><small>${g[1]}</small></div>${get}</div>`).join('')}</div>`;
-  document.querySelector('.hero').after(s);
-  const dock=document.createElement('nav');dock.className='as-dock';
-  dock.innerHTML='<a href="#appstore"><span>📱</span>Today</a><a href="#arcade"><span>🕹️</span>Arcade</a><a href="#topfree"><span>🏆</span>Charts</a><a href="#news"><span>📰</span>News</a><a href="#markets"><span>📈</span>Markets</a>';
-  document.body.appendChild(dock);
-  document.addEventListener('click',e=>{const b=e.target.closest('.as-get');if(!b||b.dataset.s)return;b.dataset.s=1;b.classList.add('load');
-    setTimeout(()=>{b.classList.remove('load');b.style.animation='none';b.textContent='OPEN'},1600)});
-})();
-</script>
