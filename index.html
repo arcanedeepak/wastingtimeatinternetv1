@@ -1,606 +1,465 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#000000">
-<title>India Digital Command Dashboard</title>
-<link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/7/7a/Clapperboard.svg">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<style>
-/* ═══════════════════════════════════════════
-   APPLE DESIGN TOKENS & BASE
-═══════════════════════════════════════════ */
-:root {
-  --c0: #000000;
-  --c1: #1c1c1e;
-  --c2: #2c2c2e;
-  --c3: #3a3a3c;
-  --c4: #48484a;
-  --c5: #636366;
-  
-  --red: #ff3b30;
-  --red2: #ff453a;
-  --red-glow: rgba(255, 59, 48, 0.15);
-  --gold: #ff9500;
-  --gold-glow: rgba(255, 149, 0, 0.15);
-  --ice: #0a84ff;
-  --green: #32d74b;
+BHARATVARSH
+	•	News
+	•	Markets
+	•	Crypto
+	•	Cricket
+	•	Movies
+	•	Radio
+	•	Weather
+	•	AQI
+	•	Fuel
+	•	Currency
+	•	Economy
+	•	IPO
+	•	Quakes
+	•	Portfolio
+	•	Calculators
+	•	IPL Table
+	•	ISRO
+	•	Panchang
+	•	Trains
+	•	Disasters
+	•	Holidays
+	•	States
+	•	Tools
+	•	Tech
+	•	About
+	•	Portfolio
+	•	LinkedIn
+Theme
 
-  --text: #f5f5f7;
-  --text2: #ebebf5;
-  --text3: rgba(235, 235, 245, 0.6);
-  --text4: rgba(235, 235, 245, 0.3);
-  --border: rgba(255, 255, 255, 0.15);
-  --border2: rgba(255, 255, 255, 0.25);
 
-  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
-  --font-mono: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
-  --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+BREAKING
+Loading latest India news&
 
-  --r: 18px;
-  --rs: 10px;
-  --nav-h: 60px;
-  --shadow: 0 10px 30px rgba(0,0,0,0.5);
-  --shadow-s: 0 4px 14px rgba(0,0,0,0.3);
-}
 
-*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: var(--font-body);
-  background: var(--c0);
-  color: var(--text);
-  overflow-x: hidden;
-  min-width: 0;
-  -webkit-text-size-adjust: 100%;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+INDIA DIGITAL COMMAND DASHBOARD
+00:00:00
+Loading&
+Command. Monitor. Analyse.
+News · Markets · Crypto · Cricket · Weather · AQI · Fuel · Currency · Economy · IPO
+Latest India News
+LIVE
 
-::-webkit-scrollbar { width: 8px; height: 8px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--c4); border-radius: 10px; border: 2px solid var(--c0); }
-::-webkit-scrollbar-thumb:hover { background: var(--c5); }
+Refresh
+India
+Business
+Technology
+Sports
+World
+Loading news&
+Stock Market
+LIVE
 
-/* Themes */
-body.theme-light {
-  --c0: #f2f2f7; --c1: #ffffff; --c2: #ffffff; --c3: #e5e5ea; --c4: #d1d1d6; --c5: #c7c7cc;
-  --text: #1d1d1f; --text2: #3a3a3c; --text3: #86868b; --text4: #98989d;
-  --border: rgba(0,0,0,0.1); --border2: rgba(0,0,0,0.15);
-  --red: #ff3b30; --gold: #ff9500; --green: #34c759; --ice: #007aff;
-  --shadow-s: 0 4px 14px rgba(0,0,0,0.06);
-}
-body.theme-saffron { --red: #ff9500; --ice: #ff3b30; }
-body.theme-ocean { --red: #0a84ff; --gold: #32ade6; }
+Refresh
+SENSEX
+BITCOIN
+NIFTY 50
+SENSEX
+
+
+USD/INR
+
+
+GOLD (USD)
+
+
+CRUDE OIL
+
+
+BITCOIN
+
+
+ETHEREUM
+
+
+India Sector Heatmap
 
-img { max-width: 100%; display: block; border-radius: var(--rs); }
-a { color: inherit; text-decoration: none; }
+Cryptocurrency
+LIVE
 
-/* ═══════════════════════════════════════════
-   NAVIGATION (GLASSMORPHISM)
-═══════════════════════════════════════════ */
-nav {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 0 max(clamp(16px,3vw,24px), env(safe-area-inset-left));
-  min-height: var(--nav-h);
-  background: rgba(28, 28, 30, 0.72);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  position: sticky; top: 0; z-index: 9999;
-  border-bottom: 0.5px solid var(--border);
-}
-body.theme-light nav { background: rgba(255, 255, 255, 0.72); }
+Refresh
+Loading crypto prices&
 
-.nav-logo {
-  font-family: var(--font-display); font-size: 17px; font-weight: 600;
-  color: var(--text); letter-spacing: -0.5px;
-}
-.nav-toggle {
-  display: none; flex-direction: column; gap: 4px;
-  background: none; border: none; z-index: 10001; cursor: pointer; padding: 10px 0;
-}
-.nav-toggle span { display: block; width: 20px; height: 2px; background: var(--text); border-radius: 2px; transition: 0.3s; }
-.nav-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-.nav-toggle.open span:nth-child(2) { opacity: 0; }
-.nav-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+Cricket Live Scores
+LIVE
 
-nav ul { display: flex; gap: 4px; list-style: none; align-items: center; flex: 1; justify-content: center; }
-nav a {
-  color: var(--text2); font-size: 13px; font-weight: 500;
-  padding: 6px 12px; border-radius: 14px; transition: 0.2s;
-}
-nav a:hover { color: var(--text); background: var(--border); }
-.nh { color: var(--ice) !important; font-weight: 500 !important; }
+Refresh
+LOADING&
+All India Radio
+LIVE
 
-.theme-btn {
-  background: var(--c3); border: none; color: var(--text);
-  padding: 6px 12px; border-radius: 14px; font-size: 13px; cursor: pointer; transition: 0.2s;
-}
-.theme-btn:hover { background: var(--c4); }
-.theme-popup {
-  display: none; position: absolute; top: calc(var(--nav-h) + 8px); right: 20px;
-  background: rgba(44, 44, 46, 0.85); backdrop-filter: saturate(180%) blur(24px);
-  -webkit-backdrop-filter: saturate(180%) blur(24px);
-  border: 0.5px solid var(--border); border-radius: var(--r); padding: 16px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.3); z-index: 10000; min-width: 180px;
-}
-body.theme-light .theme-popup { background: rgba(255,255,255,0.85); }
-.theme-popup.open { display: block; }
-.theme-popup-title { font-size: 12px; font-weight: 600; color: var(--text3); margin-bottom: 12px; }
-.theme-opt { display: flex; align-items: center; gap: 10px; padding: 10px; border-radius: 8px; cursor: pointer; font-size: 14px; }
-.theme-opt:hover { background: var(--c4); }
-.theme-opt.active { background: var(--c3); font-weight: 600; }
-.theme-swatch { width: 16px; height: 16px; border-radius: 50%; }
+AIR National
+Click to start · HLS live stream
+Live Weather
+OPEN-METEO
 
-/* ═══════════════════════════════════════════
-   HERO & TICKERS
-═══════════════════════════════════════════ */
-.ticker-card { background: var(--c1); border-bottom: 0.5px solid var(--border); }
-.news-ribbon { display: flex; align-items: center; background: var(--c1); border-bottom: 0.5px solid var(--border); min-height: 42px; }
-.breaking { background: var(--red); color: #fff; padding: 6px 14px; font-size: 12px; font-weight: 600; white-space: nowrap; border-radius: 12px; margin-left: 12px; }
-.ticker-container { flex: 1; overflow: hidden; white-space: nowrap; padding: 0 16px; }
-.ticker-container span { display: inline-block; padding-left: 100%; animation: tickerScroll 40s linear infinite; font-size: 13px; color: var(--text); }
-@keyframes tickerScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
-.ticker-time { padding: 10px 16px; font-variant-numeric: tabular-nums; font-size: 12px; color: var(--text3); border-left: 0.5px solid var(--border); }
+Refresh
+Air Quality Index
+US AQI
 
-.hero {
-  padding: 80px 24px; text-align: center; background: var(--c0);
-  border-bottom: 0.5px solid var(--border);
-}
-.hero-eyebrow { font-size: 13px; color: var(--text3); font-weight: 600; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
-#istClock { font-family: var(--font-display); font-size: clamp(48px, 8vw, 84px); font-weight: 700; letter-spacing: -2px; color: var(--text); margin-bottom: 8px; font-variant-numeric: tabular-nums; }
-#istDate { font-size: 15px; color: var(--text2); margin-bottom: 24px; font-weight: 500; }
-.hero h1 { font-family: var(--font-display); font-size: clamp(28px, 5vw, 48px); font-weight: 700; letter-spacing: -1px; margin-bottom: 12px; }
-.hero-sub { font-size: 17px; color: var(--text3); font-weight: 400; }
-.pop-counter { margin-top: 32px; display: inline-flex; flex-direction: column; align-items: center; padding: 16px 32px; background: var(--c1); border: 0.5px solid var(--border); border-radius: var(--r); }
-.pop-number { font-size: clamp(24px, 4vw, 36px); font-weight: 700; color: var(--text); font-variant-numeric: tabular-nums; }
-.pop-label { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+Refresh
+050 Good
+51100 Moderate
+101150 Unhealthy*
+151200 Unhealthy
+201300 Very Unhealthy
+300+ Hazardous
+Fuel Prices
+DAILY
+Fuel prices are updated daily at 6 AM by IOCL/HPCL. Prices vary by city due to state taxes & dealer margins.
+Currency Converter
+LIVE
 
-/* ═══════════════════════════════════════════
-   LAYOUT & CARDS
-═══════════════════════════════════════════ */
-.container { max-width: 1200px; margin: 0 auto; padding: 48px max(clamp(16px,3vw,24px), env(safe-area-inset-left)); }
-.section-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; flex-wrap: wrap; gap: 16px; }
-.section-title { font-family: var(--font-display); font-size: 24px; font-weight: 700; letter-spacing: -0.5px; display: flex; align-items: center; gap: 8px; }
-.section-title span { font-size: 10px; background: var(--red); color: #fff; padding: 2px 8px; border-radius: 10px; font-weight: 600; letter-spacing: 0.5px; }
-.section-meta { display: flex; gap: 12px; align-items: center; }
-.updated-text { font-size: 12px; color: var(--text4); }
+ INR USD
+ EUR GBP
+ AED SGD
+ JPY SAR
+ CAD AUD
+ 
 
-.refresh-btn {
-  background: var(--c2); border: 0.5px solid var(--border); color: var(--text);
-  padding: 6px 14px; border-radius: 14px; font-size: 13px; font-weight: 500; cursor: pointer; transition: 0.2s;
-}
-.refresh-btn:hover { background: var(--c3); }
+ USD EUR
+ GBP INR
+ AED SGD
+ JPY SAR
+ CAD AUD
+ CHF HKD
+ 
+Convert
 
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 16px; }
-.card {
-  background: var(--c2); border-radius: var(--r); padding: 24px;
-  box-shadow: var(--shadow-s); border: 0.5px solid var(--border);
-  transition: transform 0.2s ease, box-shadow 0.2s ease; overflow: hidden;
-}
-.card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
-body.theme-light .card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+Live INR Exchange Rates
+Economic Indicators
+FY 2024-25
+Gold & Metals
+IPO Watch
+MAR 2026
+SEBI
+Trending in India
+MAR 2026
 
-/* ═══════════════════════════════════════════
-   MODULES (News, Markets, Crypto, etc)
-═══════════════════════════════════════════ */
-.news-tabs, .market-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
-.ntab, .mtab { background: var(--c2); border: 0.5px solid var(--border); color: var(--text); padding: 8px 16px; border-radius: 16px; font-size: 14px; cursor: pointer; transition: 0.2s; }
-.ntab:hover, .mtab:hover { background: var(--c3); }
-.ntab.active, .mtab.active { background: var(--text); color: var(--c0); font-weight: 600; border-color: transparent; }
+Refresh
 
-.news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
-.news-card { background: var(--c2); border: 0.5px solid var(--border); border-radius: var(--r); overflow: hidden; cursor: pointer; transition: 0.2s; box-shadow: var(--shadow-s); }
-.news-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.15); }
-.news-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 0; }
-.news-content { padding: 16px; }
-.news-content h4 { font-size: 15px; font-weight: 600; line-height: 1.3; }
+Top Trending Topics
+	•	 Loading live trends&
 
-.market-chart-wrap { border-radius: var(--r); overflow: hidden; border: 0.5px solid var(--border); background: var(--c2); margin-bottom: 16px; position: relative; }
-.market-chart-wrap iframe { width: 100%; height: clamp(340px, 50vw, 520px); border: none; display: block; }
-.chart-label { position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px); padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600; color: #fff; z-index: 10; pointer-events: none; }
-.market-overview { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
-.mo-card { background: var(--c2); border-radius: var(--rs); padding: 16px; border: 0.5px solid var(--border); text-align: center; cursor: pointer; transition: 0.2s; }
-.mo-card:hover { background: var(--c3); }
-.mo-name { font-size: 11px; color: var(--text3); font-weight: 600; margin-bottom: 4px; }
-.mo-val { font-size: 16px; font-weight: 700; font-variant-numeric: tabular-nums; }
-.mo-chg { font-size: 12px; font-weight: 600; margin-top: 4px; }
-.mo-chg.up { color: var(--green); } .mo-chg.down { color: var(--red); }
+Today's India Events
+	•	 Loading events&
+Earthquake Monitor
+USGS
 
-.crypto-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
-.crypto-card { background: var(--c2); border-radius: var(--rs); padding: 16px; border: 0.5px solid var(--border); transition: 0.2s; cursor: pointer; }
-.crypto-card:hover { background: var(--c3); }
-.crypto-icon { font-size: 24px; margin-bottom: 8px; }
-.crypto-name { font-size: 13px; color: var(--text2); font-weight: 600; }
-.crypto-price { font-size: 18px; font-weight: 700; margin: 4px 0; }
-.crypto-chg { font-size: 12px; font-weight: 500; }
+Refresh
 
-.weather-grid, .aqi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
-.weather-box, .aqi-box { background: var(--c2); padding: 16px; border-radius: var(--rs); text-align: center; border: 0.5px solid var(--border); }
-.weather-box h3 { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
-.aqi-value { font-size: 32px; font-weight: 700; margin: 8px 0; font-variant-numeric: tabular-nums; }
+Live Flight Tracker
+OPENSKY
 
-.fuel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
-.fuel-card { background: var(--c2); padding: 16px; border-radius: var(--rs); border: 0.5px solid var(--border); }
-.fuel-city { font-size: 15px; font-weight: 600; margin-bottom: 12px; }
-.fuel-row { display: flex; justify-content: space-between; font-size: 14px; padding: 6px 0; border-bottom: 0.5px solid var(--border); }
-.fuel-row:last-child { border-bottom: none; }
-.fuel-price { font-weight: 600; color: var(--text); }
+Refresh
 
-.currency-converter { background: var(--c2); padding: 24px; border-radius: var(--r); border: 0.5px solid var(--border); }
-.currency-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 16px; }
-.currency-row input, .currency-row select, .calc-input, .calc-select {
-  background: var(--c1); border: 0.5px solid var(--border); color: var(--text);
-  padding: 12px 16px; border-radius: 10px; font-size: 15px; font-family: inherit;
-  outline: none; flex: 1; min-width: 100px; transition: border-color 0.2s;
-}
-.currency-row input:focus, .calc-input:focus { border-color: var(--ice); }
-.convert-btn, .calc-btn { background: var(--ice); color: #fff; border: none; padding: 12px 24px; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; transition: 0.2s; }
-.convert-btn:hover, .calc-btn:hover { opacity: 0.9; }
-#convertResult, .calc-result { font-size: 20px; font-weight: 700; color: var(--text); margin-top: 12px; }
-.calc-result { padding: 16px; background: var(--c1); border-radius: 10px; border: 0.5px solid var(--border); }
+ISS Live Tracker
+REALTIME
+LATITUDE
+
+LONGITUDE
+
+SPEED
+27,600 km/h
+ALTITUDE
+~408 km
 
-.rates-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 12px; margin-top: 16px; }
-.rate-box { background: var(--c1); padding: 12px; border-radius: 10px; text-align: center; border: 0.5px solid var(--border); }
-.rate-flag { font-size: 20px; }
-.rate-val { font-size: 14px; font-weight: 600; margin-top: 4px; }
+Cyber Security
+INDIA 2025-26
 
-.econ-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 16px; }
-.econ-card { background: var(--c2); border-radius: var(--rs); padding: 20px; border: 0.5px solid var(--border); }
-.econ-label { font-size: 12px; color: var(--text3); font-weight: 500; margin-bottom: 4px; }
-.econ-value { font-size: 24px; font-weight: 700; margin-bottom: 4px; }
-.econ-note { font-size: 12px; color: var(--text4); }
 
-.metals-grid, .ipo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
-.metal-card, .ipo-card { background: var(--c2); border-radius: var(--rs); padding: 20px; border: 0.5px solid var(--border); }
-.ipo-name { font-size: 16px; font-weight: 600; margin-bottom: 12px; }
-.ipo-row { display: flex; justify-content: space-between; font-size: 13px; padding: 6px 0; border-bottom: 0.5px solid var(--border); }
-.ipo-row:last-child { border-bottom: none; }
+Kaspersky Cyberthreat Map
+Live global threat intelligence
+OPEN LIVE MAP
 
-.cricket-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
-.cricket-card { background: var(--c2); border-radius: var(--rs); padding: 20px; border: 0.5px solid var(--border); border-top: 3px solid var(--ice); }
-.match-status { font-size: 11px; color: var(--text3); font-weight: 600; text-transform: uppercase; margin-bottom: 12px; }
-.team-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 0.5px solid var(--border); }
-.team-row:last-child { border-bottom: none; }
-.team-name { font-size: 15px; font-weight: 600; }
-.team-score { font-size: 15px; font-weight: 700; color: var(--text); font-variant-numeric: tabular-nums; }
 
-.radio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
-.radio-btn { background: var(--c2); border: 0.5px solid var(--border); padding: 16px; border-radius: var(--rs); cursor: pointer; text-align: center; font-size: 15px; font-weight: 600; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
-.radio-btn:hover { background: var(--c3); }
+Check Point Threat Map
+Real-time cyber attack visualization
+OPEN LIVE MAP
 
-.trend-list { list-style: none; }
-.trend-item { display: flex; align-items: flex-start; gap: 16px; padding: 12px 0; border-bottom: 0.5px solid var(--border); }
-.trend-item:last-child { border-bottom: none; }
-.trend-num { font-size: 16px; font-weight: 700; color: var(--text3); width: 24px; text-align: center; flex-shrink: 0; }
-.trend-text { font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 2px; }
-.trend-count { font-size: 12px; color: var(--text4); }
 
-#quakeMap, #flightMap, #issMap { border-radius: var(--r); border: 0.5px solid var(--border); margin-bottom: 16px; position: relative; z-index: 0; }
-#quakeMap { height: clamp(220px, 40vw, 380px); }
-#flightMap { height: clamp(280px, 45vw, 460px); }
-#issMap { height: clamp(280px, 40vw, 420px); }
+CERT-In India
+Official Indian CERT advisories & alerts
+VISIT CERT-IN
 
-.movie-card { background: var(--c2); border: 0.5px solid var(--border); border-radius: var(--rs); overflow: hidden; cursor: pointer; transition: 0.2s; position: relative; }
-.movie-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-s); }
-.movie-poster-ph { width: 100%; aspect-ratio: 2/3; background: var(--c3); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 16px; text-align: center; gap: 8px; }
-.movie-info { padding: 16px; }
-.movie-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; line-height: 1.2; }
-.movie-meta { font-size: 12px; color: var(--text3); margin-bottom: 6px; }
-.movie-badge { position: absolute; top: 12px; left: 12px; font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 12px; backdrop-filter: blur(8px); background: rgba(0,0,0,0.6); color: #fff; }
 
-.profile-section { background: var(--c1); border-top: 0.5px solid var(--border); margin-top: 32px; }
-.profile-inner { max-width: 1200px; margin: auto; padding: 64px 24px; }
-.profile-top { display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: start; margin-bottom: 48px; }
-.profile-avatar { width: 100px; height: 100px; border-radius: 50%; background: var(--c3); display: flex; align-items: center; justify-content: center; font-size: 48px; box-shadow: var(--shadow-s); }
-.profile-name { font-size: 32px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 4px; }
-.profile-title { font-size: 15px; color: var(--ice); font-weight: 500; margin-bottom: 16px; }
-.profile-desc { font-size: 15px; color: var(--text2); line-height: 1.6; max-width: 640px; margin-bottom: 24px; }
-.profile-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-.ptag { background: var(--c2); border: 0.5px solid var(--border); padding: 6px 14px; border-radius: 14px; font-size: 12px; font-weight: 500; }
-.profile-links { display: flex; gap: 12px; flex-wrap: wrap; }
-.plink { display: flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 12px; font-size: 14px; font-weight: 600; background: var(--c2); border: 0.5px solid var(--border); transition: 0.2s; }
-.plink:hover { background: var(--c3); }
-.plink.linkedin { background: #0A66C2; color: #fff; border-color: transparent; }
+India Cyber Stats  2025-26
+Incidents (CERT-In FY25)
+1.92M+
+Ransomware attacks
+68% YoY
+Phishing / social eng.
+53% YoY
+UPI / fintech fraud
+85% YoY
+AI-generated attacks
+New vector
+Critical infra attacks
+42% YoY
+MAR 2026 · ACTIVE THREAT
+DeepSeek R2 Jailbreak
+AI-assisted spear phishing campaigns targeting Indian govt & banking sectors rising sharply.
+FEB 2026 · CERT-IN ADVISORY
+UPI QR Code Scams
+CERT-In warns of dynamic QR code swap attacks. 2,100 Cr lost in Q4 FY25 to payment fraud.
+JAN 2026 · DATA BREACH
+BSNL Data Leak
+47M subscriber records exposed. CERT-In investigating; telco patching IMSI & location databases.
+ONGOING · POLICY
+DPDP Act Enforcement
+Digital Personal Data Protection Act rules finalized Jan 2026. Penalties up to 250 Cr now active.
+Election Results
+2024
 
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-top: 24px; }
-.skill-bar { background: var(--c2); padding: 20px; border-radius: var(--rs); border: 0.5px solid var(--border); }
-.skill-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-.skill-name { font-size: 15px; font-weight: 600; }
-.skill-pct { font-size: 14px; font-weight: 600; color: var(--text3); }
-.skill-track { background: var(--c1); border-radius: 6px; height: 8px; overflow: hidden; }
-.skill-fill { height: 100%; border-radius: 6px; background: var(--ice); transition: width 1.4s ease; }
+LOK SABHA 2024
+18th General Election
+RESULT DECLARED
+Total Seats: 543 · Majority: 272
 
-.calc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
-.calc-card { background: var(--c2); border: 0.5px solid var(--border); border-radius: var(--rs); padding: 24px; }
-.calc-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 16px; }
-.calc-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
-.calc-label { font-size: 13px; color: var(--text3); font-weight: 500; min-width: 90px; }
 
-.ipl-table, .portfolio-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-.ipl-table th, .portfolio-table th { font-weight: 600; color: var(--text3); padding: 12px; text-align: left; border-bottom: 0.5px solid var(--border2); }
-.ipl-table td, .portfolio-table td { padding: 12px; border-bottom: 0.5px solid var(--border); }
-.ipl-table tr:hover td, .portfolio-table tr:hover td { background: var(--c3); }
+RECENT STATE ELECTIONS
 
-#backTop { position: fixed; bottom: 32px; right: 32px; background: rgba(255,255,255,0.2); backdrop-filter: blur(20px); color: #fff; border: 0.5px solid rgba(255,255,255,0.3); border-radius: 50%; width: 50px; height: 50px; font-size: 20px; cursor: pointer; display: none; align-items: center; justify-content: center; box-shadow: var(--shadow-s); z-index: 8000; transition: 0.2s; }
-body.theme-light #backTop { background: rgba(0,0,0,0.6); border-color: transparent; }
-#backTop:hover { transform: translateY(-2px); }
+Full Results ECI Official
+New Movie Releases
+MARAPR 2026
 
-footer { text-align: center; padding: 48px 24px; background: var(--c0); border-top: 0.5px solid var(--border); color: var(--text4); font-size: 13px; }
-footer a { color: var(--ice); }
-.footer-top { font-size: 15px; color: var(--text3); margin-bottom: 8px; font-weight: 600; }
+Refresh
+India (All)
+Bollywood
+South Indian
+English / World
+Loading&
+Portfolio Tracker
+LIVE
++ Add Holding
+Refresh
 
-@media(max-width: 768px) {
-  .nav-toggle { display: flex; }
-  nav ul { display: none; position: absolute; top: var(--nav-h); left: 0; right: 0; background: rgba(28,28,30,0.95); backdrop-filter: blur(20px); flex-direction: column; padding: 16px 0; border-bottom: 0.5px solid var(--border); box-shadow: var(--shadow); max-height: calc(100vh - var(--nav-h)); overflow-y: auto; }
-  body.theme-light nav ul { background: rgba(255,255,255,0.95); }
-  nav ul.open { display: flex; }
-  nav a { font-size: 16px; padding: 12px 24px; border-radius: 0; width: 100%; border-bottom: 0.5px solid var(--border); }
-  .profile-top { grid-template-columns: 1fr; text-align: center; }
-  .profile-avatar-wrap { display: flex; justify-content: center; }
-  .profile-links, .profile-tags { justify-content: center; }
-}
-</style>
-</head>
-<body>
 
-<!-- ══ NAV ══ -->
-<nav>
-  <div class="nav-logo">Bharatvarsh</div>
-  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-  <ul id="navMenu">
-    <li><a href="#news">News</a></li>
-    <li><a href="#markets">Markets</a></li>
-    <li><a href="#crypto">Crypto</a></li>
-    <li><a href="#cricket">Cricket</a></li>
-    <li><a href="#movies">Movies</a></li>
-    <li><a href="#weather">Weather</a></li>
-    <li><a href="#currency">Currency</a></li>
-    <li><a href="#tools">Tools</a></li>
-    <li><a href="#profile">About</a></li>
-  </ul>
-  <div style="position:relative;flex-shrink:0;margin-left:16px;">
-    <button class="theme-btn" id="themeBtn" onclick="toggleThemeMenu()">Theme</button>
-    <div class="theme-popup" id="themePopup">
-      <div class="theme-popup-title">Appearance</div>
-      <div class="theme-opt" id="opt-dark" onclick="setTheme('dark')">
-        <span class="theme-swatch" style="background:#1c1c1e; border: 1px solid #3a3a3c;"></span> Dark
-      </div>
-      <div class="theme-opt active" id="opt-light" onclick="setTheme('light')">
-        <span class="theme-swatch" style="background:#ffffff; border: 1px solid #d1d1d6;"></span> Light
-      </div>
-    </div>
-  </div>
-</nav>
 
-<!-- ══ TRADINGVIEW TICKER ══ -->
-<div class="ticker-card">
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js">
-{"symbols":[{"proName":"NSE:NIFTY","title":"Nifty"},{"proName":"BSE:SENSEX","title":"Sensex"},{"proName":"NSE:RELIANCE","title":"Reliance"},{"proName":"FX_IDC:XAUUSD","title":"Gold"},{"proName":"BINANCE:BTCUSDT","title":"Bitcoin"}],"colorTheme":"dark","isTransparent":true,"displayMode":"adaptive","locale":"en"}
-</script>
-</div>
 
-<!-- ══ HERO ══ -->
-<section class="hero">
-  <div class="hero-eyebrow">India Digital Command</div>
-  <div id="istClock">00:00:00</div>
-  <div id="istDate">Loading…</div>
-  <h1>Command. Monitor. Analyse.</h1>
-  <p class="hero-sub">A unified dashboard for Markets, News, and Utility.</p>
-</section>
+StockCrypto
+Add
+SYMBOL
+QTY
+BUY
+LTP
+P&L
+P&L%
 
-<!-- ══ NEWS ══ -->
-<section class="container" id="news">
-  <div class="section-head">
-    <h2 class="section-title">Latest News <span>LIVE</span></h2>
-    <div class="section-meta">
-      <span class="updated-text" id="newsUpdated"></span>
-      <button class="refresh-btn" onclick="loadNews('india')">Refresh</button>
-    </div>
-  </div>
-  <div class="news-tabs">
-    <button class="ntab active" onclick="loadNews('india',this)">India</button>
-    <button class="ntab" onclick="loadNews('business',this)">Business</button>
-    <button class="ntab" onclick="loadNews('tech',this)">Technology</button>
-    <button class="ntab" onclick="loadNews('sports',this)">Sports</button>
-  </div>
-  <div class="news-grid" id="newsFeed"><div style="color:var(--text3);padding:20px">Loading news…</div></div>
-</section>
+Add holdings above to start tracking
+Financial Calculators
+INDIA
 
-<!-- ══ MARKETS ══ -->
-<section class="container" id="markets">
-  <div class="section-head">
-    <h2 class="section-title">Stock Market <span>LIVE</span></h2>
-    <div class="section-meta">
-      <span class="updated-text" id="marketUpdated"></span>
-      <button class="refresh-btn" onclick="loadMarketOverview()">Refresh</button>
-    </div>
-  </div>
-  <div class="market-overview" id="marketOverview">
-    <div class="mo-card" onclick="switchChart('BSE:SENSEX','SENSEX',null)"><div class="mo-name">SENSEX</div><div class="mo-val" id="mo-sensex">—</div><div class="mo-chg" id="mo-sensex-c">—</div></div>
-    <div class="mo-card" onclick="switchChart('FX_IDC:USDINR','USD/INR',null)"><div class="mo-name">USD/INR</div><div class="mo-val" id="mo-usdinr">—</div><div class="mo-chg" id="mo-usdinr-c">—</div></div>
-    <div class="mo-card" onclick="switchChart('FX_IDC:XAUUSD','Gold USD',null)"><div class="mo-name">GOLD (USD)</div><div class="mo-val" id="mo-gold">—</div><div class="mo-chg" id="mo-gold-c">—</div></div>
-    <div class="mo-card" onclick="switchChart('BINANCE:BTCUSDT','Bitcoin',null)"><div class="mo-name">BITCOIN</div><div class="mo-val" id="mo-btc">—</div><div class="mo-chg" id="mo-btc-c">—</div></div>
-  </div>
-</section>
+SIP Calculator
+Monthly
 
-<!-- ══ CRYPTO ══ -->
-<section class="container" id="crypto">
-  <div class="section-head">
-    <h2 class="section-title">Cryptocurrency <span>LIVE</span></h2>
-    <div class="section-meta">
-      <span class="updated-text" id="cryptoUpdated"></span>
-      <button class="refresh-btn" onclick="loadCrypto()">Refresh</button>
-    </div>
-  </div>
-  <div class="crypto-grid" id="cryptoGrid">
-    <div style="color:var(--text3);padding:10px">Loading crypto prices…</div>
-  </div>
-</section>
+Rate %/yr
 
-<!-- ══ WEATHER ══ -->
-<section class="container" id="weather">
-  <div class="section-head">
-    <h2 class="section-title">Live Weather</h2>
-    <div class="section-meta">
-      <span class="updated-text" id="weatherUpdated"></span>
-      <button class="refresh-btn" onclick="loadWeather()">Refresh</button>
-    </div>
-  </div>
-  <div class="weather-grid" id="weatherGrid"></div>
-</section>
+Years
 
-<!-- ══ CURRENCY ══ -->
-<section class="container" id="currency">
-  <div class="section-head">
-    <h2 class="section-title">Currency Converter</h2>
-  </div>
-  <div class="currency-converter">
-    <div class="currency-row">
-      <input type="number" id="currAmount" value="1000" min="0" step="any">
-      <select id="currFrom">
-        <option value="INR">INR 🇮🇳</option><option value="USD">USD 🇺🇸</option>
-        <option value="EUR">EUR 🇪🇺</option><option value="GBP">GBP 🇬🇧</option>
-      </select>
-      <span style="font-size:20px;flex-shrink:0;color:var(--text3)">→</span>
-      <select id="currTo">
-        <option value="USD">USD 🇺🇸</option><option value="EUR">EUR 🇪🇺</option>
-        <option value="GBP">GBP 🇬🇧</option><option value="INR">INR 🇮🇳</option>
-      </select>
-      <button class="convert-btn" onclick="convertCurrency()">Convert</button>
-    </div>
-    <div id="convertResult"></div>
-    <div class="rates-grid" id="ratesGrid"></div>
-  </div>
-</section>
+Calculate
 
-<!-- ══ PROFILE (BOTTOM) ══ -->
-<div class="profile-section" id="profile">
-  <div class="profile-inner">
-    <div class="profile-top">
-      <div class="profile-avatar-wrap">
-        <div class="profile-avatar"></div>
-      </div>
-      <div>
-        <div class="profile-name">Developer Dashboard</div>
-        <div class="profile-title">Data Science &amp; Cloud Engineering</div>
-        <div class="profile-desc">A unified digital interface integrating live APIs, market data, and utilities built with clean, Apple-inspired UI principles.</div>
-        <div class="profile-tags">
-          <span class="ptag">Frontend Engineering</span>
-          <span class="ptag">Cloud APIs</span>
-          <span class="ptag">UI/UX Design</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+FD Calculator
+Principal
 
-<footer>
-  <div class="footer-top">India Digital Command Dashboard</div>
-  <p style="margin:6px 0 0">Apple-inspired Theme Update</p>
-</footer>
+Rate %/yr
 
-<button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+Years
 
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-<script>
-/* ═══════════════════════════════════════════════════
-   UTILITY & JS LOGIC (Unchanged Logic, Minified for Space)
-═══════════════════════════════════════════════════ */
-const $ = id => document.getElementById(id);
-const PROXY = 'https://api.allorigins.win/raw?url=';
+Compound
+QuarterlyHalf-yearlyYearlyMonthly
+Calculate
 
-/* Nav & Scroll */
-const navToggle=$("navToggle"), navMenu=$("navMenu");
-navToggle.addEventListener("click",()=>{navToggle.classList.toggle("open");navMenu.classList.toggle("open")});
-navMenu.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{navToggle.classList.remove("open");navMenu.classList.remove("open")}));
-window.addEventListener("scroll",()=>{$("backTop").style.display=scrollY>400?"flex":"none"},{passive:true});
+Home Loan EMI
+Loan
 
-/* Clock */
-function updateISTClock(){
-  const ist=new Date(new Date().toLocaleString("en-US",{timeZone:"Asia/Kolkata"}));
-  const p=n=>String(n).padStart(2,"0");
-  $("istClock").innerText=`${p(ist.getHours())}:${p(ist.getMinutes())}:${p(ist.getSeconds())}`;
-  $("istDate").innerText=ist.toLocaleDateString("en-IN",{weekday:"long",year:"numeric",month:"long",day:"numeric"})+" IST";
-}
-setInterval(updateISTClock,1000); updateISTClock();
+Rate %/yr
 
-/* Theme Switcher */
-const THEMES = ['dark','light','saffron','ocean'];
-let currentTheme = localStorage.getItem('dashTheme') || 'dark';
+Tenure yrs
 
-function applyTheme(t){
-  document.body.classList.remove(...THEMES.map(x=>'theme-'+x));
-  if(t !== 'dark') document.body.classList.add('theme-'+t);
-  currentTheme = t;
-  localStorage.setItem('dashTheme', t);
-  THEMES.forEach(x=>{
-    const el = document.getElementById('opt-'+x);
-    if(el) el.classList.toggle('active', x===t);
-  });
-}
-function setTheme(t){ applyTheme(t); toggleThemeMenu(); }
-function toggleThemeMenu(){ document.getElementById('themePopup').classList.toggle('open'); }
-document.addEventListener('click', e=>{
-  const popup = document.getElementById('themePopup'), btn = document.getElementById('themeBtn');
-  if(popup && !popup.contains(e.target) && !btn.contains(e.target)) popup.classList.remove('open');
-});
-applyTheme(currentTheme);
+Calculate
 
-/* Data Fetching Stubs (Maintain existing logic) */
-const NEWS_FEEDS = { india:"https://feeds.feedburner.com/ndtvnews-india-news", business:"https://feeds.feedburner.com/ndtvnews-business" };
-async function loadNews(category='india', btnEl=null){
-  if(btnEl){ document.querySelectorAll(".ntab").forEach(b=>b.classList.remove("active")); btnEl.classList.add("active"); }
-  $("newsFeed").innerHTML=`<div style="color:var(--text3);padding:20px;grid-column:1/-1;">Loading ${category} news…</div>`;
-  // Fallback data loading for UI demo
-  setTimeout(() => {
-    $("newsFeed").innerHTML = Array(8).fill(0).map((_,i)=>`
-      <div class="news-card">
-        <div style="width:100%; aspect-ratio:16/9; background:var(--c3);"></div>
-        <div class="news-content">
-          <h4>Live News Headline ${i+1}</h4>
-          <p style="color:var(--text4); font-size:12px; margin-top:8px;">Just now</p>
-        </div>
-      </div>
-    `).join("");
-    if($("newsUpdated")) $("newsUpdated").innerText = "Updated just now";
-  }, 800);
-}
-loadNews('india');
+GST Calculator
+Amount
 
-const cityCoords = [
-  {name:"Delhi",lat:28.6139,lon:77.2090}, {name:"Mumbai",lat:19.0760,lon:72.8777},
-  {name:"Bangalore",lat:12.9716,lon:77.5946}
-];
-async function loadWeather(){
-  $("weatherGrid").innerHTML = cityCoords.map(c=>`<div class="weather-box"><h3>${c.name}</h3><div style="color:var(--text3);font-size:12px">Loading…</div></div>`).join("");
-  const fetches = cityCoords.map(async city=>{
-    try{
-      const url=`https://api.open-meteo.com/v1/forecast?latitude=${city.lat}&longitude=${city.lon}&current=temperature_2m,weathercode&timezone=Asia%2FKolkata`;
-      const d = await (await fetch(url)).json();
-      $("weatherGrid").innerHTML += `<div class="weather-box"><h3>${city.name}</h3><p style="font-size:32px; font-weight:700;">${Math.round(d.current.temperature_2m)}°C</p></div>`;
-    } catch {}
-  });
-  $("weatherGrid").innerHTML = ""; // Clear loaders
-}
-loadWeather();
+GST Slab
+5%12%18%28%
+Type
+Excl. GSTIncl. GST
+Calculate
 
-async function loadCrypto(){
-  $("cryptoGrid").innerHTML = ['BTC','ETH','SOL'].map(c=>`
-    <div class="crypto-card">
-      <div class="crypto-name">${c}/USD</div>
-      <div class="crypto-price">$ --</div>
-    </div>
-  `).join("");
-}
-loadCrypto();
+Income Tax FY26-27
+Income
 
-function convertCurrency(){
-  $("convertResult").innerText = "Conversion functionality active.";
-}
-</script>
-</body>
-</html>
+Deductions
+
+Regime
+New RegimeOld Regime
+Calculate
+
+Unit Converter
+Value
+
+Convert
+ km milesmiles km
+ kg lbslbs kg
+ °C °F°F °C
+ litres gallonsgallons litres
+ meters feetfeet meters
+  USD (est.)USD (est.)
+ 
+Convert
+
+Pincode Finder
+Pincode
+
+Search
+
+UPI QR Generator
+UPI ID
+
+Amount
+
+Note
+
+Generate QR
+
+Price Alert
+Asset
+
+Target
+
+Direction
+Above Below
+Set Alert
+
+IPL 2026 Points Table
+LIVE
+Refresh
+#
+TEAM
+P
+W
+L
+NR
+NRR
+PTS
+Loading IPL standings&
+Top 4 qualify for playoffs · Source: ESPN Cricinfo
+ISRO Mission Tracker
+2025-26
+Panchang & Moon Phase
+TODAY
+Train Status Tracker
+IRCTC
+
+
+Search
+Uses RailAPI (railapi.com)  paste your free API key below if you have one, or results use demo data.
+
+Save Key
+India Disaster Alerts
+NDMA
+Refresh
+
+Active Alerts
+Loading NDMA alerts&
+
+Emergency Resources
+NDMA Official
+ndma.gov.in
+India Met Dept
+imd.gov.in
+NRSC Satellite
+nrsc.gov.in
+NDRF Helpline
+1078
+Fire
+101
+Ambulance
+108
+India Holidays 2026
+NATIONAL
+India State Info
+36 STATES/UTS
+Quick Tools
+
+Regional Language News
+Hindi News (NDTV)
+Tamil News
+Telugu News
+Bengali News
+Tech & Data Board
+LIVE
+Refresh
+
+Cloud Platform Status
+
+View all status pages
+
+AI Model Rankings
+
+Full LMSYS leaderboard
+
+GitHub Trending India
+
+GitHub Trending India
+
+Latest CVE Alerts
+
+NVD Full Feed
+
+Wasting Time At Internet
+Data Science & ML · Cloud & Data Engineer · Cyber Security
+PG Masters student specialising in Data Science, Cloud & Data Engineering, and Cyber Security. Built this India Digital Command Dashboard to apply master-level skills across ML pipelines, live data APIs, cloud architecture, AI integration, and secure system design.
+Machine Learning
+Cloud Engineering
+Cyber Security
+Data Science
+Python & R
+Data Pipelines
+AI & LLMs
+Real-time APIs
+
+LinkedIn Portfolio Instagram
+PG Masters  Expertise Level
+DATA SCIENCE · CLOUD · CYBER SECURITY
+Machine Learning
+65%
+
+Data Science
+60%
+
+Cloud Engineering
+75%
+
+Cyber Security
+55%
+
+Data Pipelines
+90%
+
+AI & LLMs
+45%
+
+
+PG Masters  Data Science, Cloud & Cyber Security Study Project  Built to apply master-level skills in ML pipelines, cloud data architecture, AI integration, real-time API engineering, and secure system design. All public APIs. Educational & portfolio purposes only.
+India Digital Command Dashboard
+Built with by Deepak · Masters · Data Science & ML · Cloud & Cyber Security · Study Project
+All data from public APIs · Open-Meteo · Yahoo Finance · USGS · OpenSky · CoinGecko · Educational purposes only
+
+
+Bharatvarsh Dashboard
+STUDENT STUDY PROJECT
+Built by Deepak  PG Masters student in Data Science, Cloud & Cyber Security. This is a non-commercial educational project using public APIs. Not affiliated with any government or media body. Data shown is not financial or legal advice.
+✓
+All data from free public APIs · No personal data collected
+✓
+Open source · Portfolio & educational use only
+✗
+Not for commercial use · Market data not for investment decisions
+If any content causes concern or requires removal, please reach out  I will remove it promptly.
+LinkedIn ↗
+Instagram ↗
+I Understand — Enter Dashboard
